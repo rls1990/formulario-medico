@@ -9,12 +9,15 @@ import {
   Button,
 } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Nav.css";
+import { UserContext } from "../../context/userContext/UserContext";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
+  const { isAuth } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
     setOpen(!open);
@@ -43,7 +46,7 @@ const Nav = () => {
           </Link>
 
           {/** Aquí puedes agregar los links para pantallas grandes */}
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
             <div
               style={{
                 display: "flex",
@@ -51,9 +54,10 @@ const Nav = () => {
                 flexGrow: 1,
               }}
             >
-              <NavLink to="/login">Login</NavLink>
-              <NavLink to="/register">Register</NavLink>
-              <NavLink to="/admin">Admin</NavLink>
+              {isAuth && <NavLink to="/">Home</NavLink>}
+              {isAuth && <NavLink to="/admin">Formulario</NavLink>}
+              {!isAuth && <NavLink to="/login">Login</NavLink>}
+              {!isAuth && <NavLink to="/register">Register</NavLink>}
             </div>
           </Box>
         </Toolbar>
@@ -67,17 +71,26 @@ const Nav = () => {
             alignItems="flex-start"
             sx={{ width: 150 }}
           >
-            <Button>
-              <Link to="/login">Login</Link>
-            </Button>
-
-            <Button>
-              <Link to="/register">Register</Link>
-            </Button>
-
-            <Button>
-              <Link to="/admin">Admin</Link>
-            </Button>
+            {isAuth && (
+              <Button sx={{ p: 2 }} onClick={() => navigate("/")}>
+                Home
+              </Button>
+            )}
+            {isAuth && (
+              <Button sx={{ p: 2 }} onClick={() => navigate("/admin")}>
+                Formulario
+              </Button>
+            )}
+            {!isAuth && (
+              <Button sx={{ p: 2 }} onClick={() => navigate("/login")}>
+                Login
+              </Button>
+            )}
+            {!isAuth && (
+              <Button sx={{ p: 2 }} onClick={() => navigate("/register")}>
+                Register
+              </Button>
+            )}
           </Grid>
         </Drawer>
       </AppBar>
