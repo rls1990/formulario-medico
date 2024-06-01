@@ -11,10 +11,11 @@ export interface ContextProps {
   isAuth: boolean;
   loading: boolean;
   error: null | string;
+  setError: React.Dispatch<React.SetStateAction<string | null>> | null;
   createUser: ((data: User) => void) | null;
   updateUser: ((data: User) => void) | null;
   deleteUser: ((id: number) => void) | null;
-  login: ((data: User) => void) | null;
+  login?: ((data: User) => void) | null;
   register: ((data: User) => void) | null;
 }
 
@@ -28,9 +29,13 @@ export const initialData: ContextProps = {
   setDatatoEdit: null,
   isAuth: false,
   error: null,
+  setError: null,
   createUser: null,
   updateUser: null,
   deleteUser: null,
+  loading: false,
+  login: null,
+  register: null,
 };
 
 export const initialDateToEdit: User = {

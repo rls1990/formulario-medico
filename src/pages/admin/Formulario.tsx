@@ -8,6 +8,13 @@ import { useState } from "react";
 const Formulario = () => {
   const [fecha, setFecha] = useState<Dayjs | null>(dayjs());
 
+  const handleChange = (newValue: Dayjs | null) => {
+    const fecha = newValue?.toJSON().split("T")[0];
+    console.log(newValue?.toJSON());
+    console.log(fecha);
+    setFecha(newValue);
+  };
+
   return (
     <div>
       <h3>Formulario</h3>
@@ -15,7 +22,7 @@ const Formulario = () => {
         <DatePicker
           label="Selecciona una fecha"
           value={fecha}
-          onChange={(newValue) => setFecha(newValue)}
+          onChange={handleChange}
         />
       </LocalizationProvider>
     </div>
