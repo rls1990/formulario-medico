@@ -1,9 +1,10 @@
 .register-container {
-  height: 83vh;
+  height: 77vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 25px;
 }
 
 .register-container form {

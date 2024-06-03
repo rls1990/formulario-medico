@@ -46,14 +46,13 @@ const Nav = () => {
           </Link>
 
           {/** Aquí puedes agregar los links para pantallas grandes */}
-          <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "flex-end",
-                flexGrow: 1,
-              }}
-            >
+          <Box
+            sx={{
+              display: { flexGrow: 1, xs: "none", md: "flex" },
+              justifyContent: !isAuth ? "flex-end" : "flex-start",
+            }}
+          >
+            <div>
               {isAuth && <NavLink to="/">Home</NavLink>}
               {isAuth && <NavLink to="/admin">Formulario</NavLink>}
               {!isAuth && <NavLink to="/login">Login</NavLink>}
