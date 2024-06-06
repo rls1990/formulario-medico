@@ -7,6 +7,6 @@ export const validationSchema = yup.object({
     .required("EL nombre de usuario es requerido"),
   password: yup
     .string()
-    .min(4, "El password debe contener al menos 4 caracteres")
+    .min(3, "El password debe contener al menos 3 caracteres")
     .required("El password es requerido"),
 });

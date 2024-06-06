@@ -7,6 +7,15 @@ import {
   initialDateToEdit,
 } from "./Types";
 
+import { login as loginapi } from "../../api/auth";
+import Cookies from "js-cookie";
+import {
+  getRefreshToken,
+  removeAccessToken,
+  setAccessToken,
+  setRefreshToken,
+} from "../../helpers/js-cookie/CookiesHelpers";
+
 export const UserContext = createContext(initialData);
 
 export const UserProvider: React.FC<UserContextProps> = ({ children }) => {
@@ -17,36 +26,33 @@ export const UserProvider: React.FC<UserContextProps> = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    //llamada a la api
-    //setIsAuth(false); //fallo la autentificacion
-    setIsAuth(false); //autentificacion ok
+    const refresh = getRefreshToken();
+    if (!refresh) {
+      removeAccessToken();
+      setIsAuth(false);
+    } else if (refresh) !isAuth && setIsAuth(true);
 
     setLoading(false);
-  }, []);
+  }, [isAuth]);
 
-  const createUser = (data: User) => {
-    console.log(data);
-  };
-
-  const updateUser = (data: User) => {
-    console.log(data);
-  };
-
-  const deleteUser = (id: number) => {
-    console.log(id);
-  };
-
-  const login = (data: User) => {
+  const login = async (data: User) => {
     setLoading(true);
     //llamada a la api
-    if (data.username === "admin" && data.password == "admin") {
-      setIsAuth(true);
-      setError(null);
-    } else {
-      setIsAuth(false);
-      setError("Credenciales Incorrectas");
-      setTimeout(() => setError(null), 4000);
-    }
+    await loginapi(data)
+      .then((res) => {
+        const { refresh, access } = res.data;
+        setRefreshToken(refresh, 1);
+        setAccessToken(access, 15);
+
+        setIsAuth(true);
+        setError(null);
+      })
+      .catch((error) => {
+        setIsAuth(false);
+        setError("Credenciales Incorrectas");
+        setTimeout(() => setError(null), 4000);
+        console.log(error);
+      });
     setLoading(false);
   };
 
@@ -61,6 +67,18 @@ export const UserProvider: React.FC<UserContextProps> = ({ children }) => {
       setError("El usuario no se ha posido registrar");
       setTimeout(() => setError(null), 4000);
     }
+  };
+
+  const createUser = (data: User) => {
+    console.log(data);
+  };
+
+  const updateUser = (data: User) => {
+    console.log(data);
+  };
+
+  const deleteUser = (id: number) => {
+    console.log(id);
   };
 
   const dataExportContext: ContextProps = {
