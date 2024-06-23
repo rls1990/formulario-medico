@@ -7,35 +7,23 @@ import {
   Box,
   Grid,
   Button,
-  MenuItem,
-  Menu,
 } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Nav.css";
 import { UserContext } from "../../context/userContext/UserContext";
-import Avatar from "../mui/avatar/Avatar";
+import MenuAvatar from "../mui/avatar/MenuAvatar";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const { isAuth } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const openMenuAvatar = Boolean(anchorEl);
-  const handleClickMenuAvatar = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleCloseMenuAvatar = () => {
-    setAnchorEl(null);
-  };
-
   const handleDrawerToggle = () => {
     setOpen(!open);
   };
+
   return (
     <>
       <CssBaseline />
@@ -74,38 +62,14 @@ const Nav = () => {
             </div>
           </Box>
 
-          <Box
-            sx={{
-              display: isAuth
-                ? { flexGrow: 1, xs: "flex", md: "flex" }
-                : "none",
-              justifyContent: isAuth ? "flex-end" : "",
-            }}
-          >
-            <IconButton
-              id="menu-avatar-button"
-              onClick={handleClickMenuAvatar}
-              aria-controls={openMenuAvatar ? "menu-avatar" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-            >
-              <Avatar active />
-            </IconButton>
-
-            <Menu
-              id="menu-avatar"
-              anchorEl={anchorEl}
-              open={openMenuAvatar}
-              onClose={handleCloseMenuAvatar}
-              MenuListProps={{
-                "aria-labelledby": "menu-avatar-button",
-              }}
-            >
-              <MenuItem onClick={handleCloseMenuAvatar}>Profile</MenuItem>
-              <MenuItem onClick={handleCloseMenuAvatar}>My account</MenuItem>
-              <MenuItem onClick={handleCloseMenuAvatar}>Logout</MenuItem>
-            </Menu>
-          </Box>
+          <MenuAvatar
+            src="/img/avatar.png"
+            active
+            items={[
+              { name: "My account", url: "/account" },
+              { name: "Logout", url: "/logout" },
+            ]}
+          />
         </Toolbar>
 
         <Drawer open={open} onClose={handleDrawerToggle}>

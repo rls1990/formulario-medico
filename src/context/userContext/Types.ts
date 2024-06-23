@@ -4,8 +4,8 @@ export interface User {
   password: string | null;
 }
 
-export interface ContextProps {
-  users: User[] | null;
+export interface ContextPropsRes {
+  users?: User[] | null;
   dataToEdit: User | null;
   setDatatoEdit: React.Dispatch<React.SetStateAction<User>> | null;
   isAuth: boolean;
@@ -16,6 +16,7 @@ export interface ContextProps {
   updateUser: ((data: User) => void) | null;
   deleteUser: ((id: number) => void) | null;
   login?: ((data: User) => void) | null;
+  logout?: (() => void) | null;
   register: ((data: User) => void) | null;
 }
 
@@ -23,7 +24,7 @@ export interface UserContextProps {
   children: React.ReactNode;
 }
 
-export const initialData: ContextProps = {
+export const initialData: ContextPropsRes = {
   users: null,
   dataToEdit: null,
   setDatatoEdit: null,
@@ -35,6 +36,7 @@ export const initialData: ContextProps = {
   deleteUser: null,
   loading: false,
   login: null,
+  logout: null,
   register: null,
 };
 

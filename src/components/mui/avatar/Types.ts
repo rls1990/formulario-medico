@@ -4,3 +4,12 @@ export interface AvatarProps {
   height?: number | string;
   active?: boolean;
 }
+
+export interface ItemMenuProp {
+  name: string;
+  url: string;
+}
+
+export interface MenuAvatarProps extends AvatarProps {
+  items: ItemMenuProp[];
+}

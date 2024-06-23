@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
-  ContextProps,
+  ContextPropsRes,
   User,
   UserContextProps,
   initialData,
@@ -8,10 +8,10 @@ import {
 } from "./Types";
 
 import { login as loginapi } from "../../api/auth";
-import Cookies from "js-cookie";
 import {
   getRefreshToken,
   removeAccessToken,
+  removeRefreshToken,
   setAccessToken,
   setRefreshToken,
 } from "../../helpers/js-cookie/CookiesHelpers";
@@ -19,7 +19,7 @@ import {
 export const UserContext = createContext(initialData);
 
 export const UserProvider: React.FC<UserContextProps> = ({ children }) => {
-  const [users, setUsers] = useState<User[] | null>(null);
+  // const [users, setUsers] = useState<User[] | null>(null);
   const [dataToEdit, setDatatoEdit] = useState(initialDateToEdit);
   const [error, setError] = useState<null | string>(null);
   const [isAuth, setIsAuth] = useState(false);
@@ -56,6 +56,14 @@ export const UserProvider: React.FC<UserContextProps> = ({ children }) => {
     setLoading(false);
   };
 
+  const logout = () => {
+    setLoading(true);
+    removeAccessToken();
+    removeRefreshToken();
+    setIsAuth(false);
+    setLoading(false);
+  };
+
   const register = (data: User) => {
     console.log(data);
     setLoading(true);
@@ -81,8 +89,7 @@ export const UserProvider: React.FC<UserContextProps> = ({ children }) => {
     console.log(id);
   };
 
-  const dataExportContext: ContextProps = {
-    users,
+  const dataExportContext: ContextPropsRes = {
     dataToEdit,
     setDatatoEdit,
     error,
@@ -93,6 +100,7 @@ export const UserProvider: React.FC<UserContextProps> = ({ children }) => {
     updateUser,
     deleteUser,
     login,
+    logout,
     register,
   };
 

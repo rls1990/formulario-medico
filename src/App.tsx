@@ -8,6 +8,7 @@ import Error404 from "./components/error/Error404";
 import { lazy, Suspense } from "react";
 import { Loader } from "./components/loader/Loader";
 import ProtectedRoute from "./components/protected/ProtectedRoute";
+import Logout from "./pages/logout/Logout";
 
 const AdminComponent = lazy(() => import("./pages/admin/Admin"));
 
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" Component={Home} />
           <Route path="/login" Component={Login} />
+          <Route path="/logout" Component={Logout} />
           <Route path="/register" Component={Register} />
           <Route Component={ProtectedRoute}>
             <Route
