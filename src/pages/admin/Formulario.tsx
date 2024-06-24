@@ -87,13 +87,15 @@ const Formulario = () => {
           select
           onChange={onChangeSelect}
           sx={{ mb: 3, width: 300 }}
-          value="No remitido"
+          defaultValue="No remitido"
+          //value="No remitido"
         >
           <MenuItem value="No remitido">No remitido</MenuItem>
           <MenuItem value="Atención primaria">Atención primaria</MenuItem>
           <MenuItem value="Programa de control">Programa de control</MenuItem>
           <MenuItem value="Atención secundaria">Atención secundaria</MenuItem>
         </TextFieldSelect>
+
         <FormControlLabel
           id="historia_clinica"
           control={<Switch defaultChecked />}
@@ -106,7 +108,8 @@ const Formulario = () => {
           select
           onChange={onChangeSelect}
           sx={{ mb: 3, width: 300 }}
-          value="No remitido"
+          defaultValue="Aparición de lesión"
+          //value="Aparición de lesión"
         >
           <MenuItem value="Aparición de lesión">Aparición de lesión</MenuItem>
           <MenuItem value="Aumento de volumen">Aumento de volumen</MenuItem>
@@ -119,65 +122,335 @@ const Formulario = () => {
           <MenuItem value="Otros síntomas">Otros síntomas</MenuItem>
         </TextFieldSelect>
 
-        <TextField id="primer_sintoma" label="Primer Síntoma" />
-        <TextField id="tiempo_de_aparicion" label="Tiempo de Aparición" />
         <TextField id="otros_sintomas" label="Otros Síntomas" />
-        <TextField id="personales_de_riesgo" label="Personales de Riesgo" />
-        <TextField id="personales_patologicos" label="Personales Patológicos" />
-        <TextField id="familiares_con_cancer" label="Familiares con Cáncer" />
-        <TextField
+
+        <TextField id="primer_sintoma" label="Primer Síntoma" />
+
+        <TextFieldSelect
+          id="tiempo_de_aparicion"
+          label="Tiempo de Aparición"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Días"
+          //value="No remitido"
+        >
+          <MenuItem value="Días">Días</MenuItem>
+          <MenuItem value="Meses">Meses</MenuItem>
+          <MenuItem value="Años">Años</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="personales_de_riesgo"
+          label="Personales de Riesgo"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Ninguno"
+          //value="No remitido"
+        >
+          <MenuItem value="Ninguno">Ninguno</MenuItem>
+          <MenuItem value="Tabaquismo">Tabaquismo</MenuItem>
+          <MenuItem value="Exposición a irritantes">
+            Exposición a irritantes
+          </MenuItem>
+          <MenuItem value="Ingestión bebidas alcohólicas">
+            Ingestión bebidas alcohólicas
+          </MenuItem>
+          <MenuItem value="Trauma región de la lesión">
+            Trauma región de la lesión
+          </MenuItem>
+          <MenuItem value="Mala higiene bucal">Mala higiene bucal</MenuItem>
+          <MenuItem value="Uso de prótesis">Uso de prótesi</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="personales_patologicos"
+          label="Personales Patológicos"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Ninguno"
+          //value="No remitido"
+        >
+          <MenuItem value="Ninguno">Ninguno</MenuItem>
+          <MenuItem value="Leucoplasias">Leucoplasias</MenuItem>
+          <MenuItem value="Queratosis">Queratosis</MenuItem>
+          <MenuItem value="Avitaminosis">Avitaminosis</MenuItem>
+          <MenuItem value="Tuberculosis">Tuberculosis</MenuItem>
+          <MenuItem value="Sífilis">Sífilis</MenuItem>
+          <MenuItem value="Infección crónica">Infección crónica</MenuItem>
+          <MenuItem value="VIH">VIH</MenuItem>
+          <MenuItem value="Neoplasia maligna">Neoplasia maligna</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="familiares_con_cancer"
+          label="Familiares con Cáncer"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Desconocido"
+          //value="No remitido"
+        >
+          <MenuItem value="Desconocido">Desconocido</MenuItem>
+          <MenuItem value="Sí">Sí</MenuItem>
+          <MenuItem value="No">No</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
           id="caracteristicas_de_la_lesion"
           label="Características de la Lesión"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Vegetante"
+          //value="No remitido"
+        >
+          <MenuItem value="Vegetante">Vegetante</MenuItem>
+          <MenuItem value="Infiltrante">Infiltrante</MenuItem>
+          <MenuItem value="Úlcero-vegetante">Úlcero-vegetante</MenuItem>
+          <MenuItem value="Úlcero-infiltrante">Úlcero-infiltrante</MenuItem>
+          <MenuItem value="Necrosante">Necrosante</MenuItem>
+          <MenuItem value="Plana">Plana</MenuItem>
+          <MenuItem value="Submucosa">Submucosa</MenuItem>
+          <MenuItem value="Nodular">Nodular</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="region"
+          label="Región"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Desrecha"
+          //value="No remitido"
+        >
+          <MenuItem value="Desrecha">Desrecha</MenuItem>
+          <MenuItem value="Central">Central</MenuItem>
+          <MenuItem value="Izquierda">Izquierda</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldNumber
+          id="tamanno_de_la_lesion"
+          label="Tamaño de la Lesión"
+          type="number"
+          sx={{ mb: 3, width: 300 }}
         />
-        <TextField id="region" label="Región" />
-        <TextField id="tamanno_de_la_lesion" label="Tamaño de la Lesión" />
-        <TextField id="localizacion_en_labio" label="Localizacion en Labio" />
-        <TextField id="lengua_movil" label="Lengua Movil" />
-        <TextField id="suelo_de_Boca" label="Suelo de Boca" />
-        <TextField id="encia" label="Encía" />
-        <TextField
+
+        <TextFieldSelect
+          id="localizacion_en_labio"
+          label="Localizacion en Labio"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Labio superior"
+          //value="No remitido"
+        >
+          <MenuItem value="Labio superior">Labio superior</MenuItem>
+          <MenuItem value="Mucosa superior">Mucosa superior</MenuItem>
+          <MenuItem value="Comisuras labiales">Comisuras labiales</MenuItem>
+          <MenuItem value="Labio inferior">Labio inferior</MenuItem>
+          <MenuItem value="Mucosa inferior">Mucosa inferior</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="lengua_movil"
+          label="Lengua Móvil"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Cara central"
+          //value="No remitido"
+        >
+          <MenuItem value="Cara central">Cara central</MenuItem>
+          <MenuItem value="Cara dorsal">Cara dorsal</MenuItem>
+          <MenuItem value="Punta">Punta</MenuItem>
+          <MenuItem value="Borde">Borde</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="suelo_de_Boca"
+          label="Suelo de Boca"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Parte anterior"
+          //value="No remitido"
+        >
+          <MenuItem value="Parte anterior">Parte anterior</MenuItem>
+          <MenuItem value="Parte lateral">Parte lateral</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="encia"
+          label="Encía"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Superior"
+          //value="No remitido"
+        >
+          <MenuItem value="Superior">Superior</MenuItem>
+          <MenuItem value="Inferior">Inferior</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
           id="otras_partes_del_a_boca"
           label="Otras Partes de la Boca"
-        />
-        <TextField id="glandulas_salibales" label="Glándulas Salibales" />
-        <TextField
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Carrillo"
+          //value="No remitido"
+        >
+          <MenuItem value="Carrillo">Carrillo</MenuItem>
+          <MenuItem value="Vesíbulo">Vesíbulo</MenuItem>
+          <MenuItem value="Paladar duro">Paladar duro</MenuItem>
+          <MenuItem value="Espacio retromolar">Espacio retromolar</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="glandulas_salibales"
+          label="Glándulas Salibales"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Parótida"
+          //value="No remitido"
+        >
+          <MenuItem value="Parótida">Parótida</MenuItem>
+          <MenuItem value="Sublingual">Sublingual</MenuItem>
+          <MenuItem value="Submaxilar">Submaxilar</MenuItem>
+          <MenuItem value="Otras">Otras</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
           id="ardenopatia_cervical_derecha"
-          label="Ardenopatía Cervical Derecha"
-        />
-        <TextField
+          label="Ardenopatía cervical derecha"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="No"
+          //value="No remitido"
+        >
+          <MenuItem value="No">No</MenuItem>
+          <MenuItem value="Nivel I">Nivel I</MenuItem>
+          <MenuItem value="Nivel II">Nivel II</MenuItem>
+          <MenuItem value="Nivel III">Nivel III</MenuItem>
+          <MenuItem value="Nivel IV">Nivel IV</MenuItem>
+          <MenuItem value="Nivel V">Nivel V</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
           id="ardenopatia_cervical_izquierda"
-          label="Ardenopatía Cervical Izquierda"
-        />
-        <TextField id="extension_clinica_a" label="Extensión Clínica" />
-        <TextField id="performance_status" label="Performance Status" />
+          label="Ardenopatía cervical izquierda"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="No"
+          //value="No remitido"
+        >
+          <MenuItem value="No">No</MenuItem>
+          <MenuItem value="Nivel I">Nivel I</MenuItem>
+          <MenuItem value="Nivel II">Nivel II</MenuItem>
+          <MenuItem value="Nivel III">Nivel III</MenuItem>
+          <MenuItem value="Nivel IV">Nivel IV</MenuItem>
+          <MenuItem value="Nivel V">Nivel V</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="extension_clinica_a"
+          label="Extensión Clínica"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="No"
+          //value="No remitido"
+        >
+          <MenuItem value="No">No</MenuItem>
+          <MenuItem value="Suelo de boca">Suelo de boca</MenuItem>
+          <MenuItem value="Laringe">Laringe</MenuItem>
+          <MenuItem value="Labio">Labio</MenuItem>
+          <MenuItem value="Otras partes de la cavidad oral">
+            Otras partes de la cavidad oral
+          </MenuItem>
+          <MenuItem value="Mesofaringe">Mesofaringe</MenuItem>
+          <MenuItem value="Hipofaringe">Hipofaringe</MenuItem>
+          <MenuItem value="Encía">Encía</MenuItem>
+          <MenuItem value="Nasofaringe">Nasofaringe</MenuItem>
+          <MenuItem value="Piel y partes blandas">
+            Piel y partes blandas
+          </MenuItem>
+          <MenuItem value="Hueso">Hueso</MenuItem>
+          <MenuItem value="Otras">Otras</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="performance_status"
+          label="Performance Status"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="0"
+          //value="No remitido"
+        >
+          <MenuItem value="0">0</MenuItem>
+          <MenuItem value="1">1</MenuItem>
+          <MenuItem value="2">2</MenuItem>
+          <MenuItem value="3">3</MenuItem>
+          <MenuItem value="4">4</MenuItem>
+        </TextFieldSelect>
+
         <TextField id="primer_apellido" label="Primer Apellido" />
+
         <TextField id="segundo_apellido" label="Segundo Apellido" />
+
         <TextField id="nombre_del_paciente" label="Nombre del Paciente" />
-        <TextField id="sexo" label="Sexo" />
+
+        <TextFieldSelect
+          id="sexo"
+          label="Sexo"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Masculino"
+          //value="No remitido"
+        >
+          <MenuItem value="Masculino">Masculino</MenuItem>
+          <MenuItem value="Femenino">Fememnino</MenuItem>
+        </TextFieldSelect>
+
         <TextFieldNumber
           id="edad"
           label="Edad"
           type="number"
           sx={{ mb: 3, width: 300 }}
         />
-        <TextFieldNumber
-          label="react-number-format"
-          // value={values.numberformat}
-          // onChange={handleChange}
-          name="numberformat"
-          id="formatted-numberformat-input"
-          InputProps={{
-            inputComponent: NumericFormatCustom as any,
-          }}
-          variant="outlined"
+
+        <TextFieldSelect
+          id="color_de_piel"
+          label="Color de la Piel"
+          select
+          onChange={onChangeSelect}
           sx={{ mb: 3, width: 300 }}
-        />
-        <TextField id="color_de_piel" label="Color de la Piel" />
+          defaultValue="Blanca"
+          //value="No remitido"
+        >
+          <MenuItem value="Blanca">Blanca</MenuItem>
+          <MenuItem value="Negra">Negra</MenuItem>
+          <MenuItem value="Mestiza">Mestiza</MenuItem>
+        </TextFieldSelect>
+
         <TextField id="carne_de_identidad" label="Carné de Identidad" />
-        <TextField
+
+        <TextFieldNumber
           id="historia_clinica_numero"
           label="Historia Clínica Número"
+          type="number"
+          sx={{ mb: 3, width: 300 }}
         />
+
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
             label="Fecha de Inscripción"
@@ -186,19 +459,132 @@ const Formulario = () => {
             sx={{ mb: 3, width: 300 }}
           />
         </LocalizationProvider>
-        <TextField id="creatinina" label="Creatinina" />
-        <TextField id="hemoglobina" label="Hemoglobina" />
-        <TextField id="imagen_rx_torax" label="Imagen RX del Torax" />
-        <TextField id="imagen_us_abdomen" label="Imagen US del Abdomen" />
-        <TextField
+
+        <TextFieldNumber
+          label="Creatinina"
+          name="numberformat"
+          id="creatinina"
+          InputProps={{
+            inputComponent: NumericFormatCustom as any,
+          }}
+          variant="outlined"
+          sx={{ mb: 3, width: 300 }}
+        />
+
+        <TextFieldNumber
+          label="Hemoglobina"
+          name="numberformat"
+          id="hemoglobina"
+          InputProps={{
+            inputComponent: NumericFormatCustom as any,
+          }}
+          variant="outlined"
+          sx={{ mb: 3, width: 300 }}
+        />
+
+        <TextFieldSelect
+          id="imagen_rx_torax"
+          label="Imagen RX del Torax"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Ninguno"
+          //value="No remitido"
+        >
+          <MenuItem value="Ninguno">Ninguno</MenuItem>
+          <MenuItem value="Positivo">Positivo</MenuItem>
+          <MenuItem value="Negativo">Negativo</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="imagen_us_abdomen"
+          label="Imagen US del Abdomen"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Ninguno"
+          //value="No remitido"
+        >
+          <MenuItem value="Ninguno">Ninguno</MenuItem>
+          <MenuItem value="Positivo">Positivo</MenuItem>
+          <MenuItem value="Negativo">Negativo</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
           id="imagen_tac_cavidad_oral"
           label="Imagen TAC de la Cavidad Oral"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Ninguno"
+          //value="No remitido"
+        >
+          <MenuItem value="Ninguno">Ninguno</MenuItem>
+          <MenuItem value="Positivo">Positivo</MenuItem>
+          <MenuItem value="Negativo">Negativo</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="otros_tac_faringe"
+          label="IOtros TAC Faringe"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Ninguno"
+          //value="No remitido"
+        >
+          <MenuItem value="Ninguno">Ninguno</MenuItem>
+          <MenuItem value="Positivo">Positivo</MenuItem>
+          <MenuItem value="Negativo">Negativo</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="otros_tac_cuello"
+          label="otros_tac_cuello"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Ninguno"
+          //value="No remitido"
+        >
+          <MenuItem value="Ninguno">Ninguno</MenuItem>
+          <MenuItem value="Positivo">Positivo</MenuItem>
+          <MenuItem value="Negativo">Negativo</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="otros_tac_torax"
+          label="Otros TAC Torax"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Ninguno"
+        >
+          <MenuItem value="Ninguno">Ninguno</MenuItem>
+          <MenuItem value="Positivo">Positivo</MenuItem>
+          <MenuItem value="Negativo">Negativo</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="otros_rmn"
+          label="Otros RMN"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Ninguno"
+        >
+          <MenuItem value="Ninguno">Ninguno</MenuItem>
+          <MenuItem value="Positivo">Positivo</MenuItem>
+          <MenuItem value="Negativo">Negativo</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldNumber
+          id="biopsia_numero"
+          label="Biopsia Número"
+          type="number"
+          sx={{ mb: 3, width: 300 }}
         />
-        <TextField id="otros_tac_faringe" label="Otros TAC Faringe" />
-        <TextField id="otros_tac_cuello" label="Otros TAC Cuello" />
-        <TextField id="otros_tac_torax" label="Otros TAC Torax" />
-        <TextField id="otros_rmn" label="Otros RMN" />
-        <TextField id="biopsia_numero" label="Biopsia Número" />
+
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
             label="Fecha de Diagnóstico"
@@ -207,9 +593,229 @@ const Formulario = () => {
             sx={{ mb: 3, width: 300 }}
           />
         </LocalizationProvider>
+
         <TextField
           id="diagnostico_topografico"
           label="Diagnóstico Topográfico"
+        />
+
+        <TextField
+          id="diagnostico_morfologico"
+          label="Diagnóstico Morfológico"
+        />
+
+        <TextField id="diagnosticado_en" label="Diagnósticado en" />
+
+        <TextFieldSelect
+          id="diagnostico_topografico_selecciona"
+          label="Seleccione Diagnóstico Topográfico"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Ninguno"
+        >
+          <MenuItem value="Ninguno">Ninguno</MenuItem>
+          <MenuItem value="Positivo">Positivo</MenuItem>
+          <MenuItem value="Negativo">Negativo</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="diagnostico_morfologico_selecciona"
+          label="Seleccione Diagnóstico Morfológico"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Ninguno"
+        >
+          <MenuItem value="Ninguno">Ninguno</MenuItem>
+          <MenuItem value="Positivo">Positivo</MenuItem>
+          <MenuItem value="Negativo">Negativo</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="diagnosticado_en_selecciona"
+          label="Seleccione Diagnósticado en"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Ninguno"
+        >
+          <MenuItem value="Ninguno">Ninguno</MenuItem>
+          <MenuItem value="Positivo">Positivo</MenuItem>
+          <MenuItem value="Negativo">Negativo</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="grado_de_diferenciacion"
+          label="Grado de diferenciación"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Diferenciado"
+        >
+          <MenuItem value="Diferenciado">Diferenciado</MenuItem>
+          <MenuItem value="Indiferenciado">Indiferenciado</MenuItem>
+          <MenuItem value="Moderadamente diferenciado">
+            Moderadamente diferenciado
+          </MenuItem>
+          <MenuItem value="Poco diferenciado">Poco diferenciado</MenuItem>
+          <MenuItem value="No determinado">No determinado</MenuItem>
+          <MenuItem value="No procede">No procede</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="base_del_diagnostico"
+          label="Base del diagnóstico"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Desconocidas"
+        >
+          <MenuItem value="Desconocidas">Desconocidas</MenuItem>
+          <MenuItem value="E. clínico">E. clínico</MenuItem>
+          <MenuItem value="Inv. clínica">Inv. clínica</MenuItem>
+          <MenuItem value="Cirugía">Cirugía</MenuItem>
+          <MenuItem value="P. bio. Inmunológ">P. bio. Inmunológ</MenuItem>
+          <MenuItem value="Citología">Citología</MenuItem>
+          <MenuItem value="Citogenética">Citogenética</MenuItem>
+          <MenuItem value="Hematología">Hematología</MenuItem>
+          <MenuItem value="Histología">Histología</MenuItem>
+          <MenuItem value="Otras">Otras</MenuItem>
+        </TextFieldSelect>
+
+        <TextField
+          id="otras"
+          label="En csao de seleccionar Otras rellene este campo"
+        />
+
+        <TextFieldSelect
+          id="etapa_clinica"
+          label="Etapa clínica"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Desconocida"
+        >
+          <MenuItem value="Desconocida">Desconocida</MenuItem>
+          <MenuItem value="In situ">In situ</MenuItem>
+          <MenuItem value="I">I</MenuItem>
+          <MenuItem value="Ia">Ia</MenuItem>
+          <MenuItem value="Ib">Ib</MenuItem>
+          <MenuItem value="Ic">Ic</MenuItem>
+          <MenuItem value="II">II</MenuItem>
+          <MenuItem value="IIa">IIa</MenuItem>
+          <MenuItem value="IIb">IIb</MenuItem>
+          <MenuItem value="IIc">IIc</MenuItem>
+          <MenuItem value="III">III</MenuItem>
+          <MenuItem value="IIIa">IIIa</MenuItem>
+          <MenuItem value="IIIb">IIIb</MenuItem>
+          <MenuItem value="IIIc">IIIc</MenuItem>
+          <MenuItem value="IV">IV</MenuItem>
+          <MenuItem value="IVa">IVa</MenuItem>
+          <MenuItem value="IVb">IVb</MenuItem>
+          <MenuItem value="IVc">IVc</MenuItem>
+          <MenuItem value="No procede">No procede</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="metastasis_a_distancia"
+          label="Metástasis a Distancia"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Desconocida"
+        >
+          <MenuItem value="Desconocida">Desconocida</MenuItem>
+          <MenuItem value="Ninguna">Ninguna</MenuItem>
+          <MenuItem value="Pulmón pleura">Pulmón pleura</MenuItem>
+          <MenuItem value="Hígado">Hígado</MenuItem>
+          <MenuItem value="Ovarios">Ovarios</MenuItem>
+          <MenuItem value="Hueso">Hueso</MenuItem>
+          <MenuItem value="Ganglios distales">Ganglios distales</MenuItem>
+          <MenuItem value="Cerebro">Cerebro</MenuItem>
+          <MenuItem value="Piel y TCS">Piel y TCS</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="extension_clinica"
+          label="Extensión Clínica"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Desconocida"
+        >
+          <MenuItem value="Desconocida">Desconocida</MenuItem>
+          <MenuItem value="In situ">In situ</MenuItem>
+          <MenuItem value="Ext. directa y linf. regionales">
+            Ext. directa y linf. regionales
+          </MenuItem>
+          <MenuItem value="Localizado">Localizado</MenuItem>
+          <MenuItem value="Metástasis a distancia">
+            Metástasis a distancia
+          </MenuItem>
+          <MenuItem value="Extensión directa">Extensión directa</MenuItem>
+          <MenuItem value="No aplicable">No aplicable</MenuItem>
+          <MenuItem value="Linfático regionales">Linfático regionales</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="en_la_institucion"
+          label="En la Institución"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="No"
+        >
+          <MenuItem value="No">No</MenuItem>
+          <MenuItem value="Parcial">Parcial</MenuItem>
+          <MenuItem value="Completo">Completo</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="en_otro_centro"
+          label="En Otro Centro"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="No"
+        >
+          <MenuItem value="No">No</MenuItem>
+          <MenuItem value="Parcial">Parcial</MenuItem>
+          <MenuItem value="Completo">Completo</MenuItem>
+        </TextFieldSelect>
+
+        <TextFieldSelect
+          id="tratamiento_planificado"
+          label="Tratamiento Planificado"
+          select
+          onChange={onChangeSelect}
+          sx={{ mb: 3, width: 300 }}
+          defaultValue="Desconocido"
+        >
+          <MenuItem value="Desconocido">Desconocido</MenuItem>
+          <MenuItem value="Ninguno">Ninguno</MenuItem>
+          <MenuItem value="Radioterapia">Radioterapia</MenuItem>
+          <MenuItem value="Hormonoterapia">Hormonoterapia</MenuItem>
+          <MenuItem value="Cirugía">Cirugía</MenuItem>
+          <MenuItem value="Quimioterapia">Quimioterapia</MenuItem>
+          <MenuItem value="Inmunoterapia">Inmunoterapia</MenuItem>
+          <MenuItem value="Otro Tratamiento">Otro Tratamiento</MenuItem>
+        </TextFieldSelect>
+
+        <TextField
+          id="otro_tratamiento_planificado"
+          label="Que otro tratamiento se aplicó"
+        />
+
+        <FormControlLabel
+          id="inclusion_en_ec"
+          control={<Switch defaultChecked />}
+          label="Inclusión en EC"
+        />
+
+        <TextField
+          id="en_caso_de_si"
+          label="En caso de ser sí; cuál es el código"
         />
 
         <Button
