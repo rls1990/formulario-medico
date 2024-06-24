@@ -29,12 +29,128 @@ import {
 
 const Formulario = () => {
   const [fecha, setFecha] = useState<Dayjs | null>(dayjs());
-
   const handleChange = (newValue: Dayjs | null) => {
     const fecha = newValue?.toJSON().split("T")[0];
     console.log(newValue?.toJSON());
     console.log(fecha);
     setFecha(newValue);
+  };
+
+  const [fecha_de_inscripcion, setFecha_de_inscripcion] =
+    useState<Dayjs | null>(dayjs());
+  const handleChange_fecha_de_inscripcion = (newValue: Dayjs | null) => {
+    const fecha = newValue?.toJSON().split("T")[0];
+    console.log(newValue?.toJSON());
+    console.log(fecha);
+    setFecha_de_inscripcion(newValue);
+  };
+
+  const [fecha_de_diagnostico, setFecha_de_diagnostico] =
+    useState<Dayjs | null>(dayjs());
+  const handleChange_fecha_de_diagnostico = (newValue: Dayjs | null) => {
+    const fecha = newValue?.toJSON().split("T")[0];
+    console.log(newValue?.toJSON());
+    console.log(fecha);
+    setFecha_de_diagnostico(newValue);
+  };
+
+  const [
+    fecha_del_tratamiento_quirurgico,
+    setFecha_del_tratamiento_quirurgico,
+  ] = useState<Dayjs | null>(dayjs());
+  const handleChange_fecha_del_tratamiento_quirurgico = (
+    newValue: Dayjs | null
+  ) => {
+    const fecha = newValue?.toJSON().split("T")[0];
+    console.log(newValue?.toJSON());
+    console.log(fecha);
+    setFecha_del_tratamiento_quirurgico(newValue);
+  };
+
+  const [
+    fecha_del_inicio_del_tratamiento_radioterapeutico,
+    setFecha_del_inicio_del_tratamiento_radioterapeutico,
+  ] = useState<Dayjs | null>(dayjs());
+  const handleChange_fecha_del_inicio_del_tratamiento_radioterapeutico = (
+    newValue: Dayjs | null
+  ) => {
+    const fecha = newValue?.toJSON().split("T")[0];
+    console.log(newValue?.toJSON());
+    console.log(fecha);
+    setFecha_del_inicio_del_tratamiento_radioterapeutico(newValue);
+  };
+
+  const [
+    fecha_del_final_del_tratamiento_radioterapeutico,
+    setFecha_del_final_del_tratamiento_radioterapeutico,
+  ] = useState<Dayjs | null>(dayjs());
+  const handleChange_fecha_del_final_del_tratamiento_radioterapeutico = (
+    newValue: Dayjs | null
+  ) => {
+    const fecha = newValue?.toJSON().split("T")[0];
+    console.log(newValue?.toJSON());
+    console.log(fecha);
+    setFecha_del_final_del_tratamiento_radioterapeutico(newValue);
+  };
+
+  const [
+    fecha_del_inicio_del_tratamiento_quimioterapeutico,
+    setFecha_del_inicio_del_tratamiento_quimioterapeutico,
+  ] = useState<Dayjs | null>(dayjs());
+  const handleChange_fecha_del_inicio_del_tratamiento_quimioterapeutico = (
+    newValue: Dayjs | null
+  ) => {
+    const fecha = newValue?.toJSON().split("T")[0];
+    console.log(newValue?.toJSON());
+    console.log(fecha);
+    setFecha_del_inicio_del_tratamiento_quimioterapeutico(newValue);
+  };
+
+  const [
+    fecha_del_final_del_tratamiento_quimioterapeutico,
+    setFecha_del_final_del_tratamiento_quimioterapeutico,
+  ] = useState<Dayjs | null>(dayjs());
+  const handleChange_fecha_del_final_del_tratamiento_quimioterapeutico = (
+    newValue: Dayjs | null
+  ) => {
+    const fecha = newValue?.toJSON().split("T")[0];
+    console.log(newValue?.toJSON());
+    console.log(fecha);
+    setFecha_del_final_del_tratamiento_quimioterapeutico(newValue);
+  };
+
+  const [
+    fecha_del_inicio_del_tratamiento,
+    setFecha_del_inicio_del_tratamiento,
+  ] = useState<Dayjs | null>(dayjs());
+  const handleChange_fecha_del_inicio_del_tratamiento = (
+    newValue: Dayjs | null
+  ) => {
+    const fecha = newValue?.toJSON().split("T")[0];
+    console.log(newValue?.toJSON());
+    console.log(fecha);
+    setFecha_del_inicio_del_tratamiento(newValue);
+  };
+
+  const [fecha_del_final_del_tratamiento, setFecha_del_final_del_tratamiento] =
+    useState<Dayjs | null>(dayjs());
+  const handleChange_fecha_del_final_del_tratamiento = (
+    newValue: Dayjs | null
+  ) => {
+    const fecha = newValue?.toJSON().split("T")[0];
+    console.log(newValue?.toJSON());
+    console.log(fecha);
+    setFecha_del_final_del_tratamiento(newValue);
+  };
+
+  const [fecha_evaluacion, setFecha_evaluacion] = useState<Dayjs | null>(
+    dayjs()
+  );
+  const handleChange_fecha_evaluacion = (newValue: Dayjs | null) => {
+    const fecha = newValue?.toJSON().split("T")[0];
+    console.log(newValue?.toJSON());
+    console.log(fecha);
+    setFecha_evaluacion(newValue);
   };
 
   const onChangeSelect = () => {};
@@ -454,8 +570,8 @@ const Formulario = () => {
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
             label="Fecha de Inscripción"
-            value={fecha}
-            onChange={handleChange}
+            value={fecha_de_inscripcion}
+            onChange={handleChange_fecha_de_inscripcion}
             sx={{ mb: 3, width: 300 }}
           />
         </LocalizationProvider>
@@ -588,8 +704,8 @@ const Formulario = () => {
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
             label="Fecha de Diagnóstico"
-            value={fecha}
-            onChange={handleChange}
+            value={fecha_de_diagnostico}
+            onChange={handleChange_fecha_de_diagnostico}
             sx={{ mb: 3, width: 300 }}
           />
         </LocalizationProvider>
@@ -842,8 +958,8 @@ const Formulario = () => {
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
             label="Fecha de la cirugía"
-            value={fecha}
-            onChange={handleChange}
+            value={fecha_del_tratamiento_quirurgico}
+            onChange={handleChange_fecha_del_tratamiento_quirurgico}
             sx={{ mb: 3, width: 300 }}
           />
         </LocalizationProvider>
@@ -862,8 +978,10 @@ const Formulario = () => {
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
             label="Fecha del Inicio del Tratamiento Radioterapéutico"
-            value={fecha}
-            onChange={handleChange}
+            value={fecha_del_inicio_del_tratamiento_radioterapeutico}
+            onChange={
+              handleChange_fecha_del_inicio_del_tratamiento_radioterapeutico
+            }
             sx={{ mb: 3, width: 300 }}
           />
         </LocalizationProvider>
@@ -871,8 +989,10 @@ const Formulario = () => {
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
             label="Fecha Final del Tratamiento Radioterapéutico"
-            value={fecha}
-            onChange={handleChange}
+            value={fecha_del_final_del_tratamiento_radioterapeutico}
+            onChange={
+              handleChange_fecha_del_final_del_tratamiento_radioterapeutico
+            }
             sx={{ mb: 3, width: 300 }}
           />
         </LocalizationProvider>
@@ -917,8 +1037,10 @@ const Formulario = () => {
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
             label="Fecha del Inicio del Tratamiento Quimioterapéutico"
-            value={fecha}
-            onChange={handleChange}
+            value={fecha_del_inicio_del_tratamiento_quimioterapeutico}
+            onChange={
+              handleChange_fecha_del_inicio_del_tratamiento_quimioterapeutico
+            }
             sx={{ mb: 3, width: 300 }}
           />
         </LocalizationProvider>
@@ -926,8 +1048,10 @@ const Formulario = () => {
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
             label="Fecha Final del Tratamiento Quimioterapéutico"
-            value={fecha}
-            onChange={handleChange}
+            value={fecha_del_final_del_tratamiento_quimioterapeutico}
+            onChange={
+              handleChange_fecha_del_final_del_tratamiento_quimioterapeutico
+            }
             sx={{ mb: 3, width: 300 }}
           />
         </LocalizationProvider>
@@ -943,8 +1067,8 @@ const Formulario = () => {
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
             label="Fecha del Inicio del Tratamiento"
-            value={fecha}
-            onChange={handleChange}
+            value={fecha_del_inicio_del_tratamiento}
+            onChange={handleChange_fecha_del_inicio_del_tratamiento}
             sx={{ mb: 3, width: 300 }}
           />
         </LocalizationProvider>
@@ -952,8 +1076,8 @@ const Formulario = () => {
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
             label="Fecha Final del Tratamiento"
-            value={fecha}
-            onChange={handleChange}
+            value={fecha_del_final_del_tratamiento}
+            onChange={handleChange_fecha_del_final_del_tratamiento}
             sx={{ mb: 3, width: 300 }}
           />
         </LocalizationProvider>
@@ -976,8 +1100,8 @@ const Formulario = () => {
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
             label="Fecha de Evaluación"
-            value={fecha}
-            onChange={handleChange}
+            value={fecha_evaluacion}
+            onChange={handleChange_fecha_evaluacion}
             sx={{ mb: 3, width: 300 }}
           />
         </LocalizationProvider>
