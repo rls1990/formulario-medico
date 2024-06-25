@@ -4,7 +4,9 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs, { Dayjs } from "dayjs";
 import "dayjs/locale/es";
 import { useState } from "react";
+
 import { TextField } from "../../components/mui/text_fields/input/text/TextField";
+
 import "./Formulario.css";
 import {
   Button,
@@ -16,6 +18,7 @@ import {
   FormControl,
   InputLabel,
   Input,
+  TextareaAutosize,
 } from "@mui/material";
 import { FormularioFormValues } from "./Types";
 import { useFormik } from "formik";
@@ -26,7 +29,7 @@ import {
   NumericFormatCustom,
   TextMaskCustom,
 } from "../../components/mui/text_fields/input/number/FormattedInputs";
-
+import { TextField as TextArea } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
@@ -235,6 +238,14 @@ const Formulario = () => {
             value={valueTab}
             onChange={handleChangeTab}
             aria-label="basic tabs example"
+            variant="scrollable"
+            scrollButtons="auto"
+            sx={{
+              "& .MuiTabs-flexContainer": {
+                display: "flex",
+                flexWrap: "wrap",
+              },
+            }}
           >
             <Tab label="General" {...a11yProps(0)} />
             <Tab label="Remisión" {...a11yProps(1)} />
@@ -355,7 +366,14 @@ const Formulario = () => {
 
             <Grid item xs={6}>
               <Item>
-                <TextField id="otros_sintomas" label="Otros Síntomas" />
+                {/* <TextField id="otros_sintomas" label="Otros Síntomas" /> */}
+                <TextArea
+                  id="otros_sintomas"
+                  label="Otros Síntomas"
+                  multiline
+                  maxRows={4}
+                  sx={{ mb: 3, width: 300 }}
+                />
               </Item>
             </Grid>
 
@@ -1123,9 +1141,16 @@ const Formulario = () => {
 
             <Grid item xs={6}>
               <Item>
-                <TextField
+                {/* <TextField
                   id="otras"
                   label="En csao de seleccionar Otras rellene este campo"
+                /> */}
+                <TextArea
+                  id="otras"
+                  label="En csao de seleccionar Otras rellene este campo"
+                  multiline
+                  maxRows={4}
+                  sx={{ mb: 3, width: 300 }}
                 />
               </Item>
             </Grid>
@@ -1633,7 +1658,14 @@ const Formulario = () => {
 
             <Grid item xs={6}>
               <Item>
-                <TextField id="observaciones" label="Observaciones" />
+                {/* <TextField id="observaciones" label="Observaciones" /> */}
+                <TextArea
+                  id="observaciones"
+                  label="Observaciones"
+                  multiline
+                  maxRows={4}
+                  sx={{ mb: 3, width: 300 }}
+                />
               </Item>
             </Grid>
 
