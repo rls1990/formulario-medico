@@ -189,6 +189,7 @@ const Formulario = () => {
 
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
+            name="fecha"
             label="Selecciona una fecha"
             value={fecha}
             onChange={handleChange}
@@ -569,6 +570,7 @@ const Formulario = () => {
 
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
+            name="fecha_de_inscripcion"
             label="Fecha de Inscripción"
             value={fecha_de_inscripcion}
             onChange={handleChange_fecha_de_inscripcion}
@@ -703,6 +705,7 @@ const Formulario = () => {
 
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
+            name="fecha_de_diagnostico"
             label="Fecha de Diagnóstico"
             value={fecha_de_diagnostico}
             onChange={handleChange_fecha_de_diagnostico}
@@ -957,6 +960,7 @@ const Formulario = () => {
 
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
+            name="fecha_del_tratamiento_quirurgico"
             label="Fecha de la cirugía"
             value={fecha_del_tratamiento_quirurgico}
             onChange={handleChange_fecha_del_tratamiento_quirurgico}
@@ -977,6 +981,7 @@ const Formulario = () => {
 
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
+            name="fecha_del_inicio_del_tratamiento_radioterapeutico"
             label="Fecha del Inicio del Tratamiento Radioterapéutico"
             value={fecha_del_inicio_del_tratamiento_radioterapeutico}
             onChange={
@@ -988,6 +993,7 @@ const Formulario = () => {
 
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
+            name="fecha_del_final_del_tratamiento_radioterapeutico"
             label="Fecha Final del Tratamiento Radioterapéutico"
             value={fecha_del_final_del_tratamiento_radioterapeutico}
             onChange={
@@ -1036,6 +1042,7 @@ const Formulario = () => {
 
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
+            name="fecha_del_inicio_del_tratamiento_quimioterapeutico"
             label="Fecha del Inicio del Tratamiento Quimioterapéutico"
             value={fecha_del_inicio_del_tratamiento_quimioterapeutico}
             onChange={
@@ -1047,6 +1054,7 @@ const Formulario = () => {
 
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
+            name="fecha_del_final_del_tratamiento_quimioterapeutico"
             label="Fecha Final del Tratamiento Quimioterapéutico"
             value={fecha_del_final_del_tratamiento_quimioterapeutico}
             onChange={
@@ -1066,6 +1074,7 @@ const Formulario = () => {
 
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
+            name="fecha_del_inicio_del_tratamiento"
             label="Fecha del Inicio del Tratamiento"
             value={fecha_del_inicio_del_tratamiento}
             onChange={handleChange_fecha_del_inicio_del_tratamiento}
@@ -1075,6 +1084,7 @@ const Formulario = () => {
 
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
+            name="fecha_del_final_del_tratamiento"
             label="Fecha Final del Tratamiento"
             value={fecha_del_final_del_tratamiento}
             onChange={handleChange_fecha_del_final_del_tratamiento}
@@ -1099,6 +1109,7 @@ const Formulario = () => {
 
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
           <DatePicker
+            name="fecha_evaluacion"
             label="Fecha de Evaluación"
             value={fecha_evaluacion}
             onChange={handleChange_fecha_evaluacion}

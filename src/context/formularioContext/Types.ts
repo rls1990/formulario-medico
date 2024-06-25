@@ -70,29 +70,33 @@ export enum FormularioFields {
   tratamiento_quirurgico = "tratamiento_quirurgico",
   tipo_de_cirugia = "tipo_de_cirugia",
   fecha_del_tratamiento_quirurgico = "fecha_del_tratamiento_quirurgico",
-  // ptnm_pM = "ptnm_pM",  tnm_T = "tnm_T",
-  // tnm_N = "tnm_N",
-  // tnm_M = "tnm_M",
-  // ptnm_pT = "ptnm_pT",
-  // ptnm_pN = "ptnm_pN",
-  // ptnm_pM = "ptnm_pM",  tnm_T = "tnm_T",
-  // tnm_N = "tnm_N",
-  // tnm_M = "tnm_M",
-  // ptnm_pT = "ptnm_pT",
-  // ptnm_pN = "ptnm_pN",
-  // ptnm_pM = "ptnm_pM",  tnm_T = "tnm_T",
-  // tnm_N = "tnm_N",
-  // tnm_M = "tnm_M",
-  // ptnm_pT = "ptnm_pT",
-  // ptnm_pN = "ptnm_pN",
-  // ptnm_pM = "ptnm_pM",
+  tratamiento_radioterapia = "tratamiento_radioterapia",
+  tipo_de_tratamiento_radioterap = "tipo_de_tratamiento_radioterap",
+  fecha_del_inicio_del_tratamiento_radioterapeutico = "fecha_del_inicio_del_tratamiento_radioterapeutico",
+  fecha_del_final_del_tratamiento_radioterapeutico = "fecha_del_final_del_tratamiento_radioterapeutico",
+  dosis_total = "dosis_total",
+  gy_fraccion = "gy_fraccion",  
+  tratamiento_quimioterapia = "tratamiento_quimioterapia",
+  esquema_tratamiento = "esquema_tratamiento",
+  numero_de_ciclos = "numero_de_ciclos",
+  fecha_del_inicio_del_tratamiento_quimioterapeutico = "fecha_del_inicio_del_tratamiento_quimioterapeutico",
+  fecha_del_final_del_tratamiento_quimioterapeutico = "fecha_del_final_del_tratamiento_quimioterapeutico",
+  otro_tratamiento = "otro_tratamiento", 
+  cual_tratamiento = "cual_tratamiento",
+  fecha_del_inicio_del_tratamiento = "fecha_del_inicio_del_tratamiento",
+  fecha_del_final_del_tratamiento = "fecha_del_final_del_tratamiento",
+  evaluacion_de_la_respuesta = "evaluacion_de_la_respuesta",
+  fecha_evaluacion = "fecha_evaluacion",
+  observaciones = "observaciones",
+  nombre_del_medico = "nombre_del_medico",
+  registro_profesional = "registro_profesional",
 }
 
 export interface Formulario {
   id?: number | null | string;
   nombre: string;
   fecha?: string; //"2024-06-22";
-  remision?: "No remitido" | "remitido";
+  remision?: "No remitido" | "Atención primaria" | "Programa de control" | "Atención secundaria";
   historia_clinica?: boolean; //true;
   motivo_consulta?: string; //"string";
   primer_sintoma?: string; //"string";
@@ -100,7 +104,7 @@ export interface Formulario {
   otros_sintomas?: string;
   personales_de_riesgo?: string; //"Ninguno";
   personales_patologicos?: string; //"Ninguno";
-  familiares_con_cancer?: "Si" | "No" | "Tal vez";
+  familiares_con_cancer?: "Si" | "No" | "Desconocido";
   caracteristicas_de_la_lesion?: string; //"Vegetante";
   region?: string; //"Derecha";
   tamanno_de_la_lesion?: string; //"2024-06-22";
@@ -113,18 +117,18 @@ export interface Formulario {
   ardenopatia_cervical_derecha?: string; //"No";
   ardenopatia_cervical_izquierda?: string; //"No";
   extension_clinica_a?: string; //"No";
-  performance_status?: number; //"0";
+  performance_status?: string; //"0";
   primer_apellido?: string;
   segundo_apellido?: string;
   nombre_del_paciente?: string;
-  sexo?: "Femenino" | "Masculino";
+  sexo?: "Masculino" | "Femenino";
   edad?: number; //0;
   color_de_piel?: string; //"Blanca";
   carne_de_identidad?: string;
-  historia_clinica_numero?: string;
-  fecha_de_inscripcion: number; //0;
-  creatinina?: string; //"664.17";
-  hemoglobina?: string; //"82219074677";
+  historia_clinica_numero?: number;
+  fecha_de_inscripcion: string; //0;
+  creatinina?: number; //"664.17";
+  hemoglobina?: number; //"82219074677";
   imagen_rx_torax?: string; //"Ninguno";
   imagen_us_abdomen?: string; //"Ninguno";
   imagen_tac_cavidad_oral?: string; //"Ninguno";
@@ -135,6 +139,52 @@ export interface Formulario {
   biopsia_numero?: number; //0;
   fecha_de_diagnostico?: string; //"2024-06-22";
   diagnostico_topografico?: string;
+  diagnostico_morfologico?: string,
+  diagnosticado_en?: string,
+  diagnostico_topografico_selecciona?: string,
+  diagnostico_morfologico_selecciona?: string,
+  diagnosticado_en_selecciona?: string,
+  grado_de_diferenciacion?: string,
+  base_del_diagnostico?: string,
+  otras?: string,
+  etapa_clinica?: string,
+  tnm_T?: string,
+  tnm_N?: string,
+  tnm_M?: string,
+  ptnm_pT?: string,
+  ptnm_pN?: string,
+  ptnm_pM?: string,
+  metastasis_a_distancia?: string,
+  extension_clinica?: string,
+  en_otro_centro?: string,
+  en_la_institucion?: string,
+  tratamiento_planificado?: string,
+  otro_tratamiento_planificado?: string,
+  inclusion_en_ec?: true,
+  en_caso_de_si?: string,
+  tratamiento_quirurgico?: boolean,
+  tipo_de_cirugia?: string,
+  fecha_del_tratamiento_quirurgico?: string,
+  tratamiento_radioterapia?: boolean,
+  tipo_de_tratamiento_radioterap?: string,
+  fecha_del_inicio_del_tratamiento_radioterapeutico?: string,
+  fecha_del_final_del_tratamiento_radioterapeutico?: string,
+  dosis_total?: number,
+  gy_fraccion?: number,
+  tratamiento_quimioterapia?: boolean,
+  esquema_tratamiento?: string,
+  numero_de_ciclos?: number,
+  fecha_del_inicio_del_tratamiento_quimioterapeutico?: string,
+  fecha_del_final_del_tratamiento_quimioterapeutico?: string,
+  otro_tratamiento?: boolean,
+  cual_tratamiento?: string,
+  fecha_del_inicio_del_tratamiento?: string,
+  fecha_del_final_del_tratamiento?: string,
+  evaluacion_de_la_respuesta?: string,
+  fecha_evaluacion?: string,
+  observaciones?: string,
+  nombre_del_medico?: string,
+  registro_profesional?: string
 }
 
 export interface ContextPropsRes {
@@ -189,7 +239,7 @@ export const initialDateToEdit: Formulario = {
   ardenopatia_cervical_derecha: "No",
   ardenopatia_cervical_izquierda: "No",
   extension_clinica_a: "No",
-  performance_status: 0,
+  performance_status: "0",
   primer_apellido: "string",
   segundo_apellido: "string",
   nombre_del_paciente: "string",
@@ -197,10 +247,10 @@ export const initialDateToEdit: Formulario = {
   edad: 0,
   color_de_piel: "Blanca",
   carne_de_identidad: "string",
-  historia_clinica_numero: "string",
-  fecha_de_inscripcion: 0,
-  creatinina: "-7717608",
-  hemoglobina: "-35713934",
+  historia_clinica_numero: 0,
+  fecha_de_inscripcion: "2024-06-22",
+  creatinina: 0,
+  hemoglobina: 0,
   imagen_rx_torax: "Ninguno",
   imagen_us_abdomen: "Ninguno",
   imagen_tac_cavidad_oral: "Ninguno",
