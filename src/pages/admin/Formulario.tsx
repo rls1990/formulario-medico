@@ -1131,82 +1131,135 @@ const Formulario = () => {
           </Grid>
         </CustomTabPanel>
 
+        <CustomTabPanel value={valueTab} index={8}>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="etapa_clinica"
+                  label="Etapa clínica"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Desconocida"
+                >
+                  <MenuItem value="Desconocida">Desconocida</MenuItem>
+                  <MenuItem value="In situ">In situ</MenuItem>
+                  <MenuItem value="I">I</MenuItem>
+                  <MenuItem value="Ia">Ia</MenuItem>
+                  <MenuItem value="Ib">Ib</MenuItem>
+                  <MenuItem value="Ic">Ic</MenuItem>
+                  <MenuItem value="II">II</MenuItem>
+                  <MenuItem value="IIa">IIa</MenuItem>
+                  <MenuItem value="IIb">IIb</MenuItem>
+                  <MenuItem value="IIc">IIc</MenuItem>
+                  <MenuItem value="III">III</MenuItem>
+                  <MenuItem value="IIIa">IIIa</MenuItem>
+                  <MenuItem value="IIIb">IIIb</MenuItem>
+                  <MenuItem value="IIIc">IIIc</MenuItem>
+                  <MenuItem value="IV">IV</MenuItem>
+                  <MenuItem value="IVa">IVa</MenuItem>
+                  <MenuItem value="IVb">IVb</MenuItem>
+                  <MenuItem value="IVc">IVc</MenuItem>
+                  <MenuItem value="No procede">No procede</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField id="tnm_T" label="TNM T" />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField id="tnm_N" label="TNM N" />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField id="tnm_M" label="TNM M" />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField id="ptnm_pT" label="pTNM pT" />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField id="ptnm_pN" label="pTNM pN" />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField id="ptnm_pM" label="pTNM pM" />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="metastasis_a_distancia"
+                  label="Metástasis a Distancia"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Desconocida"
+                >
+                  <MenuItem value="Desconocida">Desconocida</MenuItem>
+                  <MenuItem value="Ninguna">Ninguna</MenuItem>
+                  <MenuItem value="Pulmón pleura">Pulmón pleura</MenuItem>
+                  <MenuItem value="Hígado">Hígado</MenuItem>
+                  <MenuItem value="Ovarios">Ovarios</MenuItem>
+                  <MenuItem value="Hueso">Hueso</MenuItem>
+                  <MenuItem value="Ganglios distales">
+                    Ganglios distales
+                  </MenuItem>
+                  <MenuItem value="Cerebro">Cerebro</MenuItem>
+                  <MenuItem value="Piel y TCS">Piel y TCS</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="extension_clinica"
+                  label="Extensión Clínica"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Desconocida"
+                >
+                  <MenuItem value="Desconocida">Desconocida</MenuItem>
+                  <MenuItem value="In situ">In situ</MenuItem>
+                  <MenuItem value="Ext. directa y linf. regionales">
+                    Ext. directa y linf. regionales
+                  </MenuItem>
+                  <MenuItem value="Localizado">Localizado</MenuItem>
+                  <MenuItem value="Metástasis a distancia">
+                    Metástasis a distancia
+                  </MenuItem>
+                  <MenuItem value="Extensión directa">
+                    Extensión directa
+                  </MenuItem>
+                  <MenuItem value="No aplicable">No aplicable</MenuItem>
+                  <MenuItem value="Linfático regionales">
+                    Linfático regionales
+                  </MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+          </Grid>
+        </CustomTabPanel>
+
         <CustomTabPanel value={valueTab} index={9}>
-          <TextFieldSelect
-            id="etapa_clinica"
-            label="Etapa clínica"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Desconocida"
-          >
-            <MenuItem value="Desconocida">Desconocida</MenuItem>
-            <MenuItem value="In situ">In situ</MenuItem>
-            <MenuItem value="I">I</MenuItem>
-            <MenuItem value="Ia">Ia</MenuItem>
-            <MenuItem value="Ib">Ib</MenuItem>
-            <MenuItem value="Ic">Ic</MenuItem>
-            <MenuItem value="II">II</MenuItem>
-            <MenuItem value="IIa">IIa</MenuItem>
-            <MenuItem value="IIb">IIb</MenuItem>
-            <MenuItem value="IIc">IIc</MenuItem>
-            <MenuItem value="III">III</MenuItem>
-            <MenuItem value="IIIa">IIIa</MenuItem>
-            <MenuItem value="IIIb">IIIb</MenuItem>
-            <MenuItem value="IIIc">IIIc</MenuItem>
-            <MenuItem value="IV">IV</MenuItem>
-            <MenuItem value="IVa">IVa</MenuItem>
-            <MenuItem value="IVb">IVb</MenuItem>
-            <MenuItem value="IVc">IVc</MenuItem>
-            <MenuItem value="No procede">No procede</MenuItem>
-          </TextFieldSelect>
-          <TextField id="tnm_T" label="TNM T" />
-          <TextField id="tnm_N" label="TNM N" />
-          <TextField id="tnm_M" label="TNM M" />
-          <TextField id="ptnm_pT" label="pTNM pT" />
-          <TextField id="ptnm_pN" label="pTNM pN" />
-          <TextField id="ptnm_pM" label="pTNM pM" />
-          <TextFieldSelect
-            id="metastasis_a_distancia"
-            label="Metástasis a Distancia"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Desconocida"
-          >
-            <MenuItem value="Desconocida">Desconocida</MenuItem>
-            <MenuItem value="Ninguna">Ninguna</MenuItem>
-            <MenuItem value="Pulmón pleura">Pulmón pleura</MenuItem>
-            <MenuItem value="Hígado">Hígado</MenuItem>
-            <MenuItem value="Ovarios">Ovarios</MenuItem>
-            <MenuItem value="Hueso">Hueso</MenuItem>
-            <MenuItem value="Ganglios distales">Ganglios distales</MenuItem>
-            <MenuItem value="Cerebro">Cerebro</MenuItem>
-            <MenuItem value="Piel y TCS">Piel y TCS</MenuItem>
-          </TextFieldSelect>
-          <TextFieldSelect
-            id="extension_clinica"
-            label="Extensión Clínica"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Desconocida"
-          >
-            <MenuItem value="Desconocida">Desconocida</MenuItem>
-            <MenuItem value="In situ">In situ</MenuItem>
-            <MenuItem value="Ext. directa y linf. regionales">
-              Ext. directa y linf. regionales
-            </MenuItem>
-            <MenuItem value="Localizado">Localizado</MenuItem>
-            <MenuItem value="Metástasis a distancia">
-              Metástasis a distancia
-            </MenuItem>
-            <MenuItem value="Extensión directa">Extensión directa</MenuItem>
-            <MenuItem value="No aplicable">No aplicable</MenuItem>
-            <MenuItem value="Linfático regionales">
-              Linfático regionales
-            </MenuItem>
-          </TextFieldSelect>
           <TextFieldSelect
             id="en_la_institucion"
             label="En la Institución"
@@ -1285,7 +1338,7 @@ const Formulario = () => {
             label="Se Realizó Tratamiento radioterapéutico"
           />
         </CustomTabPanel>
-        <CustomTabPanel value={valueTab} index={9}>
+        <CustomTabPanel value={valueTab} index={10}>
           <TextField
             id="tipo_de_tratamiento_radioterap"
             label="Qué Tipo de Tratamiento Radioterapéutico se Utilizó"
