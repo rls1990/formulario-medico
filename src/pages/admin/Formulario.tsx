@@ -965,108 +965,173 @@ const Formulario = () => {
             </Grid>
           </Grid>
         </CustomTabPanel>
+        <CustomTabPanel value={valueTab} index={7}>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldNumber
+                  id="biopsia_numero"
+                  label="Biopsia Número"
+                  type="number"
+                  sx={{ mb: 3, width: 300 }}
+                />
+              </Item>
+            </Grid>
 
-        <CustomTabPanel value={valueTab} index={8}>
-          <TextFieldNumber
-            id="biopsia_numero"
-            label="Biopsia Número"
-            type="number"
-            sx={{ mb: 3, width: 300 }}
-          />
-          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
-            <DatePicker
-              name="fecha_de_diagnostico"
-              label="Fecha de Diagnóstico"
-              value={fecha_de_diagnostico}
-              onChange={handleChange_fecha_de_diagnostico}
-              sx={{ mb: 3, width: 300 }}
-            />
-          </LocalizationProvider>
-          <TextField
-            id="diagnostico_topografico"
-            label="Diagnóstico Topográfico"
-          />
-          <TextField
-            id="diagnostico_morfologico"
-            label="Diagnóstico Morfológico"
-          />
-          <TextField id="diagnosticado_en" label="Diagnósticado en" />
-          <TextFieldSelect
-            id="diagnostico_topografico_selecciona"
-            label="Seleccione Diagnóstico Topográfico"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Ninguno"
-          >
-            <MenuItem value="Ninguno">Ninguno</MenuItem>
-            <MenuItem value="Positivo">Positivo</MenuItem>
-            <MenuItem value="Negativo">Negativo</MenuItem>
-          </TextFieldSelect>
-          <TextFieldSelect
-            id="diagnostico_morfologico_selecciona"
-            label="Seleccione Diagnóstico Morfológico"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Ninguno"
-          >
-            <MenuItem value="Ninguno">Ninguno</MenuItem>
-            <MenuItem value="Positivo">Positivo</MenuItem>
-            <MenuItem value="Negativo">Negativo</MenuItem>
-          </TextFieldSelect>
-          <TextFieldSelect
-            id="diagnosticado_en_selecciona"
-            label="Seleccione Diagnósticado en"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Ninguno"
-          >
-            <MenuItem value="Ninguno">Ninguno</MenuItem>
-            <MenuItem value="Positivo">Positivo</MenuItem>
-            <MenuItem value="Negativo">Negativo</MenuItem>
-          </TextFieldSelect>
-          <TextFieldSelect
-            id="grado_de_diferenciacion"
-            label="Grado de diferenciación"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Diferenciado"
-          >
-            <MenuItem value="Diferenciado">Diferenciado</MenuItem>
-            <MenuItem value="Indiferenciado">Indiferenciado</MenuItem>
-            <MenuItem value="Moderadamente diferenciado">
-              Moderadamente diferenciado
-            </MenuItem>
-            <MenuItem value="Poco diferenciado">Poco diferenciado</MenuItem>
-            <MenuItem value="No determinado">No determinado</MenuItem>
-            <MenuItem value="No procede">No procede</MenuItem>
-          </TextFieldSelect>
-          <TextFieldSelect
-            id="base_del_diagnostico"
-            label="Base del diagnóstico"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Desconocidas"
-          >
-            <MenuItem value="Desconocidas">Desconocidas</MenuItem>
-            <MenuItem value="E. clínico">E. clínico</MenuItem>
-            <MenuItem value="Inv. clínica">Inv. clínica</MenuItem>
-            <MenuItem value="Cirugía">Cirugía</MenuItem>
-            <MenuItem value="P. bio. Inmunológ">P. bio. Inmunológ</MenuItem>
-            <MenuItem value="Citología">Citología</MenuItem>
-            <MenuItem value="Citogenética">Citogenética</MenuItem>
-            <MenuItem value="Hematología">Hematología</MenuItem>
-            <MenuItem value="Histología">Histología</MenuItem>
-            <MenuItem value="Otras">Otras</MenuItem>
-          </TextFieldSelect>
-          <TextField
-            id="otras"
-            label="En csao de seleccionar Otras rellene este campo"
-          />
+            <Grid item xs={6}>
+              <Item>
+                <LocalizationProvider
+                  dateAdapter={AdapterDayjs}
+                  adapterLocale="es"
+                >
+                  <DatePicker
+                    name="fecha_de_diagnostico"
+                    label="Fecha de Diagnóstico"
+                    value={fecha_de_diagnostico}
+                    onChange={handleChange_fecha_de_diagnostico}
+                    sx={{ mb: 3, width: 300 }}
+                  />
+                </LocalizationProvider>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField
+                  id="diagnostico_topografico"
+                  label="Diagnóstico Topográfico"
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField
+                  id="diagnostico_morfologico"
+                  label="Diagnóstico Morfológico"
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField id="diagnosticado_en" label="Diagnósticado en" />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="diagnostico_topografico_selecciona"
+                  label="Seleccione Diagnóstico Topográfico"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Ninguno"
+                >
+                  <MenuItem value="Ninguno">Ninguno</MenuItem>
+                  <MenuItem value="Positivo">Positivo</MenuItem>
+                  <MenuItem value="Negativo">Negativo</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="diagnostico_morfologico_selecciona"
+                  label="Seleccione Diagnóstico Morfológico"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Ninguno"
+                >
+                  <MenuItem value="Ninguno">Ninguno</MenuItem>
+                  <MenuItem value="Positivo">Positivo</MenuItem>
+                  <MenuItem value="Negativo">Negativo</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="diagnosticado_en_selecciona"
+                  label="Seleccione Diagnósticado en"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Ninguno"
+                >
+                  <MenuItem value="Ninguno">Ninguno</MenuItem>
+                  <MenuItem value="Positivo">Positivo</MenuItem>
+                  <MenuItem value="Negativo">Negativo</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="grado_de_diferenciacion"
+                  label="Grado de diferenciación"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Diferenciado"
+                >
+                  <MenuItem value="Diferenciado">Diferenciado</MenuItem>
+                  <MenuItem value="Indiferenciado">Indiferenciado</MenuItem>
+                  <MenuItem value="Moderadamente diferenciado">
+                    Moderadamente diferenciado
+                  </MenuItem>
+                  <MenuItem value="Poco diferenciado">
+                    Poco diferenciado
+                  </MenuItem>
+                  <MenuItem value="No determinado">No determinado</MenuItem>
+                  <MenuItem value="No procede">No procede</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="base_del_diagnostico"
+                  label="Base del diagnóstico"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Desconocidas"
+                >
+                  <MenuItem value="Desconocidas">Desconocidas</MenuItem>
+                  <MenuItem value="E. clínico">E. clínico</MenuItem>
+                  <MenuItem value="Inv. clínica">Inv. clínica</MenuItem>
+                  <MenuItem value="Cirugía">Cirugía</MenuItem>
+                  <MenuItem value="P. bio. Inmunológ">
+                    P. bio. Inmunológ
+                  </MenuItem>
+                  <MenuItem value="Citología">Citología</MenuItem>
+                  <MenuItem value="Citogenética">Citogenética</MenuItem>
+                  <MenuItem value="Hematología">Hematología</MenuItem>
+                  <MenuItem value="Histología">Histología</MenuItem>
+                  <MenuItem value="Otras">Otras</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField
+                  id="otras"
+                  label="En csao de seleccionar Otras rellene este campo"
+                />
+              </Item>
+            </Grid>
+          </Grid>
+        </CustomTabPanel>
+
+        <CustomTabPanel value={valueTab} index={9}>
           <TextFieldSelect
             id="etapa_clinica"
             label="Etapa clínica"
@@ -1219,7 +1284,6 @@ const Formulario = () => {
             control={<Switch defaultChecked />}
             label="Se Realizó Tratamiento radioterapéutico"
           />
-          //--------------------------------
         </CustomTabPanel>
         <CustomTabPanel value={valueTab} index={9}>
           <TextField
