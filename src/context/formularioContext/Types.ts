@@ -107,7 +107,7 @@ export interface Formulario {
   familiares_con_cancer?: "Si" | "No" | "Desconocido";
   caracteristicas_de_la_lesion?: string; //"Vegetante";
   region?: string; //"Derecha";
-  tamanno_de_la_lesion?: string; //"2024-06-22";
+  tamanno_de_la_lesion?: number; 
   localizacion_en_labio?: string; //"Labio superior";
   lengua_movil?: string; //"Cara central";
   suelo_de_Boca?: string; //"Parte anterior";
@@ -231,7 +231,7 @@ export const initialDateToEdit: Formulario = {
   familiares_con_cancer: "Si",
   caracteristicas_de_la_lesion: "Vegetante",
   region: "Derecha",
-  tamanno_de_la_lesion: "2024-06-22",
+  tamanno_de_la_lesion: 0,
   localizacion_en_labio: "Labio superior",
   lengua_movil: "Cara central",
   suelo_de_Boca: "Parte anterior",

@@ -513,9 +513,9 @@ const Formulario = () => {
                   select
                   onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
-                  defaultValue="Desrecha"
+                  defaultValue="Derecha"
                 >
-                  <MenuItem value="Desrecha">Desrecha</MenuItem>
+                  <MenuItem value="Derecha">Derecha</MenuItem>
                   <MenuItem value="Central">Central</MenuItem>
                   <MenuItem value="Izquierda">Izquierda</MenuItem>
                 </TextFieldSelect>
