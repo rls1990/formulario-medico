@@ -1347,136 +1347,252 @@ const Formulario = () => {
           </Grid>
         </CustomTabPanel>
 
-        <CustomTabPanel value={valueTab} index={11}>
-          <FormControlLabel
-            id="tratamiento_quirurgico"
-            control={<Switch defaultChecked />}
-            label="Se Realizó Tratamiento quirúrgico"
-          />
-          <TextField
-            id="tipo_de_cirugia"
-            label="Qué tipo de cirugía se realizó"
-          />
-          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
-            <DatePicker
-              name="fecha_del_tratamiento_quirurgico"
-              label="Fecha de la cirugía"
-              value={fecha_del_tratamiento_quirurgico}
-              onChange={handleChange_fecha_del_tratamiento_quirurgico}
-              sx={{ mb: 3, width: 300 }}
-            />
-          </LocalizationProvider>
-          <FormControlLabel
-            id="tratamiento_radioterapia"
-            control={<Switch defaultChecked />}
-            label="Se Realizó Tratamiento radioterapéutico"
-          />
+        <CustomTabPanel value={valueTab} index={10}>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Item>
+                <FormControlLabel
+                  id="tratamiento_quirurgico"
+                  control={<Switch defaultChecked />}
+                  label="Se Realizó Tratamiento quirúrgico"
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField
+                  id="tipo_de_cirugia"
+                  label="Qué tipo de cirugía se realizó"
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <LocalizationProvider
+                  dateAdapter={AdapterDayjs}
+                  adapterLocale="es"
+                >
+                  <DatePicker
+                    name="fecha_del_tratamiento_quirurgico"
+                    label="Fecha de la cirugía"
+                    value={fecha_del_tratamiento_quirurgico}
+                    onChange={handleChange_fecha_del_tratamiento_quirurgico}
+                    sx={{ mb: 3, width: 300 }}
+                  />
+                </LocalizationProvider>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <FormControlLabel
+                  id="tratamiento_radioterapia"
+                  control={<Switch defaultChecked />}
+                  label="Se Realizó Tratamiento radioterapéutico"
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField
+                  id="tipo_de_tratamiento_radioterap"
+                  label="Qué Tipo de Tratamiento Radioterapéutico se Utilizó"
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <LocalizationProvider
+                  dateAdapter={AdapterDayjs}
+                  adapterLocale="es"
+                >
+                  <DatePicker
+                    name="fecha_del_inicio_del_tratamiento_radioterapeutico"
+                    label="Fecha del Inicio del Tratamiento Radioterapéutico"
+                    value={fecha_del_inicio_del_tratamiento_radioterapeutico}
+                    onChange={
+                      handleChange_fecha_del_inicio_del_tratamiento_radioterapeutico
+                    }
+                    sx={{ mb: 3, width: 300 }}
+                  />
+                </LocalizationProvider>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <LocalizationProvider
+                  dateAdapter={AdapterDayjs}
+                  adapterLocale="es"
+                >
+                  <DatePicker
+                    name="fecha_del_final_del_tratamiento_radioterapeutico"
+                    label="Fecha Final del Tratamiento Radioterapéutico"
+                    value={fecha_del_final_del_tratamiento_radioterapeutico}
+                    onChange={
+                      handleChange_fecha_del_final_del_tratamiento_radioterapeutico
+                    }
+                    sx={{ mb: 3, width: 300 }}
+                  />
+                </LocalizationProvider>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldNumber
+                  label="Cuál fue la Dosis Total Utilizada"
+                  name="numberformat"
+                  id="dosis_total"
+                  InputProps={{
+                    inputComponent: NumericFormatCustom as any,
+                  }}
+                  variant="outlined"
+                  sx={{ mb: 3, width: 300 }}
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldNumber
+                  label="GY Fracción"
+                  name="numberformat"
+                  id="gy_fraccion"
+                  InputProps={{
+                    inputComponent: NumericFormatCustom as any,
+                  }}
+                  variant="outlined"
+                  sx={{ mb: 3, width: 300 }}
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <FormControlLabel
+                  id="tratamiento_quimioterapia"
+                  control={<Switch defaultChecked />}
+                  label="Se Realizó Tratamiento Quimioterapéutico"
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField
+                  id="esquema_tratamiento"
+                  label="Esquema del tratamiento"
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldNumber
+                  id="numero_de_ciclos"
+                  label="Número de Ciclos"
+                  type="number"
+                  sx={{ mb: 3, width: 300 }}
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <LocalizationProvider
+                  dateAdapter={AdapterDayjs}
+                  adapterLocale="es"
+                >
+                  <DatePicker
+                    name="fecha_del_inicio_del_tratamiento_quimioterapeutico"
+                    label="Fecha del Inicio del Tratamiento Quimioterapéutico"
+                    value={fecha_del_inicio_del_tratamiento_quimioterapeutico}
+                    onChange={
+                      handleChange_fecha_del_inicio_del_tratamiento_quimioterapeutico
+                    }
+                    sx={{ mb: 3, width: 300 }}
+                  />
+                </LocalizationProvider>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <LocalizationProvider
+                  dateAdapter={AdapterDayjs}
+                  adapterLocale="es"
+                >
+                  <DatePicker
+                    name="fecha_del_final_del_tratamiento_quimioterapeutico"
+                    label="Fecha Final del Tratamiento Quimioterapéutico"
+                    value={fecha_del_final_del_tratamiento_quimioterapeutico}
+                    onChange={
+                      handleChange_fecha_del_final_del_tratamiento_quimioterapeutico
+                    }
+                    sx={{ mb: 3, width: 300 }}
+                  />
+                </LocalizationProvider>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <FormControlLabel
+                  id="otro_tratamiento"
+                  control={<Switch defaultChecked />}
+                  label="Se Realizó Otro Tratamiento"
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField id="cual_tratamiento" label="Cuál" />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <LocalizationProvider
+                  dateAdapter={AdapterDayjs}
+                  adapterLocale="es"
+                >
+                  <DatePicker
+                    name="fecha_del_inicio_del_tratamiento"
+                    label="Fecha del Inicio del Tratamiento"
+                    value={fecha_del_inicio_del_tratamiento}
+                    onChange={handleChange_fecha_del_inicio_del_tratamiento}
+                    sx={{ mb: 3, width: 300 }}
+                  />
+                </LocalizationProvider>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <LocalizationProvider
+                  dateAdapter={AdapterDayjs}
+                  adapterLocale="es"
+                >
+                  <DatePicker
+                    name="fecha_del_final_del_tratamiento"
+                    label="Fecha Final del Tratamiento"
+                    value={fecha_del_final_del_tratamiento}
+                    onChange={handleChange_fecha_del_final_del_tratamiento}
+                    sx={{ mb: 3, width: 300 }}
+                  />
+                </LocalizationProvider>
+              </Item>
+            </Grid>
+          </Grid>
         </CustomTabPanel>
+
         <CustomTabPanel value={valueTab} index={12}>
-          <TextField
-            id="tipo_de_tratamiento_radioterap"
-            label="Qué Tipo de Tratamiento Radioterapéutico se Utilizó"
-          />
-          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
-            <DatePicker
-              name="fecha_del_inicio_del_tratamiento_radioterapeutico"
-              label="Fecha del Inicio del Tratamiento Radioterapéutico"
-              value={fecha_del_inicio_del_tratamiento_radioterapeutico}
-              onChange={
-                handleChange_fecha_del_inicio_del_tratamiento_radioterapeutico
-              }
-              sx={{ mb: 3, width: 300 }}
-            />
-          </LocalizationProvider>
-          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
-            <DatePicker
-              name="fecha_del_final_del_tratamiento_radioterapeutico"
-              label="Fecha Final del Tratamiento Radioterapéutico"
-              value={fecha_del_final_del_tratamiento_radioterapeutico}
-              onChange={
-                handleChange_fecha_del_final_del_tratamiento_radioterapeutico
-              }
-              sx={{ mb: 3, width: 300 }}
-            />
-          </LocalizationProvider>
-          <TextFieldNumber
-            label="Cuál fue la Dosis Total Utilizada"
-            name="numberformat"
-            id="dosis_total"
-            InputProps={{
-              inputComponent: NumericFormatCustom as any,
-            }}
-            variant="outlined"
-            sx={{ mb: 3, width: 300 }}
-          />
-          <TextFieldNumber
-            label="GY Fracción"
-            name="numberformat"
-            id="gy_fraccion"
-            InputProps={{
-              inputComponent: NumericFormatCustom as any,
-            }}
-            variant="outlined"
-            sx={{ mb: 3, width: 300 }}
-          />
-          <FormControlLabel
-            id="tratamiento_quimioterapia"
-            control={<Switch defaultChecked />}
-            label="Se Realizó Tratamiento Quimioterapéutico"
-          />
-          <TextField id="esquema_tratamiento" label="Esquema del tratamiento" />
-          <TextFieldNumber
-            id="numero_de_ciclos"
-            label="Número de Ciclos"
-            type="number"
-            sx={{ mb: 3, width: 300 }}
-          />
-          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
-            <DatePicker
-              name="fecha_del_inicio_del_tratamiento_quimioterapeutico"
-              label="Fecha del Inicio del Tratamiento Quimioterapéutico"
-              value={fecha_del_inicio_del_tratamiento_quimioterapeutico}
-              onChange={
-                handleChange_fecha_del_inicio_del_tratamiento_quimioterapeutico
-              }
-              sx={{ mb: 3, width: 300 }}
-            />
-          </LocalizationProvider>
-          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
-            <DatePicker
-              name="fecha_del_final_del_tratamiento_quimioterapeutico"
-              label="Fecha Final del Tratamiento Quimioterapéutico"
-              value={fecha_del_final_del_tratamiento_quimioterapeutico}
-              onChange={
-                handleChange_fecha_del_final_del_tratamiento_quimioterapeutico
-              }
-              sx={{ mb: 3, width: 300 }}
-            />
-          </LocalizationProvider>
-          <FormControlLabel
-            id="otro_tratamiento"
-            control={<Switch defaultChecked />}
-            label="Se Realizó Otro Tratamiento"
-          />
-          <TextField id="cual_tratamiento" label="Cuál" />
-          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
-            <DatePicker
-              name="fecha_del_inicio_del_tratamiento"
-              label="Fecha del Inicio del Tratamiento"
-              value={fecha_del_inicio_del_tratamiento}
-              onChange={handleChange_fecha_del_inicio_del_tratamiento}
-              sx={{ mb: 3, width: 300 }}
-            />
-          </LocalizationProvider>
-          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
-            <DatePicker
-              name="fecha_del_final_del_tratamiento"
-              label="Fecha Final del Tratamiento"
-              value={fecha_del_final_del_tratamiento}
-              onChange={handleChange_fecha_del_final_del_tratamiento}
-              sx={{ mb: 3, width: 300 }}
-            />
-          </LocalizationProvider>
           <TextFieldSelect
             id="evaluacion_de_la_respuesta"
             label="Evaluación de la respuesta"
@@ -1503,7 +1619,6 @@ const Formulario = () => {
           <TextField id="observaciones" label="Observaciones" />
           <TextField id="nombre_del_medico" label="Nombre del Médico" />
           <TextField id="registro_profesional" label="Registro Profesional" />
-          //----------------------------------
         </CustomTabPanel>
 
         <Button
