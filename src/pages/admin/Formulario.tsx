@@ -818,116 +818,154 @@ const Formulario = () => {
         </CustomTabPanel>
 
         <CustomTabPanel value={valueTab} index={6}>
-          <TextFieldNumber
-            label="Creatinina"
-            name="numberformat"
-            id="creatinina"
-            InputProps={{
-              inputComponent: NumericFormatCustom as any,
-            }}
-            variant="outlined"
-            sx={{ mb: 3, width: 300 }}
-          />
-          <TextFieldNumber
-            label="Hemoglobina"
-            name="numberformat"
-            id="hemoglobina"
-            InputProps={{
-              inputComponent: NumericFormatCustom as any,
-            }}
-            variant="outlined"
-            sx={{ mb: 3, width: 300 }}
-          />
-          <TextFieldSelect
-            id="imagen_rx_torax"
-            label="Imagen RX del Torax"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Ninguno"
-            //value="No remitido"
-          >
-            <MenuItem value="Ninguno">Ninguno</MenuItem>
-            <MenuItem value="Positivo">Positivo</MenuItem>
-            <MenuItem value="Negativo">Negativo</MenuItem>
-          </TextFieldSelect>
-          <TextFieldSelect
-            id="imagen_us_abdomen"
-            label="Imagen US del Abdomen"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Ninguno"
-            //value="No remitido"
-          >
-            <MenuItem value="Ninguno">Ninguno</MenuItem>
-            <MenuItem value="Positivo">Positivo</MenuItem>
-            <MenuItem value="Negativo">Negativo</MenuItem>
-          </TextFieldSelect>
-          <TextFieldSelect
-            id="imagen_tac_cavidad_oral"
-            label="Imagen TAC de la Cavidad Oral"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Ninguno"
-            //value="No remitido"
-          >
-            <MenuItem value="Ninguno">Ninguno</MenuItem>
-            <MenuItem value="Positivo">Positivo</MenuItem>
-            <MenuItem value="Negativo">Negativo</MenuItem>
-          </TextFieldSelect>
-          <TextFieldSelect
-            id="otros_tac_faringe"
-            label="IOtros TAC Faringe"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Ninguno"
-            //value="No remitido"
-          >
-            <MenuItem value="Ninguno">Ninguno</MenuItem>
-            <MenuItem value="Positivo">Positivo</MenuItem>
-            <MenuItem value="Negativo">Negativo</MenuItem>
-          </TextFieldSelect>
-          <TextFieldSelect
-            id="otros_tac_cuello"
-            label="otros_tac_cuello"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Ninguno"
-            //value="No remitido"
-          >
-            <MenuItem value="Ninguno">Ninguno</MenuItem>
-            <MenuItem value="Positivo">Positivo</MenuItem>
-            <MenuItem value="Negativo">Negativo</MenuItem>
-          </TextFieldSelect>
-          <TextFieldSelect
-            id="otros_tac_torax"
-            label="Otros TAC Torax"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Ninguno"
-          >
-            <MenuItem value="Ninguno">Ninguno</MenuItem>
-            <MenuItem value="Positivo">Positivo</MenuItem>
-            <MenuItem value="Negativo">Negativo</MenuItem>
-          </TextFieldSelect>
-          <TextFieldSelect
-            id="otros_rmn"
-            label="Otros RMN"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Ninguno"
-          >
-            <MenuItem value="Ninguno">Ninguno</MenuItem>
-            <MenuItem value="Positivo">Positivo</MenuItem>
-            <MenuItem value="Negativo">Negativo</MenuItem>
-          </TextFieldSelect>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldNumber
+                  label="Creatinina"
+                  name="numberformat"
+                  id="creatinina"
+                  InputProps={{
+                    inputComponent: NumericFormatCustom as any,
+                  }}
+                  variant="outlined"
+                  sx={{ mb: 3, width: 300 }}
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldNumber
+                  label="Hemoglobina"
+                  name="numberformat"
+                  id="hemoglobina"
+                  InputProps={{
+                    inputComponent: NumericFormatCustom as any,
+                  }}
+                  variant="outlined"
+                  sx={{ mb: 3, width: 300 }}
+                />
+              </Item>
+            </Grid>
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="imagen_rx_torax"
+                  label="Imagen RX del Torax"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Ninguno"
+                >
+                  <MenuItem value="Ninguno">Ninguno</MenuItem>
+                  <MenuItem value="Positivo">Positivo</MenuItem>
+                  <MenuItem value="Negativo">Negativo</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="imagen_us_abdomen"
+                  label="Imagen US del Abdomen"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Ninguno"
+                >
+                  <MenuItem value="Ninguno">Ninguno</MenuItem>
+                  <MenuItem value="Positivo">Positivo</MenuItem>
+                  <MenuItem value="Negativo">Negativo</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="imagen_tac_cavidad_oral"
+                  label="Imagen TAC de la Cavidad Oral"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Ninguno"
+                >
+                  <MenuItem value="Ninguno">Ninguno</MenuItem>
+                  <MenuItem value="Positivo">Positivo</MenuItem>
+                  <MenuItem value="Negativo">Negativo</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="otros_tac_faringe"
+                  label="Otros TAC Faringe"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Ninguno"
+                >
+                  <MenuItem value="Ninguno">Ninguno</MenuItem>
+                  <MenuItem value="Positivo">Positivo</MenuItem>
+                  <MenuItem value="Negativo">Negativo</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="otros_tac_cuello"
+                  label="OtroS TAC Cuello"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Ninguno"
+                >
+                  <MenuItem value="Ninguno">Ninguno</MenuItem>
+                  <MenuItem value="Positivo">Positivo</MenuItem>
+                  <MenuItem value="Negativo">Negativo</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="otros_tac_torax"
+                  label="Otros TAC Torax"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Ninguno"
+                >
+                  <MenuItem value="Ninguno">Ninguno</MenuItem>
+                  <MenuItem value="Positivo">Positivo</MenuItem>
+                  <MenuItem value="Negativo">Negativo</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="otros_rmn"
+                  label="Otros RMN"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Ninguno"
+                >
+                  <MenuItem value="Ninguno">Ninguno</MenuItem>
+                  <MenuItem value="Positivo">Positivo</MenuItem>
+                  <MenuItem value="Negativo">Negativo</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+          </Grid>
         </CustomTabPanel>
+
         <CustomTabPanel value={valueTab} index={8}>
           <TextFieldNumber
             id="biopsia_numero"
@@ -1183,7 +1221,7 @@ const Formulario = () => {
           />
           //--------------------------------
         </CustomTabPanel>
-        <CustomTabPanel value={valueTab} index={4}>
+        <CustomTabPanel value={valueTab} index={9}>
           <TextField
             id="tipo_de_tratamiento_radioterap"
             label="Qué Tipo de Tratamiento Radioterapéutico se Utilizó"
