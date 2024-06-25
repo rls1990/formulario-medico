@@ -1260,60 +1260,94 @@ const Formulario = () => {
         </CustomTabPanel>
 
         <CustomTabPanel value={valueTab} index={9}>
-          <TextFieldSelect
-            id="en_la_institucion"
-            label="En la Institución"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="No"
-          >
-            <MenuItem value="No">No</MenuItem>
-            <MenuItem value="Parcial">Parcial</MenuItem>
-            <MenuItem value="Completo">Completo</MenuItem>
-          </TextFieldSelect>
-          <TextFieldSelect
-            id="en_otro_centro"
-            label="En Otro Centro"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="No"
-          >
-            <MenuItem value="No">No</MenuItem>
-            <MenuItem value="Parcial">Parcial</MenuItem>
-            <MenuItem value="Completo">Completo</MenuItem>
-          </TextFieldSelect>
-          <TextFieldSelect
-            id="tratamiento_planificado"
-            label="Tratamiento Planificado"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Desconocido"
-          >
-            <MenuItem value="Desconocido">Desconocido</MenuItem>
-            <MenuItem value="Ninguno">Ninguno</MenuItem>
-            <MenuItem value="Radioterapia">Radioterapia</MenuItem>
-            <MenuItem value="Hormonoterapia">Hormonoterapia</MenuItem>
-            <MenuItem value="Cirugía">Cirugía</MenuItem>
-            <MenuItem value="Quimioterapia">Quimioterapia</MenuItem>
-            <MenuItem value="Inmunoterapia">Inmunoterapia</MenuItem>
-            <MenuItem value="Otro Tratamiento">Otro Tratamiento</MenuItem>
-          </TextFieldSelect>
-          <TextField
-            id="otro_tratamiento_planificado"
-            label="Que otro tratamiento se aplicó"
-          />
-          <FormControlLabel
-            id="inclusion_en_ec"
-            control={<Switch defaultChecked />}
-            label="Inclusión en EC"
-          />
-          <TextField
-            id="en_caso_de_si"
-            label="En caso de ser sí; cuál es el código"
-          />
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="en_la_institucion"
+                  label="En la Institución"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="No"
+                >
+                  <MenuItem value="No">No</MenuItem>
+                  <MenuItem value="Parcial">Parcial</MenuItem>
+                  <MenuItem value="Completo">Completo</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="en_otro_centro"
+                  label="En Otro Centro"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="No"
+                >
+                  <MenuItem value="No">No</MenuItem>
+                  <MenuItem value="Parcial">Parcial</MenuItem>
+                  <MenuItem value="Completo">Completo</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="tratamiento_planificado"
+                  label="Tratamiento Planificado"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Desconocido"
+                >
+                  <MenuItem value="Desconocido">Desconocido</MenuItem>
+                  <MenuItem value="Ninguno">Ninguno</MenuItem>
+                  <MenuItem value="Radioterapia">Radioterapia</MenuItem>
+                  <MenuItem value="Hormonoterapia">Hormonoterapia</MenuItem>
+                  <MenuItem value="Cirugía">Cirugía</MenuItem>
+                  <MenuItem value="Quimioterapia">Quimioterapia</MenuItem>
+                  <MenuItem value="Inmunoterapia">Inmunoterapia</MenuItem>
+                  <MenuItem value="Otro Tratamiento">Otro Tratamiento</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField
+                  id="otro_tratamiento_planificado"
+                  label="Que otro tratamiento se aplicó"
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <FormControlLabel
+                  id="inclusion_en_ec"
+                  control={<Switch defaultChecked />}
+                  label="Inclusión en EC"
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField
+                  id="en_caso_de_si"
+                  label="En caso de ser sí; cuál es el código"
+                />
+              </Item>
+            </Grid>
+          </Grid>
+        </CustomTabPanel>
+
+        <CustomTabPanel value={valueTab} index={11}>
           <FormControlLabel
             id="tratamiento_quirurgico"
             control={<Switch defaultChecked />}
@@ -1338,7 +1372,7 @@ const Formulario = () => {
             label="Se Realizó Tratamiento radioterapéutico"
           />
         </CustomTabPanel>
-        <CustomTabPanel value={valueTab} index={10}>
+        <CustomTabPanel value={valueTab} index={12}>
           <TextField
             id="tipo_de_tratamiento_radioterap"
             label="Qué Tipo de Tratamiento Radioterapéutico se Utilizó"
