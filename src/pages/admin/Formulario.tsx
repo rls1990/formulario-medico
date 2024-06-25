@@ -247,6 +247,7 @@ const Formulario = () => {
             <Tab label="Estadiamiento" {...a11yProps(8)} />
             <Tab label="Tratamiento" {...a11yProps(9)} />
             <Tab label="Descripción del Tratamiento" {...a11yProps(10)} />
+            <Tab label="Datos del Médico" {...a11yProps(11)} />
           </Tabs>
         </Box>
         <CustomTabPanel value={valueTab} index={0}>
@@ -1592,33 +1593,65 @@ const Formulario = () => {
           </Grid>
         </CustomTabPanel>
 
-        <CustomTabPanel value={valueTab} index={12}>
-          <TextFieldSelect
-            id="evaluacion_de_la_respuesta"
-            label="Evaluación de la respuesta"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="RC"
-          >
-            <MenuItem value="RC">RC</MenuItem>
-            <MenuItem value="RP">RP</MenuItem>
-            <MenuItem value="EE">EE</MenuItem>
-            <MenuItem value="EP">EP</MenuItem>
-            <MenuItem value="No Procede">No Procede</MenuItem>
-          </TextFieldSelect>
-          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
-            <DatePicker
-              name="fecha_evaluacion"
-              label="Fecha de Evaluación"
-              value={fecha_evaluacion}
-              onChange={handleChange_fecha_evaluacion}
-              sx={{ mb: 3, width: 300 }}
-            />
-          </LocalizationProvider>
-          <TextField id="observaciones" label="Observaciones" />
-          <TextField id="nombre_del_medico" label="Nombre del Médico" />
-          <TextField id="registro_profesional" label="Registro Profesional" />
+        <CustomTabPanel value={valueTab} index={11}>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="evaluacion_de_la_respuesta"
+                  label="Evaluación de la respuesta"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="RC"
+                >
+                  <MenuItem value="RC">RC</MenuItem>
+                  <MenuItem value="RP">RP</MenuItem>
+                  <MenuItem value="EE">EE</MenuItem>
+                  <MenuItem value="EP">EP</MenuItem>
+                  <MenuItem value="No Procede">No Procede</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <LocalizationProvider
+                  dateAdapter={AdapterDayjs}
+                  adapterLocale="es"
+                >
+                  <DatePicker
+                    name="fecha_evaluacion"
+                    label="Fecha de Evaluación"
+                    value={fecha_evaluacion}
+                    onChange={handleChange_fecha_evaluacion}
+                    sx={{ mb: 3, width: 300 }}
+                  />
+                </LocalizationProvider>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField id="observaciones" label="Observaciones" />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField id="nombre_del_medico" label="Nombre del Médico" />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField
+                  id="registro_profesional"
+                  label="Registro Profesional"
+                />
+              </Item>
+            </Grid>
+          </Grid>
         </CustomTabPanel>
 
         <Button
