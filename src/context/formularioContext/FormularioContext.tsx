@@ -6,6 +6,7 @@ import {
   initialData,
   initialDateToEdit,
 } from "./Types";
+import { formulariosRequest } from "../../api/formulario";
 
 export const FormularioContext = createContext(initialData);
 
@@ -20,6 +21,17 @@ export const FormularioProvider: React.FC<FormularioContextProps> = ({
   const createFormulario = () => {};
   const updateFormulario = () => {};
   const deleteFormulario = () => {};
+  const getFormularios = async () => {
+    try {
+      const res = await formulariosRequest();
+      if (res) {
+        //console.log(res);
+        setFormularios(res);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const dataExportContext: ContextPropsRes = {
     formularios,
@@ -31,6 +43,7 @@ export const FormularioProvider: React.FC<FormularioContextProps> = ({
     createFormulario,
     updateFormulario,
     deleteFormulario,
+    getFormularios,
   };
   return (
     <FormularioContext.Provider value={dataExportContext}>

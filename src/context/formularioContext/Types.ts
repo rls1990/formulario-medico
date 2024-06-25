@@ -106,6 +106,7 @@ export interface ContextPropsRes {
   createFormulario?: ((data: Formulario) => void) | null;
   updateFormulario?: ((data: Formulario) => void) | null;
   deleteFormulario?: ((id: number) => void) | null;
+  getFormularios?: (() => void) | null;
 }
 
 export interface FormularioContextProps {
@@ -122,6 +123,7 @@ export const initialData: ContextPropsRes = {
   createFormulario: null,
   updateFormulario: null,
   deleteFormulario: null,
+  getFormularios: null,
 };
 
 export const initialDateToEdit: Formulario = {

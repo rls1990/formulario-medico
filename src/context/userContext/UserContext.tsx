@@ -7,8 +7,9 @@ import {
   initialDateToEdit,
 } from "./Types";
 
-import { login as loginapi } from "../../api/auth";
+import { login as loginapi, refresh } from "../../api/auth";
 import {
+  getAccessToken,
   getRefreshToken,
   removeAccessToken,
   removeRefreshToken,
@@ -89,6 +90,25 @@ export const UserProvider: React.FC<UserContextProps> = ({ children }) => {
     console.log(id);
   };
 
+  const verifyAccessToken = () => {
+    const accesToken = getAccessToken();
+    const refreshToken = getRefreshToken();
+    if (!accesToken) {
+      const refre = async () => {
+        await refresh({ refresh: refreshToken })
+          .then((res) => {
+            console.log(res);
+            setAccessToken(res.data.access, 15);
+            setRefreshToken(res.data.refresh, 1);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+      refre();
+    }
+  };
+
   const dataExportContext: ContextPropsRes = {
     dataToEdit,
     setDatatoEdit,
@@ -102,6 +122,7 @@ export const UserProvider: React.FC<UserContextProps> = ({ children }) => {
     login,
     logout,
     register,
+    verifyAccessToken,
   };
 
   return (

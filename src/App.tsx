@@ -13,6 +13,7 @@ import Logout from "./pages/logout/Logout";
 const AdminComponent = lazy(() => import("./pages/admin/Admin"));
 
 function App() {
+  //logica
   return (
     <>
       <HashRouter>

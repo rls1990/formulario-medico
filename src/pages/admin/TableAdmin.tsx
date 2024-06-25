@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Button, IconButton } from "@mui/material";
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -7,62 +8,147 @@ import { useNavigate } from "react-router-dom";
 import { ControlPoint } from "@mui/icons-material";
 import { GridBaseColDef } from "@mui/x-data-grid/internals";
 import { FormularioFields } from "../../context/formularioContext/Types";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../context/userContext/UserContext";
+import { FormularioContext } from "../../context/formularioContext/FormularioContext";
 
-const rows: GridRowsProp = [
-  // { id: 1, col1: "Pedro", col2: "12/4/2024" },
-  // { id: 2, col1: "Pedro1", col2: "12/4/2024" },
-  // { id: 3, col1: "Pedro2", col2: "12/4/2024" },
-];
-
-const handleModifyClick = (id: number) => {
-  console.log(`Modify button clicked for row with id ${id}`);
-  // Add your modify logic here
-};
-
-const handleDeleteClick = (id: number) => {
-  console.log(`Delete button clicked for row with id ${id}`);
-  // Add your delete logic here
-};
-
+let rows: GridRowsProp = [];
 const columns: GridColDef[] = [];
 
-const actionsCol: GridBaseColDef = {
-  field: "actions",
-  type: "actions",
-  headerName: "Acciones",
-  width: 160,
-  renderCell: (params) => (
-    <div>
-      <IconButton
-        aria-label="update"
-        onClick={() => handleModifyClick(params.row.id)}
-      >
-        <EditIcon color="primary" />
-      </IconButton>
-      <IconButton
-        aria-label="delete"
-        onClick={() => handleDeleteClick(params.row.id)}
-      >
-        <DeleteIcon sx={{ color: pink[500] }} />
-      </IconButton>
-    </div>
-  ),
+const initTable = () => {
+  if (columns.length === 0) {
+    console.log("init");
+    for (const field in FormularioFields) {
+      const headerName = field[0].toLocaleUpperCase() + field.substring(1);
+
+      const col: GridBaseColDef = { field, headerName, width: 150 };
+
+      const index = columns.findIndex((val) => val.field === field);
+      if (index === -1) columns.push(col);
+    }
+  }
 };
 
-for (const field in FormularioFields) {
-  const headerName = field[0].toLocaleUpperCase() + field.substring(1);
+// const handleModifyClick = (id: number) => {
+//   console.log(`Modify button clicked for row with id ${id}`);
+//   // Add your modify logic here
+// };
 
-  const col: GridBaseColDef = { field, headerName, width: 150 };
+// const handleDeleteClick = (id: number) => {
+//   console.log(`Delete button clicked for row with id ${id}`);
+//   // Add your delete logic here
+// };
 
-  columns.push(col);
-}
+// const actionsCol: GridBaseColDef = {
+//   field: "actions",
+//   type: "actions",
+//   headerName: "Acciones",
+//   width: 160,
+//   renderCell: (params) => (
+//     <div>
+//       <IconButton
+//         aria-label="update"
+//         onClick={() => handleModifyClick(params.row.id)}
+//       >
+//         <EditIcon color="primary" />
+//       </IconButton>
+//       <IconButton
+//         aria-label="delete"
+//         onClick={() => handleDeleteClick(params.row.id)}
+//       >
+//         <DeleteIcon sx={{ color: pink[500] }} />
+//       </IconButton>
+//     </div>
+//   ),
+// };
 
-columns.push(actionsCol);
+// for (const field in FormularioFields) {
+//   const headerName = field[0].toLocaleUpperCase() + field.substring(1);
 
-console.log(columns);
+//   const col: GridBaseColDef = { field, headerName, width: 150 };
+
+//   columns.push(col);
+// }
+// columns.push(actionsCol);
+//console.log(columns);
 
 const TableAdmin = () => {
+  const [ignore, setIgnore] = useState(-1);
+  const { verifyAccessToken } = useContext(UserContext);
+  const { getFormularios, formularios } = useContext(FormularioContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setIgnore(1);
+  }, []);
+
+  const handleModifyClick = (id: number) => {
+    console.log(`Modify button clicked for row with id ${id}`);
+    navigate(`formulario/upd/${id}`);
+    // Add your modify logic here
+  };
+
+  const handleDeleteClick = (id: number) => {
+    console.log(`Delete button clicked for row with id ${id}`);
+    navigate(`formulario/del/${id}`);
+    // Add your delete logic here
+  };
+
+  const actionsCol: GridBaseColDef = {
+    field: "actions",
+    type: "actions",
+    headerName: "Acciones",
+    width: 160,
+    renderCell: (params) => (
+      <div>
+        <IconButton
+          aria-label="update"
+          onClick={() => handleModifyClick(params.row.id)}
+        >
+          <EditIcon color="primary" />
+        </IconButton>
+        <IconButton
+          aria-label="delete"
+          onClick={() => handleDeleteClick(params.row.id)}
+        >
+          <DeleteIcon sx={{ color: pink[500] }} />
+        </IconButton>
+      </div>
+    ),
+  };
+
+  initTable();
+
+  const index = columns.findIndex((val) => val.field === "actions");
+  if (index === -1) columns.push(actionsCol);
+  else {
+    columns[index] = actionsCol;
+  }
+
+  // if (columns.length > 0) {
+  //   const index = columns.findIndex((val) => {
+  //     if (val.field === "actions") console.log(val);
+  //   });
+  //   console.log(index);
+  //   columns[index] = actionsCol;
+  // } else {
+  //   initTable();
+  // }
+
+  useEffect(() => {
+    if (ignore == 1) {
+      verifyAccessToken && verifyAccessToken();
+      console.log("ok");
+    }
+  }, [ignore]);
+
+  useEffect(() => {
+    if (!formularios) {
+      getFormularios && getFormularios();
+    } else {
+      rows = [...formularios];
+    }
+  }, [formularios]);
 
   return (
     <div>

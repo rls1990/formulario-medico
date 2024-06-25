@@ -1,5 +1,12 @@
+import { useParams } from "react-router-dom";
+
 const ModificarFormulario = () => {
-  return <div></div>;
+  const { id } = useParams();
+  return (
+    <div className="admin-container">
+      <h3>Modificar Formulario Id: {id}</h3>
+    </div>
+  );
 };
 
 export default ModificarFormulario;

@@ -4,6 +4,7 @@ import TableAdmin from "./TableAdmin";
 import ModificarFormulario from "./ModificarFormulario";
 import EliminarFormulario from "./EliminarFormulario";
 import { FormularioProvider } from "../../context/formularioContext/FormularioContext";
+import "./Admin.css";
 
 const Admin = () => {
   return (

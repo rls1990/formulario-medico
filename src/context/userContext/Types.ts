@@ -18,6 +18,7 @@ export interface ContextPropsRes {
   login?: ((data: User) => void) | null;
   logout?: (() => void) | null;
   register: ((data: User) => void) | null;
+  verifyAccessToken?: (() => void) | null;
 }
 
 export interface UserContextProps {
@@ -38,6 +39,7 @@ export const initialData: ContextPropsRes = {
   login: null,
   logout: null,
   register: null,
+  verifyAccessToken: null,
 };
 
 export const initialDateToEdit: User = {
