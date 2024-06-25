@@ -714,57 +714,110 @@ const Formulario = () => {
           </Grid>
         </CustomTabPanel>
 
+        <CustomTabPanel value={valueTab} index={5}>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Item>
+                <TextField id="primer_apellido" label="Primer Apellido" />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField id="segundo_apellido" label="Segundo Apellido" />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField
+                  id="nombre_del_paciente"
+                  label="Nombre del Paciente"
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="sexo"
+                  label="Sexo"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Masculino"
+                >
+                  <MenuItem value="Masculino">Masculino</MenuItem>
+                  <MenuItem value="Femenino">Fememnino</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldNumber
+                  id="edad"
+                  label="Edad"
+                  type="number"
+                  sx={{ mb: 3, width: 300 }}
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldSelect
+                  id="color_de_piel"
+                  label="Color de la Piel"
+                  select
+                  onChange={onChangeSelect}
+                  sx={{ mb: 3, width: 300 }}
+                  defaultValue="Blanca"
+                >
+                  <MenuItem value="Blanca">Blanca</MenuItem>
+                  <MenuItem value="Negra">Negra</MenuItem>
+                  <MenuItem value="Mestiza">Mestiza</MenuItem>
+                </TextFieldSelect>
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextField id="carne_de_identidad" label="Carné de Identidad" />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <TextFieldNumber
+                  id="historia_clinica_numero"
+                  label="Historia Clínica Número"
+                  type="number"
+                  sx={{ mb: 3, width: 300 }}
+                />
+              </Item>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Item>
+                <LocalizationProvider
+                  dateAdapter={AdapterDayjs}
+                  adapterLocale="es"
+                >
+                  <DatePicker
+                    name="fecha_de_inscripcion"
+                    label="Fecha de Inscripción"
+                    value={fecha_de_inscripcion}
+                    onChange={handleChange_fecha_de_inscripcion}
+                    sx={{ mb: 3, width: 300 }}
+                  />
+                </LocalizationProvider>
+              </Item>
+            </Grid>
+          </Grid>
+        </CustomTabPanel>
+
         <CustomTabPanel value={valueTab} index={6}>
-          <TextField id="primer_apellido" label="Primer Apellido" />
-          <TextField id="segundo_apellido" label="Segundo Apellido" />
-          <TextField id="nombre_del_paciente" label="Nombre del Paciente" />
-          <TextFieldSelect
-            id="sexo"
-            label="Sexo"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Masculino"
-            //value="No remitido"
-          >
-            <MenuItem value="Masculino">Masculino</MenuItem>
-            <MenuItem value="Femenino">Fememnino</MenuItem>
-          </TextFieldSelect>
-          <TextFieldNumber
-            id="edad"
-            label="Edad"
-            type="number"
-            sx={{ mb: 3, width: 300 }}
-          />
-          <TextFieldSelect
-            id="color_de_piel"
-            label="Color de la Piel"
-            select
-            onChange={onChangeSelect}
-            sx={{ mb: 3, width: 300 }}
-            defaultValue="Blanca"
-            //value="No remitido"
-          >
-            <MenuItem value="Blanca">Blanca</MenuItem>
-            <MenuItem value="Negra">Negra</MenuItem>
-            <MenuItem value="Mestiza">Mestiza</MenuItem>
-          </TextFieldSelect>
-          <TextField id="carne_de_identidad" label="Carné de Identidad" />
-          <TextFieldNumber
-            id="historia_clinica_numero"
-            label="Historia Clínica Número"
-            type="number"
-            sx={{ mb: 3, width: 300 }}
-          />
-          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
-            <DatePicker
-              name="fecha_de_inscripcion"
-              label="Fecha de Inscripción"
-              value={fecha_de_inscripcion}
-              onChange={handleChange_fecha_de_inscripcion}
-              sx={{ mb: 3, width: 300 }}
-            />
-          </LocalizationProvider>
           <TextFieldNumber
             label="Creatinina"
             name="numberformat"
@@ -874,9 +927,8 @@ const Formulario = () => {
             <MenuItem value="Positivo">Positivo</MenuItem>
             <MenuItem value="Negativo">Negativo</MenuItem>
           </TextFieldSelect>
-          //---------------------------------
         </CustomTabPanel>
-        <CustomTabPanel value={valueTab} index={3}>
+        <CustomTabPanel value={valueTab} index={8}>
           <TextFieldNumber
             id="biopsia_numero"
             label="Biopsia Número"
