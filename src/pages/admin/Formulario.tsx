@@ -258,6 +258,19 @@ const Formulario = () => {
     : formik.touched.nombre_del_paciente
     ? "success"
     : "primary";
+
+  const colorEdad = formik.errors.edad
+    ? "error"
+    : formik.touched.edad
+    ? "success"
+    : "primary";
+
+  const colorHistoria_clinica_numero = formik.errors.edad
+    ? "error"
+    : formik.touched.edad
+    ? "success"
+    : "primary";
+
   return (
     <div>
       <h3>Formulario</h3>
@@ -868,6 +881,10 @@ const Formulario = () => {
                   label="Edad"
                   type="number"
                   sx={{ mb: 3, width: 300 }}
+                  color={colorEdad}
+                  {...formik.getFieldProps("edad")}
+                  error={formik.touched.edad && Boolean(formik.errors.edad)}
+                  helperText={formik.touched.edad && formik.errors.edad}
                 />
               </Item>
             </Grid>
@@ -900,8 +917,18 @@ const Formulario = () => {
                 <TextFieldNumber
                   id="historia_clinica_numero"
                   label="Historia Clínica Número"
-                  type="number"
+                  inputProps={{ inputMode: "numeric" }}
                   sx={{ mb: 3, width: 300 }}
+                  color={colorHistoria_clinica_numero}
+                  {...formik.getFieldProps("historia_clinica_numero")}
+                  error={
+                    formik.touched.historia_clinica_numero &&
+                    Boolean(formik.errors.historia_clinica_numero)
+                  }
+                  helperText={
+                    formik.touched.historia_clinica_numero &&
+                    formik.errors.historia_clinica_numero
+                  }
                 />
               </Item>
             </Grid>

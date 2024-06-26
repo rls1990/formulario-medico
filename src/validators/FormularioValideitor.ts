@@ -43,6 +43,15 @@ export const validationSchema = yup.object({
       /^[A-Z][a-zÁÉÍÓÚÜÑa-áéíóúüñ]+$/,
       'El segundo apellido debe comenzar con una letra mayúscula y contener solo letras'
     ),
+
+    edad:yup.number().required("Este valor es requerido")
+  .min(0,"La edad no puede ser menor que 0"),
+
+  historia_clinica_numero:yup.number()
+  // .required("Este valor es requerido")
+  // .min(1,"Valor no admitido"),
+  .required('El número es requerido')
+
     // remision: yup
     // .string().oneOf(["fgf",""])
     // .required("EL nombre de usuario es requerido"),
