@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -15,26 +16,18 @@ import {
   Switch,
   TextField as TextFieldSelect,
   TextField as TextFieldNumber,
-  FormControl,
-  InputLabel,
-  Input,
-  TextareaAutosize,
 } from "@mui/material";
 import { FormularioFormValues } from "./Types";
 import { useFormik } from "formik";
 import { initialValues } from "./Types";
 import { validationSchema } from "../../validators/FormularioValideitor";
 import { IconEdnUserName, IconStartUserName } from "../login/HelpersForm";
-import {
-  NumericFormatCustom,
-  TextMaskCustom,
-} from "../../components/mui/text_fields/input/number/FormattedInputs";
+import { NumericFormatCustom } from "../../components/mui/text_fields/input/number/FormattedInputs";
 import { TextField as TextArea } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 interface TabPanelProps {
