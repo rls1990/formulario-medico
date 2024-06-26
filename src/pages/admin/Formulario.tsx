@@ -229,6 +229,35 @@ const Formulario = () => {
     ? "success"
     : "primary";
 
+  const colorPrimerSintoma = formik.errors.primer_sintoma
+    ? "error"
+    : formik.touched.primer_sintoma
+    ? "success"
+    : "primary";
+
+  const colorTamanno_de_la_lesion = formik.errors.tamanno_de_la_lesion
+    ? "error"
+    : formik.touched.tamanno_de_la_lesion
+    ? "success"
+    : "primary";
+
+  const colorPrimer_apellido = formik.errors.primer_apellido
+    ? "error"
+    : formik.touched.primer_apellido
+    ? "success"
+    : "primary";
+
+  const colorSegundo_apellido = formik.errors.segundo_apellido
+    ? "error"
+    : formik.touched.segundo_apellido
+    ? "success"
+    : "primary";
+
+  const colorNombre_del_paciente = formik.errors.nombre_del_paciente
+    ? "error"
+    : formik.touched.nombre_del_paciente
+    ? "success"
+    : "primary";
   return (
     <div>
       <h3>Formulario</h3>
@@ -379,7 +408,20 @@ const Formulario = () => {
 
             <Grid item xs={6}>
               <Item>
-                <TextField id="primer_sintoma" label="Primer Síntoma" />
+                <TextField
+                  id="primer_sintoma"
+                  label="Primer Síntoma"
+                  color={colorPrimerSintoma}
+                  {...formik.getFieldProps("primer_sintoma")}
+                  error={
+                    formik.touched.primer_sintoma &&
+                    Boolean(formik.errors.primer_sintoma)
+                  }
+                  helperText={
+                    formik.touched.primer_sintoma &&
+                    formik.errors.primer_sintoma
+                  }
+                />
               </Item>
             </Grid>
 
@@ -529,6 +571,16 @@ const Formulario = () => {
                   label="Tamaño de la Lesión"
                   type="number"
                   sx={{ mb: 3, width: 300 }}
+                  color={colorTamanno_de_la_lesion}
+                  {...formik.getFieldProps("tamanno_de_la_lesion")}
+                  error={
+                    formik.touched.tamanno_de_la_lesion &&
+                    Boolean(formik.errors.tamanno_de_la_lesion)
+                  }
+                  helperText={
+                    formik.touched.tamanno_de_la_lesion &&
+                    formik.errors.tamanno_de_la_lesion
+                  }
                 />
               </Item>
             </Grid>
@@ -737,13 +789,40 @@ const Formulario = () => {
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <Item>
-                <TextField id="primer_apellido" label="Primer Apellido" />
+                <TextField
+                  id="primer_apellido"
+                  label="Primer Apellido"
+                  // sx={{ mb: 3, width: 300 }}
+                  color={colorPrimer_apellido}
+                  {...formik.getFieldProps("primer_apellido")}
+                  error={
+                    formik.touched.primer_apellido &&
+                    Boolean(formik.errors.primer_apellido)
+                  }
+                  helperText={
+                    formik.touched.primer_apellido &&
+                    formik.errors.primer_apellido
+                  }
+                />
               </Item>
             </Grid>
 
             <Grid item xs={6}>
               <Item>
-                <TextField id="segundo_apellido" label="Segundo Apellido" />
+                <TextField
+                  id="segundo_apellido"
+                  label="Segundo Apellido"
+                  color={colorSegundo_apellido}
+                  {...formik.getFieldProps("segundo_apellido")}
+                  error={
+                    formik.touched.segundo_apellido &&
+                    Boolean(formik.errors.segundo_apellido)
+                  }
+                  helperText={
+                    formik.touched.segundo_apellido &&
+                    formik.errors.segundo_apellido
+                  }
+                />
               </Item>
             </Grid>
 
@@ -752,6 +831,16 @@ const Formulario = () => {
                 <TextField
                   id="nombre_del_paciente"
                   label="Nombre del Paciente"
+                  color={colorNombre_del_paciente}
+                  {...formik.getFieldProps("nombre_del_paciente")}
+                  error={
+                    formik.touched.nombre_del_paciente &&
+                    Boolean(formik.errors.nombre_del_paciente)
+                  }
+                  helperText={
+                    formik.touched.nombre_del_paciente &&
+                    formik.errors.nombre_del_paciente
+                  }
                 />
               </Item>
             </Grid>
