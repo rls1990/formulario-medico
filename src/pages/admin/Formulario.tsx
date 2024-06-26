@@ -1689,6 +1689,7 @@ const Formulario = () => {
                 <FormControlLabel
                   id="inclusion_en_ec"
                   control={<Switch defaultChecked />}
+                  {...formik.getFieldProps("inclusion_en_ec")}
                   label="Inclusión en EC"
                 />
               </Item>
@@ -1696,9 +1697,23 @@ const Formulario = () => {
 
             <Grid item xs={6}>
               <Item>
-                <TextField
+                <TextFieldMUI
                   id="en_caso_de_si"
                   label="En caso de ser sí; cuál es el código"
+                  disabled={!formik.values.inclusion_en_ec}
+                  {...formik.getFieldProps("en_caso_de_si")}
+                  error={
+                    formik.touched.inclusion_en_ec &&
+                    formik.values.inclusion_en_ec
+                      ? Boolean(formik.errors.en_caso_de_si)
+                      : false
+                  }
+                  helperText={
+                    formik.touched.inclusion_en_ec &&
+                    formik.values.inclusion_en_ec
+                      ? formik.errors.en_caso_de_si
+                      : ""
+                  }
                 />
               </Item>
             </Grid>
@@ -1757,6 +1772,7 @@ const Formulario = () => {
                     value={fecha_del_tratamiento_quirurgico}
                     onChange={handleChange_fecha_del_tratamiento_quirurgico}
                     sx={{ mb: 3, width: 300 }}
+                    disabled={!formik.values.tratamiento_quirurgico}
                   />
                 </LocalizationProvider>
               </Item>
@@ -1767,6 +1783,7 @@ const Formulario = () => {
                 <FormControlLabel
                   id="tratamiento_radioterapia"
                   control={<Switch defaultChecked />}
+                  {...formik.getFieldProps("tratamiento_radioterapia")}
                   label="Se Realizó Tratamiento radioterapéutico"
                 />
               </Item>
@@ -1774,9 +1791,23 @@ const Formulario = () => {
 
             <Grid item xs={6}>
               <Item>
-                <TextField
+                <TextFieldMUI
                   id="tipo_de_tratamiento_radioterap"
                   label="Qué Tipo de Tratamiento Radioterapéutico se Utilizó"
+                  disabled={!formik.values.tratamiento_radioterapia}
+                  {...formik.getFieldProps("tipo_de_tratamiento_radioterap")}
+                  error={
+                    formik.touched.tratamiento_radioterapia &&
+                    formik.values.tratamiento_radioterapia
+                      ? Boolean(formik.errors.tipo_de_tratamiento_radioterap)
+                      : false
+                  }
+                  helperText={
+                    formik.touched.tratamiento_radioterapia &&
+                    formik.values.tratamiento_radioterapia
+                      ? formik.errors.tipo_de_tratamiento_radioterap
+                      : ""
+                  }
                 />
               </Item>
             </Grid>
@@ -1795,6 +1826,7 @@ const Formulario = () => {
                       handleChange_fecha_del_inicio_del_tratamiento_radioterapeutico
                     }
                     sx={{ mb: 3, width: 300 }}
+                    disabled={!formik.values.tratamiento_radioterapia}
                   />
                 </LocalizationProvider>
               </Item>
@@ -1814,6 +1846,7 @@ const Formulario = () => {
                       handleChange_fecha_del_final_del_tratamiento_radioterapeutico
                     }
                     sx={{ mb: 3, width: 300 }}
+                    disabled={!formik.values.tratamiento_radioterapia}
                   />
                 </LocalizationProvider>
               </Item>
@@ -1823,13 +1856,27 @@ const Formulario = () => {
               <Item>
                 <TextFieldNumber
                   label="Cuál fue la Dosis Total Utilizada"
-                  name="numberformat"
+                  //name="numberformat"
                   id="dosis_total"
                   InputProps={{
                     inputComponent: NumericFormatCustom as any,
                   }}
                   variant="outlined"
                   sx={{ mb: 3, width: 300 }}
+                  disabled={!formik.values.tratamiento_radioterapia}
+                  {...formik.getFieldProps("dosis_total")}
+                  error={
+                    formik.touched.tratamiento_radioterapia &&
+                    formik.values.tratamiento_radioterapia
+                      ? Boolean(formik.errors.dosis_total)
+                      : false
+                  }
+                  helperText={
+                    formik.touched.tratamiento_radioterapia &&
+                    formik.values.tratamiento_radioterapia
+                      ? formik.errors.dosis_total
+                      : ""
+                  }
                 />
               </Item>
             </Grid>
@@ -1838,13 +1885,27 @@ const Formulario = () => {
               <Item>
                 <TextFieldNumber
                   label="GY Fracción"
-                  name="numberformat"
+                  //  name="numberformat"
                   id="gy_fraccion"
                   InputProps={{
                     inputComponent: NumericFormatCustom as any,
                   }}
                   variant="outlined"
                   sx={{ mb: 3, width: 300 }}
+                  disabled={!formik.values.tratamiento_radioterapia}
+                  {...formik.getFieldProps("gy_fraccion")}
+                  error={
+                    formik.touched.tratamiento_radioterapia &&
+                    formik.values.tratamiento_radioterapia
+                      ? Boolean(formik.errors.gy_fraccion)
+                      : false
+                  }
+                  helperText={
+                    formik.touched.tratamiento_radioterapia &&
+                    formik.values.tratamiento_radioterapia
+                      ? formik.errors.gy_fraccion
+                      : ""
+                  }
                 />
               </Item>
             </Grid>
@@ -1854,6 +1915,7 @@ const Formulario = () => {
                 <FormControlLabel
                   id="tratamiento_quimioterapia"
                   control={<Switch defaultChecked />}
+                  {...formik.getFieldProps("tratamiento_quimioterapia")}
                   label="Se Realizó Tratamiento Quimioterapéutico"
                 />
               </Item>
@@ -1861,9 +1923,23 @@ const Formulario = () => {
 
             <Grid item xs={6}>
               <Item>
-                <TextField
+                <TextFieldMUI
                   id="esquema_tratamiento"
                   label="Esquema del tratamiento"
+                  disabled={!formik.values.tratamiento_quimioterapia}
+                  {...formik.getFieldProps("esquema_tratamiento")}
+                  error={
+                    formik.touched.tratamiento_quimioterapia &&
+                    formik.values.tratamiento_quimioterapia
+                      ? Boolean(formik.errors.esquema_tratamiento)
+                      : false
+                  }
+                  helperText={
+                    formik.touched.tratamiento_quimioterapia &&
+                    formik.values.tratamiento_quimioterapia
+                      ? formik.errors.esquema_tratamiento
+                      : ""
+                  }
                 />
               </Item>
             </Grid>
@@ -1875,6 +1951,20 @@ const Formulario = () => {
                   label="Número de Ciclos"
                   type="number"
                   sx={{ mb: 3, width: 300 }}
+                  disabled={!formik.values.tratamiento_quimioterapia}
+                  {...formik.getFieldProps("numero_de_ciclos")}
+                  error={
+                    formik.touched.tratamiento_quimioterapia &&
+                    formik.values.tratamiento_quimioterapia
+                      ? Boolean(formik.errors.numero_de_ciclos)
+                      : false
+                  }
+                  helperText={
+                    formik.touched.tratamiento_quimioterapia &&
+                    formik.values.tratamiento_quimioterapia
+                      ? formik.errors.numero_de_ciclos
+                      : ""
+                  }
                 />
               </Item>
             </Grid>
@@ -1893,6 +1983,7 @@ const Formulario = () => {
                       handleChange_fecha_del_inicio_del_tratamiento_quimioterapeutico
                     }
                     sx={{ mb: 3, width: 300 }}
+                    disabled={!formik.values.tratamiento_quimioterapia}
                   />
                 </LocalizationProvider>
               </Item>
@@ -1912,6 +2003,7 @@ const Formulario = () => {
                       handleChange_fecha_del_final_del_tratamiento_quimioterapeutico
                     }
                     sx={{ mb: 3, width: 300 }}
+                    disabled={!formik.values.tratamiento_quimioterapia}
                   />
                 </LocalizationProvider>
               </Item>
@@ -1922,6 +2014,7 @@ const Formulario = () => {
                 <FormControlLabel
                   id="otro_tratamiento"
                   control={<Switch defaultChecked />}
+                  {...formik.getFieldProps("otro_tratamiento")}
                   label="Se Realizó Otro Tratamiento"
                 />
               </Item>
@@ -1929,7 +2022,24 @@ const Formulario = () => {
 
             <Grid item xs={6}>
               <Item>
-                <TextField id="cual_tratamiento" label="Cuál" />
+                <TextFieldMUI
+                  id="cual_tratamiento"
+                  label="Cuál"
+                  disabled={!formik.values.otro_tratamiento}
+                  {...formik.getFieldProps("cual_tratamiento")}
+                  error={
+                    formik.touched.otro_tratamiento &&
+                    formik.values.otro_tratamiento
+                      ? Boolean(formik.errors.cual_tratamiento)
+                      : false
+                  }
+                  helperText={
+                    formik.touched.otro_tratamiento &&
+                    formik.values.otro_tratamiento
+                      ? formik.errors.cual_tratamiento
+                      : ""
+                  }
+                />
               </Item>
             </Grid>
 
@@ -1945,6 +2055,7 @@ const Formulario = () => {
                     value={fecha_del_inicio_del_tratamiento}
                     onChange={handleChange_fecha_del_inicio_del_tratamiento}
                     sx={{ mb: 3, width: 300 }}
+                    disabled={!formik.values.otro_tratamiento}
                   />
                 </LocalizationProvider>
               </Item>
@@ -1962,6 +2073,7 @@ const Formulario = () => {
                     value={fecha_del_final_del_tratamiento}
                     onChange={handleChange_fecha_del_final_del_tratamiento}
                     sx={{ mb: 3, width: 300 }}
+                    disabled={!formik.values.otro_tratamiento}
                   />
                 </LocalizationProvider>
               </Item>

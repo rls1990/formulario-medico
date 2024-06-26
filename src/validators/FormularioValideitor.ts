@@ -132,7 +132,32 @@ export const validationSchema = yup.object({
     .required("El campo es requerido")
     .matches(/^[^\s]+$/, "El texto no debe contener espacios")
     .min(5, "Complete los caracteres del registro profesional"),
-  tipo_de_cirugia: yup.string().required("Este campo es requerido"),
+  
+    tipo_de_cirugia: yup.string().required("Este campo es requerido"),
+
+    tipo_de_tratamiento_radioterap: yup.string().required("Este campo es requerido"),
+
+    dosis_total: yup
+    .number()
+    .required("Este valor es requerido")
+    .min(0, "El valor debe ser mayor o igual que cero"), 
+
+    gy_fraccion: yup
+    .number()
+    .required("Este valor es requerido")
+    .min(0, "El valor debe ser mayor o igual que cero"), 
+
+    esquema_tratamiento: yup.string().required("Este campo es requerido"),
+
+    numero_de_ciclos: yup
+    .number()
+    .integer("El número no debe contener coma")
+    .required("Este valor es requerido")
+    .min(1, "Debe ser mayor que 0"),
+
+    cual_tratamiento: yup.string().required("Este campo es requerido"),
+
+    en_caso_de_si: yup.string().required("Este campo es requerido"),
   // remision: yup
   // .string().oneOf(["fgf",""])
   // .required("EL nombre de usuario es requerido"),
