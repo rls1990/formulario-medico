@@ -1642,9 +1642,18 @@ const Formulario = () => {
                   id="en_otro_centro"
                   label="En Otro Centro"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="No"
+                  {...formik.getFieldProps("en_otro_centro")}
+                  error={
+                    formik.touched.en_otro_centro &&
+                    Boolean(formik.errors.en_otro_centro)
+                  }
+                  helperText={
+                    formik.touched.en_otro_centro &&
+                    formik.errors.en_otro_centro
+                  }
                 >
                   <MenuItem value="No">No</MenuItem>
                   <MenuItem value="Parcial">Parcial</MenuItem>
