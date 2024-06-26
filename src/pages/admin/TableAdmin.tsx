@@ -18,59 +18,20 @@ const columns: GridColDef[] = [];
 const initTable = () => {
   if (columns.length === 0) {
     console.log("init");
+    let count: number = 6;
+
     for (const field in FormularioFields) {
-      const headerName = field[0].toLocaleUpperCase() + field.substring(1);
+      if (count-- > 0) {
+        const headerName = field[0].toLocaleUpperCase() + field.substring(1);
 
-      const col: GridBaseColDef = { field, headerName, width: 150 };
+        const col: GridBaseColDef = { field, headerName, width: 150 };
 
-      const index = columns.findIndex((val) => val.field === field);
-      if (index === -1) columns.push(col);
+        const index = columns.findIndex((val) => val.field === field);
+        if (index === -1) columns.push(col);
+      }
     }
   }
 };
-
-// const handleModifyClick = (id: number) => {
-//   console.log(`Modify button clicked for row with id ${id}`);
-//   // Add your modify logic here
-// };
-
-// const handleDeleteClick = (id: number) => {
-//   console.log(`Delete button clicked for row with id ${id}`);
-//   // Add your delete logic here
-// };
-
-// const actionsCol: GridBaseColDef = {
-//   field: "actions",
-//   type: "actions",
-//   headerName: "Acciones",
-//   width: 160,
-//   renderCell: (params) => (
-//     <div>
-//       <IconButton
-//         aria-label="update"
-//         onClick={() => handleModifyClick(params.row.id)}
-//       >
-//         <EditIcon color="primary" />
-//       </IconButton>
-//       <IconButton
-//         aria-label="delete"
-//         onClick={() => handleDeleteClick(params.row.id)}
-//       >
-//         <DeleteIcon sx={{ color: pink[500] }} />
-//       </IconButton>
-//     </div>
-//   ),
-// };
-
-// for (const field in FormularioFields) {
-//   const headerName = field[0].toLocaleUpperCase() + field.substring(1);
-
-//   const col: GridBaseColDef = { field, headerName, width: 150 };
-
-//   columns.push(col);
-// }
-// columns.push(actionsCol);
-//console.log(columns);
 
 const TableAdmin = () => {
   const [ignore, setIgnore] = useState(-1);
