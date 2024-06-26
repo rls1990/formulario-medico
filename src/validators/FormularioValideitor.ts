@@ -20,7 +20,8 @@ export const validationSchema = yup.object({
     .string()
     .min(5, "Requiere más de 5 carcteres")
     .required("El nombre es requerido"),
-  otros_sintomas: yup.string(),
+  
+    otros_sintomas: yup.string(),
 
   primer_sintoma: yup
     .string()
@@ -145,10 +146,14 @@ export const validationSchema = yup.object({
       "El nombre debe comenzar con una letra mayúscula y contener solo letras"
     ),
 
-    registro_profesional: yup
-    .string()
-    .required("Este campo es requerido")
-    .min(5, "Complete los caracteres del registro profesional"),
+    registro_profesional: yup.string()
+    .required('El campo es requerido')
+    .matches(
+      /^[^\s]+$/,
+      'El texto no debe contener espacios')
+      .min(5, "Complete los caracteres del registro profesional")
+    ,
+
 
   // remision: yup
   // .string().oneOf(["fgf",""])
