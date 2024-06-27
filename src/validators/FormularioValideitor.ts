@@ -96,7 +96,7 @@ export const validationSchema = yup.object({
     .number()
     .integer("El número no debe contener coma")
     .required("Este valor es requerido")
-    .min(0, "No puede ser menor que 0"),
+    .min(1, "No puede ser menor que 0"),
 
   diagnostico_topografico: yup.string().required("Este campo es requerido"),
 
@@ -131,7 +131,7 @@ export const validationSchema = yup.object({
     .string()
     .required("El campo es requerido")
     .matches(/^[^\s]+$/, "El texto no debe contener espacios")
-    .min(5, "Complete los caracteres del registro profesional"),
+    .max(4, "Complete los caracteres del registro profesional"),
   
     tipo_de_cirugia: yup.string().required("Este campo es requerido"),
 

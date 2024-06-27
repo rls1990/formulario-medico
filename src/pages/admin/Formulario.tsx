@@ -1924,7 +1924,7 @@ const Formulario = () => {
                   select
                   // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
-                  defaultValue="Desconocida"
+                  defaultValue="Desconocido"
                   {...formik.getFieldProps("extension_clinica")}
                   error={
                     formik.touched.extension_clinica &&
@@ -1935,7 +1935,7 @@ const Formulario = () => {
                     formik.errors.extension_clinica
                   }
                 >
-                  <MenuItem value="Desconocida">Desconocida</MenuItem>
+                  <MenuItem value="Desconocido">Desconocido</MenuItem>
                   <MenuItem value="In situ">In situ</MenuItem>
                   <MenuItem value="Ext. directa y linf. regionales">
                     Ext. directa y linf. regionales
