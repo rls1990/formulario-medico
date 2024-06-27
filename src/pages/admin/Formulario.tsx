@@ -424,7 +424,7 @@ const Formulario = () => {
                 >
                   <DatePicker
                     name="fecha"
-                    label="Selecciona una fecha"
+                    label="Fechade creación del formulario"
                     value={fecha}
                     onChange={handleChange}
                     sx={{ mb: 3, width: 300 }}
@@ -443,9 +443,14 @@ const Formulario = () => {
                   id="remision"
                   label="Remision"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="No remitido"
+                  {...formik.getFieldProps("remision")}
+                  error={
+                    formik.touched.remision && Boolean(formik.errors.remision)
+                  }
+                  helperText={formik.touched.remision && formik.errors.remision}
                 >
                   <MenuItem value="No remitido">No remitido</MenuItem>
                   <MenuItem value="Atención primaria">
@@ -467,6 +472,15 @@ const Formulario = () => {
                   id="historia_clinica"
                   control={<Switch defaultChecked />}
                   label="Historia Clínica"
+                  {...formik.getFieldProps("historia_clinica")}
+                  // error={
+                  //   formik.touched.historia_clinica &&
+                  //   Boolean(formik.errors.historia_clinica)
+                  // }
+                  // helperText={
+                  //   formik.touched.historia_clinica &&
+                  //   formik.errors.historia_clinica
+                  // }
                 />
               </Item>
             </Grid>
@@ -484,6 +498,14 @@ const Formulario = () => {
                   onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Aparición de lesión"
+                  error={
+                    formik.touched.motivo_consulta &&
+                    Boolean(formik.errors.motivo_consulta)
+                  }
+                  helperText={
+                    formik.touched.motivo_consulta &&
+                    formik.errors.motivo_consulta
+                  }
                 >
                   <MenuItem value="Aparición de lesión">
                     Aparición de lesión
@@ -511,6 +533,15 @@ const Formulario = () => {
                   multiline
                   maxRows={4}
                   sx={{ mb: 3, width: 300 }}
+                  {...formik.getFieldProps("otros_sintomas")}
+                  error={
+                    formik.touched.otros_sintomas &&
+                    Boolean(formik.errors.otros_sintomas)
+                  }
+                  helperText={
+                    formik.touched.otros_sintomas &&
+                    formik.errors.otros_sintomas
+                  }
                 />
               </Item>
             </Grid>
@@ -540,9 +571,18 @@ const Formulario = () => {
                   id="tiempo_de_aparicion"
                   label="Tiempo de Aparición"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Días"
+                  {...formik.getFieldProps("tiempo_de_aparicion")}
+                  error={
+                    formik.touched.tiempo_de_aparicion &&
+                    Boolean(formik.errors.tiempo_de_aparicion)
+                  }
+                  helperText={
+                    formik.touched.tiempo_de_aparicion &&
+                    formik.errors.tiempo_de_aparicion
+                  }
                 >
                   <MenuItem value="Días">Días</MenuItem>
                   <MenuItem value="Meses">Meses</MenuItem>
@@ -561,9 +601,18 @@ const Formulario = () => {
                   id="personales_de_riesgo"
                   label="Personales de Riesgo"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Ninguno"
+                  {...formik.getFieldProps("personales_de_riesgo")}
+                  error={
+                    formik.touched.personales_de_riesgo &&
+                    Boolean(formik.errors.personales_de_riesgo)
+                  }
+                  helperText={
+                    formik.touched.personales_de_riesgo &&
+                    formik.errors.personales_de_riesgo
+                  }
                 >
                   <MenuItem value="Ninguno">Ninguno</MenuItem>
                   <MenuItem value="Tabaquismo">Tabaquismo</MenuItem>
@@ -590,9 +639,18 @@ const Formulario = () => {
                   id="personales_patologicos"
                   label="Personales Patológicos"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Ninguno"
+                  {...formik.getFieldProps("personales_patologicos")}
+                  error={
+                    formik.touched.personales_patologicos &&
+                    Boolean(formik.errors.personales_patologicos)
+                  }
+                  helperText={
+                    formik.touched.personales_patologicos &&
+                    formik.errors.personales_patologicos
+                  }
                 >
                   <MenuItem value="Ninguno">Ninguno</MenuItem>
                   <MenuItem value="Leucoplasias">Leucoplasias</MenuItem>
@@ -617,9 +675,18 @@ const Formulario = () => {
                   id="familiares_con_cancer"
                   label="Familiares con Cáncer"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Desconocido"
+                  {...formik.getFieldProps("familiares_con_cancer")}
+                  error={
+                    formik.touched.familiares_con_cancer &&
+                    Boolean(formik.errors.familiares_con_cancer)
+                  }
+                  helperText={
+                    formik.touched.familiares_con_cancer &&
+                    formik.errors.familiares_con_cancer
+                  }
                 >
                   <MenuItem value="Desconocido">Desconocido</MenuItem>
                   <MenuItem value="Sí">Sí</MenuItem>
@@ -638,9 +705,18 @@ const Formulario = () => {
                   id="caracteristicas_de_la_lesion"
                   label="Características de la Lesión"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Vegetante"
+                  {...formik.getFieldProps("caracteristicas_de_la_lesion")}
+                  error={
+                    formik.touched.caracteristicas_de_la_lesion &&
+                    Boolean(formik.errors.caracteristicas_de_la_lesion)
+                  }
+                  helperText={
+                    formik.touched.caracteristicas_de_la_lesion &&
+                    formik.errors.caracteristicas_de_la_lesion
+                  }
                 >
                   <MenuItem value="Vegetante">Vegetante</MenuItem>
                   <MenuItem value="Infiltrante">Infiltrante</MenuItem>
@@ -662,9 +738,12 @@ const Formulario = () => {
                   id="region"
                   label="Región"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Derecha"
+                  {...formik.getFieldProps("region")}
+                  error={formik.touched.region && Boolean(formik.errors.region)}
+                  helperText={formik.touched.region && formik.errors.region}
                 >
                   <MenuItem value="Derecha">Derecha</MenuItem>
                   <MenuItem value="Central">Central</MenuItem>
@@ -700,9 +779,18 @@ const Formulario = () => {
                   id="localizacion_en_labio"
                   label="Localizacion en Labio"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Labio superior"
+                  {...formik.getFieldProps("localizacion_en_labio")}
+                  error={
+                    formik.touched.localizacion_en_labio &&
+                    Boolean(formik.errors.localizacion_en_labio)
+                  }
+                  helperText={
+                    formik.touched.localizacion_en_labio &&
+                    formik.errors.localizacion_en_labio
+                  }
                 >
                   <MenuItem value="Labio superior">Labio superior</MenuItem>
                   <MenuItem value="Mucosa superior">Mucosa superior</MenuItem>
@@ -721,9 +809,17 @@ const Formulario = () => {
                   id="lengua_movil"
                   label="Lengua Móvil"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Cara central"
+                  {...formik.getFieldProps("lengua_movil")}
+                  error={
+                    formik.touched.lengua_movil &&
+                    Boolean(formik.errors.lengua_movil)
+                  }
+                  helperText={
+                    formik.touched.lengua_movil && formik.errors.lengua_movil
+                  }
                 >
                   <MenuItem value="Cara central">Cara central</MenuItem>
                   <MenuItem value="Cara dorsal">Cara dorsal</MenuItem>
@@ -739,9 +835,17 @@ const Formulario = () => {
                   id="suelo_de_Boca"
                   label="Suelo de Boca"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Parte anterior"
+                  {...formik.getFieldProps("suelo_de_Boca")}
+                  error={
+                    formik.touched.suelo_de_Boca &&
+                    Boolean(formik.errors.suelo_de_Boca)
+                  }
+                  helperText={
+                    formik.touched.suelo_de_Boca && formik.errors.suelo_de_Boca
+                  }
                 >
                   <MenuItem value="Parte anterior">Parte anterior</MenuItem>
                   <MenuItem value="Parte lateral">Parte lateral</MenuItem>
@@ -755,9 +859,12 @@ const Formulario = () => {
                   id="encia"
                   label="Encía"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Superior"
+                  {...formik.getFieldProps("encia")}
+                  error={formik.touched.encia && Boolean(formik.errors.encia)}
+                  helperText={formik.touched.encia && formik.errors.encia}
                 >
                   <MenuItem value="Superior">Superior</MenuItem>
                   <MenuItem value="Inferior">Inferior</MenuItem>
@@ -771,9 +878,18 @@ const Formulario = () => {
                   id="otras_partes_del_a_boca"
                   label="Otras Partes de la Boca"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Carrillo"
+                  {...formik.getFieldProps("otras_partes_del_a_boca")}
+                  error={
+                    formik.touched.otras_partes_del_a_boca &&
+                    Boolean(formik.errors.otras_partes_del_a_boca)
+                  }
+                  helperText={
+                    formik.touched.otras_partes_del_a_boca &&
+                    formik.errors.otras_partes_del_a_boca
+                  }
                 >
                   <MenuItem value="Carrillo">Carrillo</MenuItem>
                   <MenuItem value="Vesíbulo">Vesíbulo</MenuItem>
@@ -791,9 +907,18 @@ const Formulario = () => {
                   id="glandulas_salibales"
                   label="Glándulas Salibales"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Parótida"
+                  {...formik.getFieldProps("glandulas_salibales")}
+                  error={
+                    formik.touched.glandulas_salibales &&
+                    Boolean(formik.errors.glandulas_salibales)
+                  }
+                  helperText={
+                    formik.touched.glandulas_salibales &&
+                    formik.errors.glandulas_salibales
+                  }
                 >
                   <MenuItem value="Parótida">Parótida</MenuItem>
                   <MenuItem value="Sublingual">Sublingual</MenuItem>
@@ -809,9 +934,18 @@ const Formulario = () => {
                   id="ardenopatia_cervical_derecha"
                   label="Ardenopatía cervical derecha"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="No"
+                  {...formik.getFieldProps("ardenopatia_cervical_derecha")}
+                  error={
+                    formik.touched.ardenopatia_cervical_derecha &&
+                    Boolean(formik.errors.ardenopatia_cervical_derecha)
+                  }
+                  helperText={
+                    formik.touched.ardenopatia_cervical_derecha &&
+                    formik.errors.ardenopatia_cervical_derecha
+                  }
                 >
                   <MenuItem value="No">No</MenuItem>
                   <MenuItem value="Nivel I">Nivel I</MenuItem>
@@ -829,9 +963,18 @@ const Formulario = () => {
                   id="ardenopatia_cervical_izquierda"
                   label="Ardenopatía cervical izquierda"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="No"
+                  {...formik.getFieldProps("ardenopatia_cervical_izquierda")}
+                  error={
+                    formik.touched.ardenopatia_cervical_izquierda &&
+                    Boolean(formik.errors.ardenopatia_cervical_izquierda)
+                  }
+                  helperText={
+                    formik.touched.ardenopatia_cervical_izquierda &&
+                    formik.errors.ardenopatia_cervical_izquierda
+                  }
                 >
                   <MenuItem value="No">No</MenuItem>
                   <MenuItem value="Nivel I">Nivel I</MenuItem>
@@ -849,9 +992,18 @@ const Formulario = () => {
                   id="extension_clinica_a"
                   label="Extensión Clínica"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="No"
+                  {...formik.getFieldProps("extension_clinica_a")}
+                  error={
+                    formik.touched.extension_clinica_a &&
+                    Boolean(formik.errors.extension_clinica_a)
+                  }
+                  helperText={
+                    formik.touched.extension_clinica_a &&
+                    formik.errors.extension_clinica_a
+                  }
                 >
                   <MenuItem value="No">No</MenuItem>
                   <MenuItem value="Suelo de boca">Suelo de boca</MenuItem>
@@ -879,9 +1031,18 @@ const Formulario = () => {
                   id="performance_status"
                   label="Performance Status"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="0"
+                  {...formik.getFieldProps("performance_status")}
+                  error={
+                    formik.touched.performance_status &&
+                    Boolean(formik.errors.performance_status)
+                  }
+                  helperText={
+                    formik.touched.performance_status &&
+                    formik.errors.performance_status
+                  }
                 >
                   <MenuItem value="0">0</MenuItem>
                   <MenuItem value="1">1</MenuItem>
@@ -960,9 +1121,12 @@ const Formulario = () => {
                   id="sexo"
                   label="Sexo"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Masculino"
+                  {...formik.getFieldProps("sexo")}
+                  error={formik.touched.sexo && Boolean(formik.errors.sexo)}
+                  helperText={formik.touched.sexo && formik.errors.sexo}
                 >
                   <MenuItem value="Masculino">Masculino</MenuItem>
                   <MenuItem value="Femenino">Fememnino</MenuItem>
@@ -991,9 +1155,17 @@ const Formulario = () => {
                   id="color_de_piel"
                   label="Color de la Piel"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Blanca"
+                  {...formik.getFieldProps("color_de_piel")}
+                  error={
+                    formik.touched.color_de_piel &&
+                    Boolean(formik.errors.color_de_piel)
+                  }
+                  helperText={
+                    formik.touched.color_de_piel && formik.errors.color_de_piel
+                  }
                 >
                   <MenuItem value="Blanca">Blanca</MenuItem>
                   <MenuItem value="Negra">Negra</MenuItem>
@@ -1114,9 +1286,18 @@ const Formulario = () => {
                   id="imagen_rx_torax"
                   label="Imagen RX del Torax"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Ninguno"
+                  {...formik.getFieldProps("imagen_rx_torax")}
+                  error={
+                    formik.touched.imagen_rx_torax &&
+                    Boolean(formik.errors.imagen_rx_torax)
+                  }
+                  helperText={
+                    formik.touched.imagen_rx_torax &&
+                    formik.errors.imagen_rx_torax
+                  }
                 >
                   <MenuItem value="Ninguno">Ninguno</MenuItem>
                   <MenuItem value="Positivo">Positivo</MenuItem>
@@ -1130,9 +1311,18 @@ const Formulario = () => {
                   id="imagen_us_abdomen"
                   label="Imagen US del Abdomen"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Ninguno"
+                  {...formik.getFieldProps("imagen_us_abdomen")}
+                  error={
+                    formik.touched.imagen_us_abdomen &&
+                    Boolean(formik.errors.imagen_us_abdomen)
+                  }
+                  helperText={
+                    formik.touched.imagen_us_abdomen &&
+                    formik.errors.imagen_us_abdomen
+                  }
                 >
                   <MenuItem value="Ninguno">Ninguno</MenuItem>
                   <MenuItem value="Positivo">Positivo</MenuItem>
@@ -1147,9 +1337,18 @@ const Formulario = () => {
                   id="imagen_tac_cavidad_oral"
                   label="Imagen TAC de la Cavidad Oral"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Ninguno"
+                  {...formik.getFieldProps("imagen_tac_cavidad_oral")}
+                  error={
+                    formik.touched.imagen_tac_cavidad_oral &&
+                    Boolean(formik.errors.imagen_tac_cavidad_oral)
+                  }
+                  helperText={
+                    formik.touched.imagen_tac_cavidad_oral &&
+                    formik.errors.imagen_tac_cavidad_oral
+                  }
                 >
                   <MenuItem value="Ninguno">Ninguno</MenuItem>
                   <MenuItem value="Positivo">Positivo</MenuItem>
@@ -1157,15 +1356,25 @@ const Formulario = () => {
                 </TextFieldSelect>
               </Item>
             </Grid>
+
             <Grid item xs={6}>
               <Item>
                 <TextFieldSelect
                   id="otros_tac_faringe"
                   label="Otros TAC Faringe"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Ninguno"
+                  {...formik.getFieldProps("otros_tac_faringe")}
+                  error={
+                    formik.touched.otros_tac_faringe &&
+                    Boolean(formik.errors.otros_tac_faringe)
+                  }
+                  helperText={
+                    formik.touched.otros_tac_faringe &&
+                    formik.errors.otros_tac_faringe
+                  }
                 >
                   <MenuItem value="Ninguno">Ninguno</MenuItem>
                   <MenuItem value="Positivo">Positivo</MenuItem>
@@ -1180,9 +1389,18 @@ const Formulario = () => {
                   id="otros_tac_cuello"
                   label="OtroS TAC Cuello"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Ninguno"
+                  {...formik.getFieldProps("otros_tac_cuello")}
+                  error={
+                    formik.touched.otros_tac_cuello &&
+                    Boolean(formik.errors.otros_tac_cuello)
+                  }
+                  helperText={
+                    formik.touched.otros_tac_cuello &&
+                    formik.errors.otros_tac_cuello
+                  }
                 >
                   <MenuItem value="Ninguno">Ninguno</MenuItem>
                   <MenuItem value="Positivo">Positivo</MenuItem>
@@ -1197,9 +1415,18 @@ const Formulario = () => {
                   id="otros_tac_torax"
                   label="Otros TAC Torax"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Ninguno"
+                  {...formik.getFieldProps("otros_tac_torax")}
+                  error={
+                    formik.touched.otros_tac_torax &&
+                    Boolean(formik.errors.otros_tac_torax)
+                  }
+                  helperText={
+                    formik.touched.otros_tac_torax &&
+                    formik.errors.otros_tac_torax
+                  }
                 >
                   <MenuItem value="Ninguno">Ninguno</MenuItem>
                   <MenuItem value="Positivo">Positivo</MenuItem>
@@ -1213,9 +1440,16 @@ const Formulario = () => {
                   id="otros_rmn"
                   label="Otros RMN"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Ninguno"
+                  {...formik.getFieldProps("otros_rmn")}
+                  error={
+                    formik.touched.otros_rmn && Boolean(formik.errors.otros_rmn)
+                  }
+                  helperText={
+                    formik.touched.otros_rmn && formik.errors.otros_rmn
+                  }
                 >
                   <MenuItem value="Ninguno">Ninguno</MenuItem>
                   <MenuItem value="Positivo">Positivo</MenuItem>
@@ -1225,6 +1459,7 @@ const Formulario = () => {
             </Grid>
           </Grid>
         </CustomTabPanel>
+
         <CustomTabPanel value={valueTab} index={7}>
           <Grid container spacing={2}>
             <Grid item xs={6}>
@@ -1328,9 +1563,20 @@ const Formulario = () => {
                   id="diagnostico_topografico_selecciona"
                   label="Seleccione Diagnóstico Topográfico"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Ninguno"
+                  {...formik.getFieldProps(
+                    "diagnostico_topografico_selecciona"
+                  )}
+                  error={
+                    formik.touched.diagnostico_topografico_selecciona &&
+                    Boolean(formik.errors.diagnostico_topografico_selecciona)
+                  }
+                  helperText={
+                    formik.touched.diagnostico_topografico_selecciona &&
+                    formik.errors.diagnostico_topografico_selecciona
+                  }
                 >
                   <MenuItem value="Ninguno">Ninguno</MenuItem>
                   <MenuItem value="Positivo">Positivo</MenuItem>
@@ -1345,9 +1591,20 @@ const Formulario = () => {
                   id="diagnostico_morfologico_selecciona"
                   label="Seleccione Diagnóstico Morfológico"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Ninguno"
+                  {...formik.getFieldProps(
+                    "diagnostico_morfologico_selecciona"
+                  )}
+                  error={
+                    formik.touched.diagnostico_morfologico_selecciona &&
+                    Boolean(formik.errors.diagnostico_morfologico_selecciona)
+                  }
+                  helperText={
+                    formik.touched.diagnostico_morfologico_selecciona &&
+                    formik.errors.diagnostico_morfologico_selecciona
+                  }
                 >
                   <MenuItem value="Ninguno">Ninguno</MenuItem>
                   <MenuItem value="Positivo">Positivo</MenuItem>
@@ -1362,9 +1619,18 @@ const Formulario = () => {
                   id="diagnosticado_en_selecciona"
                   label="Seleccione Diagnósticado en"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Ninguno"
+                  {...formik.getFieldProps("diagnosticado_en_selecciona")}
+                  error={
+                    formik.touched.diagnosticado_en_selecciona &&
+                    Boolean(formik.errors.diagnosticado_en_selecciona)
+                  }
+                  helperText={
+                    formik.touched.diagnosticado_en_selecciona &&
+                    formik.errors.diagnosticado_en_selecciona
+                  }
                 >
                   <MenuItem value="Ninguno">Ninguno</MenuItem>
                   <MenuItem value="Positivo">Positivo</MenuItem>
@@ -1379,9 +1645,18 @@ const Formulario = () => {
                   id="grado_de_diferenciacion"
                   label="Grado de diferenciación"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Diferenciado"
+                  {...formik.getFieldProps("grado_de_diferenciacion")}
+                  error={
+                    formik.touched.grado_de_diferenciacion &&
+                    Boolean(formik.errors.grado_de_diferenciacion)
+                  }
+                  helperText={
+                    formik.touched.grado_de_diferenciacion &&
+                    formik.errors.grado_de_diferenciacion
+                  }
                 >
                   <MenuItem value="Diferenciado">Diferenciado</MenuItem>
                   <MenuItem value="Indiferenciado">Indiferenciado</MenuItem>
@@ -1403,9 +1678,18 @@ const Formulario = () => {
                   id="base_del_diagnostico"
                   label="Base del diagnóstico"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Desconocidas"
+                  {...formik.getFieldProps("base_del_diagnostico")}
+                  error={
+                    formik.touched.base_del_diagnostico &&
+                    Boolean(formik.errors.base_del_diagnostico)
+                  }
+                  helperText={
+                    formik.touched.base_del_diagnostico &&
+                    formik.errors.base_del_diagnostico
+                  }
                 >
                   <MenuItem value="Desconocidas">Desconocidas</MenuItem>
                   <MenuItem value="E. clínico">E. clínico</MenuItem>
@@ -1435,6 +1719,9 @@ const Formulario = () => {
                   multiline
                   maxRows={4}
                   sx={{ mb: 3, width: 300 }}
+                  {...formik.getFieldProps("region")}
+                  error={formik.touched.region && Boolean(formik.errors.region)}
+                  helperText={formik.touched.region && formik.errors.region}
                 />
               </Item>
             </Grid>
@@ -1449,9 +1736,17 @@ const Formulario = () => {
                   id="etapa_clinica"
                   label="Etapa clínica"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Desconocida"
+                  {...formik.getFieldProps("etapa_clinica")}
+                  error={
+                    formik.touched.etapa_clinica &&
+                    Boolean(formik.errors.etapa_clinica)
+                  }
+                  helperText={
+                    formik.touched.etapa_clinica && formik.errors.etapa_clinica
+                  }
                 >
                   <MenuItem value="Desconocida">Desconocida</MenuItem>
                   <MenuItem value="In situ">In situ</MenuItem>
@@ -1566,9 +1861,18 @@ const Formulario = () => {
                   id="metastasis_a_distancia"
                   label="Metástasis a Distancia"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Desconocida"
+                  {...formik.getFieldProps("metastasis_a_distancia")}
+                  error={
+                    formik.touched.metastasis_a_distancia &&
+                    Boolean(formik.errors.metastasis_a_distancia)
+                  }
+                  helperText={
+                    formik.touched.metastasis_a_distancia &&
+                    formik.errors.metastasis_a_distancia
+                  }
                 >
                   <MenuItem value="Desconocida">Desconocida</MenuItem>
                   <MenuItem value="Ninguna">Ninguna</MenuItem>
@@ -1591,9 +1895,18 @@ const Formulario = () => {
                   id="extension_clinica"
                   label="Extensión Clínica"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Desconocida"
+                  {...formik.getFieldProps("extension_clinica")}
+                  error={
+                    formik.touched.extension_clinica &&
+                    Boolean(formik.errors.extension_clinica)
+                  }
+                  helperText={
+                    formik.touched.extension_clinica &&
+                    formik.errors.extension_clinica
+                  }
                 >
                   <MenuItem value="Desconocida">Desconocida</MenuItem>
                   <MenuItem value="In situ">In situ</MenuItem>
@@ -1625,9 +1938,18 @@ const Formulario = () => {
                   id="en_la_institucion"
                   label="En la Institución"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="No"
+                  {...formik.getFieldProps("en_la_institucion")}
+                  error={
+                    formik.touched.en_la_institucion &&
+                    Boolean(formik.errors.en_la_institucion)
+                  }
+                  helperText={
+                    formik.touched.en_la_institucion &&
+                    formik.errors.en_la_institucion
+                  }
                 >
                   <MenuItem value="No">No</MenuItem>
                   <MenuItem value="Parcial">Parcial</MenuItem>
@@ -1668,9 +1990,18 @@ const Formulario = () => {
                   id="tratamiento_planificado"
                   label="Tratamiento Planificado"
                   select
-                  onChange={onChangeSelect}
+                  //onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Desconocido"
+                  {...formik.getFieldProps("tratamiento_planificado")}
+                  error={
+                    formik.touched.tratamiento_planificado &&
+                    Boolean(formik.errors.tratamiento_planificado)
+                  }
+                  helperText={
+                    formik.touched.tratamiento_planificado &&
+                    formik.errors.tratamiento_planificado
+                  }
                 >
                   <MenuItem value="Desconocido">Desconocido</MenuItem>
                   <MenuItem value="Ninguno">Ninguno</MenuItem>
@@ -1689,6 +2020,15 @@ const Formulario = () => {
                 <TextField
                   id="otro_tratamiento_planificado"
                   label="Que otro tratamiento se aplicó"
+                  {...formik.getFieldProps("en_otro_centro")}
+                  error={
+                    formik.touched.en_otro_centro &&
+                    Boolean(formik.errors.en_otro_centro)
+                  }
+                  helperText={
+                    formik.touched.en_otro_centro &&
+                    formik.errors.en_otro_centro
+                  }
                 />
               </Item>
             </Grid>
@@ -2098,9 +2438,18 @@ const Formulario = () => {
                   id="evaluacion_de_la_respuesta"
                   label="Evaluación de la respuesta"
                   select
-                  onChange={onChangeSelect}
+                  // onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="RC"
+                  {...formik.getFieldProps("evaluacion_de_la_respuesta")}
+                  error={
+                    formik.touched.evaluacion_de_la_respuesta &&
+                    Boolean(formik.errors.evaluacion_de_la_respuesta)
+                  }
+                  helperText={
+                    formik.touched.evaluacion_de_la_respuesta &&
+                    formik.errors.evaluacion_de_la_respuesta
+                  }
                 >
                   <MenuItem value="RC">RC</MenuItem>
                   <MenuItem value="RP">RP</MenuItem>
