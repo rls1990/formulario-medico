@@ -249,8 +249,6 @@ const Formulario = () => {
     data.fecha_evaluacion = values.fecha_evaluacion;
 
     createFormulario && createFormulario(data);
-
-    console.log(values);
   };
 
   const formik = useFormik<FormularioFormValues>({
