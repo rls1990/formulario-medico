@@ -214,6 +214,33 @@ const Formulario = () => {
 
     data.fecha = values.fecha;
 
+    data.fecha_de_inscripcion = values.fecha_de_inscripcion;
+
+    data.fecha_de_diagnostico = values.fecha_de_diagnostico;
+
+    data.fecha_del_tratamiento_quirurgico =
+      values.fecha_del_tratamiento_quirurgico;
+
+    data.fecha_del_inicio_del_tratamiento_radioterapeutico =
+      values.fecha_del_inicio_del_tratamiento_radioterapeutico;
+
+    data.fecha_del_final_del_tratamiento_radioterapeutico =
+      values.fecha_del_final_del_tratamiento_radioterapeutico;
+
+    data.fecha_del_inicio_del_tratamiento_quimioterapeutico =
+      values.fecha_del_inicio_del_tratamiento_quimioterapeutico;
+
+    data.fecha_del_final_del_tratamiento_quimioterapeutico =
+      values.fecha_del_final_del_tratamiento_quimioterapeutico;
+
+    data.fecha_del_inicio_del_tratamiento =
+      values.fecha_del_inicio_del_tratamiento;
+
+    data.fecha_del_final_del_tratamiento =
+      values.fecha_del_final_del_tratamiento;
+
+    data.fecha_evaluacion = values.fecha_evaluacion;
+
     console.log(values);
   };
 
