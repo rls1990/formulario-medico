@@ -37,6 +37,9 @@ const TableAdmin = () => {
   const [ignore, setIgnore] = useState(-1);
   const { verifyAccessToken } = useContext(UserContext);
   const { getFormularios, formularios } = useContext(FormularioContext);
+
+  const [recargar, setRecargar] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -107,9 +110,15 @@ const TableAdmin = () => {
     if (!formularios) {
       getFormularios && getFormularios();
     } else {
+      console.log(formularios);
       rows = [...formularios];
+      setRecargar(true);
     }
   }, [formularios]);
+
+  useEffect(() => {
+    setRecargar(false);
+  }, [recargar]);
 
   return (
     <div>
@@ -129,11 +138,15 @@ const TableAdmin = () => {
           rows={rows}
           columns={columns}
           sx={{
+            height: 400,
             "& .MuiDataGrid-cell:focus-within": {
               outline: "none",
             },
             "& .MuiDataGrid-scrollbar": {
               left: 0,
+            },
+            "& .MuiDataGrid-cell": {
+              textAlign: "center",
             },
           }}
         />

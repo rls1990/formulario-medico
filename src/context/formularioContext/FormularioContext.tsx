@@ -15,6 +15,7 @@ import {
   setRefreshToken,
 } from "../../helpers/js-cookie/CookiesHelpers";
 import { refresh } from "../../api/auth";
+import { useNavigate } from "react-router-dom";
 export const FormularioContext = createContext(initialData);
 
 export const FormularioProvider: React.FC<FormularioContextProps> = ({
@@ -25,6 +26,8 @@ export const FormularioProvider: React.FC<FormularioContextProps> = ({
   const [loading, setloading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const vavigate = useNavigate();
+
   const createFormulario = (data: Formulario) => {
     const accesToken = getAccessToken();
 
@@ -34,6 +37,8 @@ export const FormularioProvider: React.FC<FormularioContextProps> = ({
         if (res) {
           console.log("respuesta");
           console.log(res);
+          getFormularios();
+          vavigate("/admin", { replace: true });
         }
       } catch (error: any) {
         console.log("error");
