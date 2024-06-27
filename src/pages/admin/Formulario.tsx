@@ -5,7 +5,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs, { Dayjs } from "dayjs";
 import "dayjs/locale/es";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { TextField } from "../../components/mui/text_fields/input/text/TextField";
 
@@ -18,6 +18,9 @@ import {
   TextField as TextFieldSelect,
   TextField as TextFieldNumber,
   TextField as TextFieldMUI,
+  Alert,
+  AlertTitle,
+  Divider,
 } from "@mui/material";
 import { FormularioFormValues } from "./Types";
 import { useFormik } from "formik";
@@ -69,9 +72,11 @@ const Item = styled(Box)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
+
 const Formulario = () => {
   const [valueTab, setValueTab] = useState(0);
   const { createFormulario } = useContext(FormularioContext);
+  const [errorFormik, setErrorFormik] = useState(false);
 
   const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
     setValueTab(newValue);
@@ -254,6 +259,20 @@ const Formulario = () => {
     validationSchema,
   });
 
+  useEffect(() => {
+    let id: number = 0;
+    if (!formik.isValid) {
+      console.log("init");
+      setErrorFormik(true);
+      id = setTimeout(() => {
+        setErrorFormik(false);
+        console.log("end");
+      }, 5000);
+    }
+
+    return () => clearTimeout(id);
+  }, [formik.isValid]);
+
   const colorNombre = formik.errors.nombre
     ? "error"
     : formik.touched.nombre
@@ -401,6 +420,34 @@ const Formulario = () => {
   return (
     <div>
       <h3>Formulario</h3>
+
+      {errorFormik && (
+        <div
+          style={{
+            marginBottom: 21,
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Alert variant="filled" severity="error" sx={{ width: 300 }}>
+            <div className="alert-title">
+              <AlertTitle>Error</AlertTitle>
+              <Divider
+                orientation="horizontal"
+                variant="fullWidth"
+                sx={{
+                  mb: 1,
+                  borderColor: "rgb(255 255 255 / 58%)",
+                  width: 150,
+                }}
+              />
+            </div>
+            Existen campos sin validar
+          </Alert>
+        </div>
+      )}
+
       <form onSubmit={formik.handleSubmit} className="formulario-container">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
@@ -526,17 +573,9 @@ const Formulario = () => {
                   id="motivo_consulta"
                   label="Motivo de la Consulta"
                   select
-                  onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Aparición de lesión"
-                  error={
-                    formik.touched.motivo_consulta &&
-                    Boolean(formik.errors.motivo_consulta)
-                  }
-                  helperText={
-                    formik.touched.motivo_consulta &&
-                    formik.errors.motivo_consulta
-                  }
+                  {...formik.getFieldProps("motivo_consulta")}
                 >
                   <MenuItem value="Aparición de lesión">
                     Aparición de lesión
@@ -566,12 +605,19 @@ const Formulario = () => {
                   sx={{ mb: 3, width: 300 }}
                   {...formik.getFieldProps("otros_sintomas")}
                   error={
+                    formik.values.motivo_consulta === "Otros síntomas" &&
                     formik.touched.otros_sintomas &&
                     Boolean(formik.errors.otros_sintomas)
                   }
                   helperText={
+                    formik.values.motivo_consulta === "Otros síntomas" &&
                     formik.touched.otros_sintomas &&
                     formik.errors.otros_sintomas
+                  }
+                  disabled={
+                    formik.values.motivo_consulta === "Otros síntomas"
+                      ? false
+                      : true
                   }
                 />
               </Item>
@@ -1750,9 +1796,22 @@ const Formulario = () => {
                   multiline
                   maxRows={4}
                   sx={{ mb: 3, width: 300 }}
-                  {...formik.getFieldProps("region")}
-                  error={formik.touched.region && Boolean(formik.errors.region)}
-                  helperText={formik.touched.region && formik.errors.region}
+                  {...formik.getFieldProps("otras")}
+                  error={
+                    formik.touched.otras &&
+                    formik.values.base_del_diagnostico === "Otras" &&
+                    Boolean(formik.errors.otras)
+                  }
+                  helperText={
+                    formik.touched.otras &&
+                    formik.values.base_del_diagnostico === "Otras" &&
+                    formik.errors.otras
+                  }
+                  disabled={
+                    formik.values.base_del_diagnostico === "Otras"
+                      ? false
+                      : true
+                  }
                 />
               </Item>
             </Grid>
@@ -2575,6 +2634,19 @@ const Formulario = () => {
           size="large"
           className="buttom-formulario"
           type="submit"
+          onClick={() => {
+            console.log("click");
+            if (!formik.isValid) {
+              console.log("no es valido");
+              setErrorFormik(true);
+              // console.log("init");
+              setTimeout(() => {
+                setErrorFormik(false);
+                console.log("end");
+              }, 5000);
+              // clearTimeout(id);
+            }
+          }}
         >
           Adicionar
         </Button>

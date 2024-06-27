@@ -8,8 +8,6 @@ import {
   initialDateToEdit,
 } from "./Types";
 import { addFormularioRequest, formulariosRequest } from "../../api/formulario";
-import { AxiosError } from "axios";
-
 export const FormularioContext = createContext(initialData);
 
 export const FormularioProvider: React.FC<FormularioContextProps> = ({
