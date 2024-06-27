@@ -1,3 +1,4 @@
+import { Formulario } from "../context/formularioContext/Types";
 import { getAccessToken } from "../helpers/js-cookie/CookiesHelpers";
 import { generateQueryParams } from "../helpers/query-params/QueryParams";
 import { FormularioQuery } from "./Types";
@@ -26,3 +27,24 @@ export const formulariosRequest = async (data?: FormularioQuery) => {
     return error;
   }
 };
+
+export const addFormularioRequest = async (data: Formulario) =>
+  axios.post("formulario/", data, {
+    headers: {
+      Authorization: `Bearer ${getAccessToken()}`,
+    },
+  });
+
+export const updateFormularioRequest = async (data: Formulario, id: number) =>
+  axios.patch(`formulario/${id}/`, data, {
+    headers: {
+      Authorization: `Bearer ${getAccessToken()}`,
+    },
+  });
+
+export const delFormularioRequest = async (id: number) =>
+  axios.delete(`formulario/${id}/`, {
+    headers: {
+      Authorization: `Bearer ${getAccessToken()}`,
+    },
+  });

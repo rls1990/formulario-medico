@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useState } from "react";
 import {
   ContextPropsRes,
@@ -6,7 +7,8 @@ import {
   initialData,
   initialDateToEdit,
 } from "./Types";
-import { formulariosRequest } from "../../api/formulario";
+import { addFormularioRequest, formulariosRequest } from "../../api/formulario";
+import { AxiosError } from "axios";
 
 export const FormularioContext = createContext(initialData);
 
@@ -18,7 +20,18 @@ export const FormularioProvider: React.FC<FormularioContextProps> = ({
   const [loading, setloading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const createFormulario = () => {};
+  const createFormulario = async (data: Formulario) => {
+    try {
+      const res = await addFormularioRequest(data);
+      if (res) console.log(res);
+    } catch (error: any) {
+      console.log(error);
+      const status = error.response.status;
+      status === 400 || status === 401
+        ? setError(error.response.data)
+        : setError("Any Error");
+    }
+  };
   const updateFormulario = () => {};
   const deleteFormulario = () => {};
   const getFormularios = async () => {

@@ -5,7 +5,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs, { Dayjs } from "dayjs";
 import "dayjs/locale/es";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { TextField } from "../../components/mui/text_fields/input/text/TextField";
 
@@ -33,6 +33,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import { Formulario as FormularioDataInterf } from "../../context/formularioContext/Types";
+import { FormularioContext } from "../../context/formularioContext/FormularioContext";
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -70,6 +71,7 @@ const Item = styled(Box)(({ theme }) => ({
 }));
 const Formulario = () => {
   const [valueTab, setValueTab] = useState(0);
+  const { createFormulario } = useContext(FormularioContext);
 
   const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
     setValueTab(newValue);
@@ -240,6 +242,8 @@ const Formulario = () => {
       values.fecha_del_final_del_tratamiento;
 
     data.fecha_evaluacion = values.fecha_evaluacion;
+
+    createFormulario && createFormulario(data);
 
     console.log(values);
   };
