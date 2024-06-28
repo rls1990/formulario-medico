@@ -5,7 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { pink } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
-import { ControlPoint } from "@mui/icons-material";
+import { ControlPoint, Downloading } from "@mui/icons-material";
 import { GridBaseColDef } from "@mui/x-data-grid/internals";
 import { FormularioFields } from "../../context/formularioContext/Types";
 import { useContext, useEffect, useState } from "react";
@@ -76,6 +76,13 @@ const TableAdmin = () => {
           onClick={() => handleDeleteClick(params.row.id)}
         >
           <DeleteIcon sx={{ color: pink[500] }} />
+        </IconButton>
+
+        <IconButton
+          aria-label="reporte"
+          onClick={() => handleDeleteClick(params.row.id)}
+        >
+          <Downloading sx={{ color: "#9e9e9e" }} />
         </IconButton>
       </div>
     ),
