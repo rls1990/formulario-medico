@@ -66,7 +66,7 @@ const Nav = () => {
             src="/img/avatar.png"
             active
             items={[
-              { name: "My account", url: "/account" },
+              // { name: "My account", url: "/account" },
               { name: "Logout", url: "/logout" },
             ]}
           />

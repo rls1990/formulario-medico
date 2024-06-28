@@ -53,6 +53,9 @@ const MenuAvatar: React.FC<MenuAvatarProps> = ({
           "aria-labelledby": "menu-avatar-button",
         }}
       >
+        <MenuItem onClick={handleCloseMenuAvatar}>
+          <a href="http://localhost:8000/">Admin</a>
+        </MenuItem>
         {items.map((item, index) => (
           <MenuItem key={index} onClick={handleCloseMenuAvatar}>
             <Link to={item.url}>{item.name}</Link>
