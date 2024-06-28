@@ -2110,17 +2110,26 @@ const Formulario = () => {
 
             <Grid item xs={6}>
               <Item>
-                <TextField
+                <TextFieldMUI
                   id="otro_tratamiento_planificado"
                   label="Que otro tratamiento se aplicó"
-                  {...formik.getFieldProps("en_otro_centro")}
+                  {...formik.getFieldProps("otro_tratamiento_planificado")}
                   error={
-                    formik.touched.en_otro_centro &&
-                    Boolean(formik.errors.en_otro_centro)
+                    formik.touched.otro_tratamiento_planificado &&
+                    formik.values.tratamiento_planificado ===
+                      "Otro Tratamiento" &&
+                    Boolean(formik.errors.otro_tratamiento_planificado)
                   }
                   helperText={
-                    formik.touched.en_otro_centro &&
-                    formik.errors.en_otro_centro
+                    formik.touched.otro_tratamiento_planificado &&
+                    formik.values.tratamiento_planificado ===
+                      "Otro Tratamiento" &&
+                    formik.errors.otro_tratamiento_planificado
+                  }
+                  disabled={
+                    formik.values.tratamiento_planificado === "Otro Tratamiento"
+                      ? false
+                      : true
                   }
                 />
               </Item>
