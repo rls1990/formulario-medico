@@ -998,7 +998,7 @@ const Formulario = () => {
                   <MenuItem value="Parótida">Parótida</MenuItem>
                   <MenuItem value="Sublingual">Sublingual</MenuItem>
                   <MenuItem value="Submaxilar">Submaxilar</MenuItem>
-                  <MenuItem value="Otras">Otras</MenuItem>
+                  <MenuItem value="Otra">Otra</MenuItem>
                 </TextFieldSelect>
               </Item>
             </Grid>

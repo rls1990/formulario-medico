@@ -29,9 +29,10 @@ export const validationSchema = yup.object({
     .required("Este campo es requerido"),
 
   tamanno_de_la_lesion: yup
-    .number()
-    .required("Este valor es requerido")
-    .min(0, "El tamaño de la lesión debe ser mayor o igual que cero"),
+  .number()
+  .integer("El número no debe contener coma")
+  .required("Este valor es requerido")
+  .min(0, "No puede ser menor que 0"),
   // primer_apellido:yup.string().required("Este campo es requerido")
   // .test(
   //   'capitalizeFirstLetter',
