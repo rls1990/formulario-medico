@@ -48,3 +48,11 @@ export const delFormularioRequest = async (id: number) =>
       Authorization: `Bearer ${getAccessToken()}`,
     },
   });
+
+export const reportRequest = async (id: number) =>
+  axios.get(`formulario/reportecompleto/${id}/`, {
+    responseType: "blob",
+    headers: {
+      Authorization: `Bearer ${getAccessToken()}`,
+    },
+  });

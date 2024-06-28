@@ -11,6 +11,7 @@ import { FormularioFields } from "../../context/formularioContext/Types";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/userContext/UserContext";
 import { FormularioContext } from "../../context/formularioContext/FormularioContext";
+import { reportRequest } from "../../api/formulario";
 
 let rows: GridRowsProp = [];
 const columns: GridColDef[] = [];
@@ -36,7 +37,8 @@ const initTable = () => {
 const TableAdmin = () => {
   const [ignore, setIgnore] = useState(-1);
   const { verifyAccessToken } = useContext(UserContext);
-  const { getFormularios, formularios } = useContext(FormularioContext);
+  const { getFormularios, formularios, getReport } =
+    useContext(FormularioContext);
 
   const [recargar, setRecargar] = useState(false);
 
@@ -56,6 +58,12 @@ const TableAdmin = () => {
     console.log(`Delete button clicked for row with id ${id}`);
     navigate(`formulario/del/${id}`);
     // Add your delete logic here
+  };
+
+  const handleReportClick = async (id: number) => {
+    console.log(`Report clicked for row with id ${id}`);
+    // Add your delete logic here
+    getReport && getReport(id);
   };
 
   const actionsCol: GridBaseColDef = {
@@ -80,7 +88,7 @@ const TableAdmin = () => {
 
         <IconButton
           aria-label="reporte"
-          onClick={() => handleDeleteClick(params.row.id)}
+          onClick={() => handleReportClick(params.row.id)}
         >
           <Downloading sx={{ color: "#9e9e9e" }} />
         </IconButton>

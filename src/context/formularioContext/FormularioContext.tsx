@@ -7,7 +7,12 @@ import {
   initialData,
   initialDateToEdit,
 } from "./Types";
-import { addFormularioRequest, formulariosRequest } from "../../api/formulario";
+import {
+  addFormularioRequest,
+  delFormularioRequest,
+  formulariosRequest,
+  reportRequest,
+} from "../../api/formulario";
 import {
   getAccessToken,
   getRefreshToken,
@@ -26,7 +31,7 @@ export const FormularioProvider: React.FC<FormularioContextProps> = ({
   const [loading, setloading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const vavigate = useNavigate();
+  const navigate = useNavigate();
 
   const createFormulario = (data: Formulario) => {
     const accesToken = getAccessToken();
@@ -38,7 +43,7 @@ export const FormularioProvider: React.FC<FormularioContextProps> = ({
           console.log("respuesta");
           console.log(res);
           getFormularios();
-          vavigate("/admin", { replace: true });
+          navigate("/admin", { replace: true });
         }
       } catch (error: any) {
         console.log("error");
@@ -60,7 +65,37 @@ export const FormularioProvider: React.FC<FormularioContextProps> = ({
     }
   };
   const updateFormulario = () => {};
-  const deleteFormulario = () => {};
+
+  const deleteFormulario = (id: number) => {
+    const accesToken = getAccessToken();
+
+    const req = async () => {
+      try {
+        const res = await delFormularioRequest(id);
+        if (res) {
+          console.log("respuesta");
+          console.log(res);
+          getFormularios().then(() => navigate("/admin"));
+        }
+      } catch (error: any) {
+        console.log("error");
+        console.log(error);
+        const status = error.response.status;
+        status === 400 || status === 401
+          ? setError(error.response.data)
+          : setError("Any Error");
+      }
+    };
+    if (accesToken) {
+      console.log("hay accses");
+      req();
+    } else {
+      console.log("Verificando at");
+      verifyAccessToken().then(() => {
+        req();
+      });
+    }
+  };
   const getFormularios = async () => {
     try {
       const res = await formulariosRequest();
@@ -70,6 +105,45 @@ export const FormularioProvider: React.FC<FormularioContextProps> = ({
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const getReport = (id: number) => {
+    const accesToken = getAccessToken();
+
+    const req = async () => {
+      try {
+        const res = await reportRequest(id);
+        if (res) {
+          console.log("respuesta");
+          console.log(res);
+          const pdfBlob = new Blob([res.data], { type: "application/pdf" });
+          const pdfUrl = URL.createObjectURL(pdfBlob);
+
+          const link = document.createElement("a");
+          link.href = pdfUrl;
+          link.download = "reporte.pdf";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+      } catch (error: any) {
+        console.log("error");
+        console.log(error);
+        const status = error.response.status;
+        status === 400 || status === 401
+          ? setError(error.response.data)
+          : setError("Any Error");
+      }
+    };
+    if (accesToken) {
+      console.log("hay accses");
+      req();
+    } else {
+      console.log("Verificando at");
+      verifyAccessToken().then(() => {
+        req();
+      });
     }
   };
 
@@ -98,6 +172,7 @@ export const FormularioProvider: React.FC<FormularioContextProps> = ({
     updateFormulario,
     deleteFormulario,
     getFormularios,
+    getReport,
   };
   return (
     <FormularioContext.Provider value={dataExportContext}>

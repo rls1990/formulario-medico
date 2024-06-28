@@ -75,13 +75,13 @@ export enum FormularioFields {
   fecha_del_inicio_del_tratamiento_radioterapeutico = "fecha_del_inicio_del_tratamiento_radioterapeutico",
   fecha_del_final_del_tratamiento_radioterapeutico = "fecha_del_final_del_tratamiento_radioterapeutico",
   dosis_total = "dosis_total",
-  gy_fraccion = "gy_fraccion",  
+  gy_fraccion = "gy_fraccion",
   tratamiento_quimioterapia = "tratamiento_quimioterapia",
   esquema_tratamiento = "esquema_tratamiento",
   numero_de_ciclos = "numero_de_ciclos",
   fecha_del_inicio_del_tratamiento_quimioterapeutico = "fecha_del_inicio_del_tratamiento_quimioterapeutico",
   fecha_del_final_del_tratamiento_quimioterapeutico = "fecha_del_final_del_tratamiento_quimioterapeutico",
-  otro_tratamiento = "otro_tratamiento", 
+  otro_tratamiento = "otro_tratamiento",
   cual_tratamiento = "cual_tratamiento",
   fecha_del_inicio_del_tratamiento = "fecha_del_inicio_del_tratamiento",
   fecha_del_final_del_tratamiento = "fecha_del_final_del_tratamiento",
@@ -96,7 +96,11 @@ export interface Formulario {
   id?: number | null | string;
   nombre: string;
   fecha?: string; //"2024-06-22";
-  remision?: "No remitido" | "Atención primaria" | "Programa de control" | "Atención secundaria";
+  remision?:
+    | "No remitido"
+    | "Atención primaria"
+    | "Programa de control"
+    | "Atención secundaria";
   historia_clinica?: boolean; //true;
   motivo_consulta?: string; //"string";
   primer_sintoma?: string; //"string";
@@ -107,7 +111,7 @@ export interface Formulario {
   familiares_con_cancer?: "Si" | "No" | "Desconocido";
   caracteristicas_de_la_lesion?: string; //"Vegetante";
   region?: string; //"Derecha";
-  tamanno_de_la_lesion?: number; 
+  tamanno_de_la_lesion?: number;
   localizacion_en_labio?: string; //"Labio superior";
   lengua_movil?: string; //"Cara central";
   suelo_de_Boca?: string; //"Parte anterior";
@@ -139,52 +143,52 @@ export interface Formulario {
   biopsia_numero?: number; //0;
   fecha_de_diagnostico?: string; //"2024-06-22";
   diagnostico_topografico?: string;
-  diagnostico_morfologico?: string,
-  diagnosticado_en?: string,
-  diagnostico_topografico_selecciona?: string,
-  diagnostico_morfologico_selecciona?: string,
-  diagnosticado_en_selecciona?: string,
-  grado_de_diferenciacion?: string,
-  base_del_diagnostico?: string,
-  otras?: string,
-  etapa_clinica?: string,
-  tnm_T?: string,
-  tnm_N?: string,
-  tnm_M?: string,
-  ptnm_pT?: string,
-  ptnm_pN?: string,
-  ptnm_pM?: string,
-  metastasis_a_distancia?: string,
-  extension_clinica?: string,
-  en_otro_centro?: string,
-  en_la_institucion?: string,
-  tratamiento_planificado?: string,
-  otro_tratamiento_planificado?: string,
-  inclusion_en_ec?: true,
-  en_caso_de_si?: string,
-  tratamiento_quirurgico?: boolean,
-  tipo_de_cirugia?: string,
-  fecha_del_tratamiento_quirurgico?: string,
-  tratamiento_radioterapia?: boolean,
-  tipo_de_tratamiento_radioterap?: string,
-  fecha_del_inicio_del_tratamiento_radioterapeutico?: string,
-  fecha_del_final_del_tratamiento_radioterapeutico?: string,
-  dosis_total?: number,
-  gy_fraccion?: number,
-  tratamiento_quimioterapia?: boolean,
-  esquema_tratamiento?: string,
-  numero_de_ciclos?: number,
-  fecha_del_inicio_del_tratamiento_quimioterapeutico?: string,
-  fecha_del_final_del_tratamiento_quimioterapeutico?: string,
-  otro_tratamiento?: boolean,
-  cual_tratamiento?: string,
-  fecha_del_inicio_del_tratamiento?: string,
-  fecha_del_final_del_tratamiento?: string,
-  evaluacion_de_la_respuesta?: string,
-  fecha_evaluacion?: string,
-  observaciones?: string,
-  nombre_del_medico?: string,
-  registro_profesional?: string
+  diagnostico_morfologico?: string;
+  diagnosticado_en?: string;
+  diagnostico_topografico_selecciona?: string;
+  diagnostico_morfologico_selecciona?: string;
+  diagnosticado_en_selecciona?: string;
+  grado_de_diferenciacion?: string;
+  base_del_diagnostico?: string;
+  otras?: string;
+  etapa_clinica?: string;
+  tnm_T?: string;
+  tnm_N?: string;
+  tnm_M?: string;
+  ptnm_pT?: string;
+  ptnm_pN?: string;
+  ptnm_pM?: string;
+  metastasis_a_distancia?: string;
+  extension_clinica?: string;
+  en_otro_centro?: string;
+  en_la_institucion?: string;
+  tratamiento_planificado?: string;
+  otro_tratamiento_planificado?: string;
+  inclusion_en_ec?: true;
+  en_caso_de_si?: string;
+  tratamiento_quirurgico?: boolean;
+  tipo_de_cirugia?: string;
+  fecha_del_tratamiento_quirurgico?: string;
+  tratamiento_radioterapia?: boolean;
+  tipo_de_tratamiento_radioterap?: string;
+  fecha_del_inicio_del_tratamiento_radioterapeutico?: string;
+  fecha_del_final_del_tratamiento_radioterapeutico?: string;
+  dosis_total?: number;
+  gy_fraccion?: number;
+  tratamiento_quimioterapia?: boolean;
+  esquema_tratamiento?: string;
+  numero_de_ciclos?: number;
+  fecha_del_inicio_del_tratamiento_quimioterapeutico?: string;
+  fecha_del_final_del_tratamiento_quimioterapeutico?: string;
+  otro_tratamiento?: boolean;
+  cual_tratamiento?: string;
+  fecha_del_inicio_del_tratamiento?: string;
+  fecha_del_final_del_tratamiento?: string;
+  evaluacion_de_la_respuesta?: string;
+  fecha_evaluacion?: string;
+  observaciones?: string;
+  nombre_del_medico?: string;
+  registro_profesional?: string;
 }
 
 export interface ContextPropsRes {
@@ -198,6 +202,7 @@ export interface ContextPropsRes {
   updateFormulario?: ((data: Formulario) => void) | null;
   deleteFormulario?: ((id: number) => void) | null;
   getFormularios?: (() => void) | null;
+  getReport?: ((id: number) => void) | null;
 }
 
 export interface FormularioContextProps {
@@ -294,10 +299,10 @@ export const initialDateToEdit: Formulario = {
   fecha_del_inicio_del_tratamiento_radioterapeutico: "2024-06-22",
   fecha_del_final_del_tratamiento_radioterapeutico: "2024-06-22",
   dosis_total: 0,
-  gy_fraccion:0,
+  gy_fraccion: 0,
   tratamiento_quimioterapia: true,
   esquema_tratamiento: "string",
-  numero_de_ciclos:0,
+  numero_de_ciclos: 0,
   fecha_del_inicio_del_tratamiento_quimioterapeutico: "2024-06-22",
   fecha_del_final_del_tratamiento_quimioterapeutico: "2024-06-22",
   otro_tratamiento: true,
@@ -309,5 +314,4 @@ export const initialDateToEdit: Formulario = {
   observaciones: "string",
   nombre_del_medico: "string",
   registro_profesional: "string",
-
 };
