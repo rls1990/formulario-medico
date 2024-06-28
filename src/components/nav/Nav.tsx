@@ -55,7 +55,7 @@ const Nav = () => {
             }}
           >
             <div>
-              {isAuth && <NavLink to="/">Home</NavLink>}
+              {/* {isAuth && <NavLink to="/">Home</NavLink>} */}
               {isAuth && <NavLink to="/admin">Formulario</NavLink>}
               {!isAuth && <NavLink to="/login">Login</NavLink>}
               {!isAuth && <NavLink to="/register">Register</NavLink>}
@@ -81,11 +81,11 @@ const Nav = () => {
             alignItems="flex-start"
             sx={{ width: 150 }}
           >
-            {isAuth && (
+            {/* {isAuth && (
               <Button sx={{ p: 2 }} onClick={() => navigate("/")}>
                 Home
               </Button>
-            )}
+            )} */}
             {isAuth && (
               <Button sx={{ p: 2 }} onClick={() => navigate("/admin")}>
                 Formulario

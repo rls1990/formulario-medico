@@ -2608,7 +2608,7 @@ const ModificarFormulario = () => {
           className="buttom-formulario"
           type="submit"
         >
-          Adicionar
+          Modificar
         </Button>
       </form>
     </div>

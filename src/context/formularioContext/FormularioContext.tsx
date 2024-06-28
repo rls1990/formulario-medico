@@ -12,6 +12,7 @@ import {
   delFormularioRequest,
   formulariosRequest,
   reportRequest,
+  updateFormularioRequest,
 } from "../../api/formulario";
 import {
   getAccessToken,
@@ -65,7 +66,34 @@ export const FormularioProvider: React.FC<FormularioContextProps> = ({
     }
   };
   const updateFormulario = (data: Formulario, id: number) => {
-    console.log(data);
+    const accesToken = getAccessToken();
+
+    const req = async () => {
+      try {
+        const res = await updateFormularioRequest(data, id);
+        if (res) {
+          console.log("respuesta");
+          console.log(res);
+          getFormularios().then(() => navigate("/admin"));
+        }
+      } catch (error: any) {
+        console.log("error");
+        console.log(error);
+        const status = error.response.status;
+        status === 400 || status === 401
+          ? setError(error.response.data)
+          : setError("Any Error");
+      }
+    };
+    if (accesToken) {
+      console.log("hay accses");
+      req();
+    } else {
+      console.log("Verificando at");
+      verifyAccessToken().then(() => {
+        req();
+      });
+    }
   };
 
   const deleteFormulario = (id: number) => {
