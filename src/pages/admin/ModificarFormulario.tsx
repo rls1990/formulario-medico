@@ -19,6 +19,9 @@ import {
   TextField as TextFieldSelect,
   TextField as TextFieldNumber,
   TextField as TextFieldMUI,
+  Alert,
+  AlertTitle,
+  Divider,
 } from "@mui/material";
 import { FormularioFormValues } from "./Types";
 import { useFormik } from "formik";
@@ -78,6 +81,7 @@ const Item = styled(Box)(({ theme }) => ({
 
 const ModificarFormulario = () => {
   const { id } = useParams();
+  const [errorFormik, setErrorFormik] = useState(false);
 
   const [valueTab, setValueTab] = useState(0);
   const { updateFormulario } = useContext(FormularioContext);
@@ -433,6 +437,34 @@ const ModificarFormulario = () => {
   return (
     <div>
       <h3>Formulario</h3>
+
+      {errorFormik && (
+        <div
+          style={{
+            marginBottom: 21,
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Alert variant="filled" severity="error" sx={{ width: 300 }}>
+            <div className="alert-title">
+              <AlertTitle>Error</AlertTitle>
+              <Divider
+                orientation="horizontal"
+                variant="fullWidth"
+                sx={{
+                  mb: 1,
+                  borderColor: "rgb(255 255 255 / 58%)",
+                  width: 150,
+                }}
+              />
+            </div>
+            Existen campos sin validar
+          </Alert>
+        </div>
+      )}
+
       <form onSubmit={formik.handleSubmit} className="formulario-container">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
@@ -532,10 +564,15 @@ const ModificarFormulario = () => {
             <Grid item xs={12}>
               <Item>
                 <FormControlLabel
-                  id="historia_clinica"
-                  control={<Switch defaultChecked />}
+                  control={
+                    <Switch
+                      id="historia_clinica"
+                      {...formik.getFieldProps("historia_clinica")}
+                      checked={formik.values.historia_clinica}
+                    />
+                  }
                   label="Historia Clínica"
-                  {...formik.getFieldProps("historia_clinica")}
+
                   // error={
                   //   formik.touched.historia_clinica &&
                   //   Boolean(formik.errors.historia_clinica)
@@ -558,17 +595,9 @@ const ModificarFormulario = () => {
                   id="motivo_consulta"
                   label="Motivo de la Consulta"
                   select
-                  onChange={onChangeSelect}
                   sx={{ mb: 3, width: 300 }}
                   defaultValue="Aparición de lesión"
-                  error={
-                    formik.touched.motivo_consulta &&
-                    Boolean(formik.errors.motivo_consulta)
-                  }
-                  helperText={
-                    formik.touched.motivo_consulta &&
-                    formik.errors.motivo_consulta
-                  }
+                  {...formik.getFieldProps("motivo_consulta")}
                 >
                   <MenuItem value="Aparición de lesión">
                     Aparición de lesión
@@ -598,12 +627,19 @@ const ModificarFormulario = () => {
                   sx={{ mb: 3, width: 300 }}
                   {...formik.getFieldProps("otros_sintomas")}
                   error={
+                    formik.values.motivo_consulta === "Otros síntomas" &&
                     formik.touched.otros_sintomas &&
                     Boolean(formik.errors.otros_sintomas)
                   }
                   helperText={
+                    formik.values.motivo_consulta === "Otros síntomas" &&
                     formik.touched.otros_sintomas &&
                     formik.errors.otros_sintomas
+                  }
+                  disabled={
+                    formik.values.motivo_consulta === "Otros síntomas"
+                      ? false
+                      : true
                   }
                 />
               </Item>
@@ -986,7 +1022,7 @@ const ModificarFormulario = () => {
                   <MenuItem value="Parótida">Parótida</MenuItem>
                   <MenuItem value="Sublingual">Sublingual</MenuItem>
                   <MenuItem value="Submaxilar">Submaxilar</MenuItem>
-                  <MenuItem value="Otras">Otras</MenuItem>
+                  <MenuItem value="Otra">Otra</MenuItem>
                 </TextFieldSelect>
               </Item>
             </Grid>
@@ -1773,18 +1809,31 @@ const ModificarFormulario = () => {
             <Grid item xs={6}>
               <Item>
                 {/* <TextField
-                    id="otras"
-                    label="En csao de seleccionar Otras rellene este campo"
-                  /> */}
+                  id="otras"
+                  label="En csao de seleccionar Otras rellene este campo"
+                /> */}
                 <TextArea
                   id="otras"
                   label="En csao de seleccionar Otras rellene este campo"
                   multiline
                   maxRows={4}
                   sx={{ mb: 3, width: 300 }}
-                  {...formik.getFieldProps("region")}
-                  error={formik.touched.region && Boolean(formik.errors.region)}
-                  helperText={formik.touched.region && formik.errors.region}
+                  {...formik.getFieldProps("otras")}
+                  error={
+                    formik.touched.otras &&
+                    formik.values.base_del_diagnostico === "Otras" &&
+                    Boolean(formik.errors.otras)
+                  }
+                  helperText={
+                    formik.touched.otras &&
+                    formik.values.base_del_diagnostico === "Otras" &&
+                    formik.errors.otras
+                  }
+                  disabled={
+                    formik.values.base_del_diagnostico === "Otras"
+                      ? false
+                      : true
+                  }
                 />
               </Item>
             </Grid>
@@ -2080,17 +2129,26 @@ const ModificarFormulario = () => {
 
             <Grid item xs={6}>
               <Item>
-                <TextField
+                <TextFieldMUI
                   id="otro_tratamiento_planificado"
                   label="Que otro tratamiento se aplicó"
-                  {...formik.getFieldProps("en_otro_centro")}
+                  {...formik.getFieldProps("otro_tratamiento_planificado")}
                   error={
-                    formik.touched.en_otro_centro &&
-                    Boolean(formik.errors.en_otro_centro)
+                    formik.touched.otro_tratamiento_planificado &&
+                    formik.values.tratamiento_planificado ===
+                      "Otro Tratamiento" &&
+                    Boolean(formik.errors.otro_tratamiento_planificado)
                   }
                   helperText={
-                    formik.touched.en_otro_centro &&
-                    formik.errors.en_otro_centro
+                    formik.touched.otro_tratamiento_planificado &&
+                    formik.values.tratamiento_planificado ===
+                      "Otro Tratamiento" &&
+                    formik.errors.otro_tratamiento_planificado
+                  }
+                  disabled={
+                    formik.values.tratamiento_planificado === "Otro Tratamiento"
+                      ? false
+                      : true
                   }
                 />
               </Item>
@@ -2099,9 +2157,13 @@ const ModificarFormulario = () => {
             <Grid item xs={6}>
               <Item>
                 <FormControlLabel
-                  id="inclusion_en_ec"
-                  control={<Switch defaultChecked />}
-                  {...formik.getFieldProps("inclusion_en_ec")}
+                  control={
+                    <Switch
+                      id="inclusion_en_ec"
+                      {...formik.getFieldProps("inclusion_en_ec")}
+                      checked={formik.values.inclusion_en_ec}
+                    />
+                  }
                   label="Inclusión en EC"
                 />
               </Item>
@@ -2137,11 +2199,11 @@ const ModificarFormulario = () => {
             <Grid item xs={6}>
               <Item>
                 <FormControlLabel
-                  id="tratamiento_quirurgico"
                   control={
                     <Switch
+                      id="tratamiento_quirurgico"
                       {...formik.getFieldProps("tratamiento_quirurgico")}
-                      defaultChecked
+                      checked={formik.values.tratamiento_quirurgico}
                     />
                   }
                   label="Se Realizó Tratamiento quirúrgico"
@@ -2193,9 +2255,13 @@ const ModificarFormulario = () => {
             <Grid item xs={6}>
               <Item>
                 <FormControlLabel
-                  id="tratamiento_radioterapia"
-                  control={<Switch defaultChecked />}
-                  {...formik.getFieldProps("tratamiento_radioterapia")}
+                  control={
+                    <Switch
+                      id="tratamiento_radioterapia"
+                      {...formik.getFieldProps("tratamiento_radioterapia")}
+                      checked={formik.values.tratamiento_radioterapia}
+                    />
+                  }
                   label="Se Realizó Tratamiento radioterapéutico"
                 />
               </Item>
@@ -2325,9 +2391,13 @@ const ModificarFormulario = () => {
             <Grid item xs={6}>
               <Item>
                 <FormControlLabel
-                  id="tratamiento_quimioterapia"
-                  control={<Switch defaultChecked />}
-                  {...formik.getFieldProps("tratamiento_quimioterapia")}
+                  control={
+                    <Switch
+                      id="tratamiento_quimioterapia"
+                      {...formik.getFieldProps("tratamiento_quimioterapia")}
+                      checked={formik.values.tratamiento_quimioterapia}
+                    />
+                  }
                   label="Se Realizó Tratamiento Quimioterapéutico"
                 />
               </Item>
@@ -2424,9 +2494,13 @@ const ModificarFormulario = () => {
             <Grid item xs={6}>
               <Item>
                 <FormControlLabel
-                  id="otro_tratamiento"
-                  control={<Switch defaultChecked />}
-                  {...formik.getFieldProps("otro_tratamiento")}
+                  control={
+                    <Switch
+                      id="otro_tratamiento"
+                      {...formik.getFieldProps("otro_tratamiento")}
+                      checked={formik.values.otro_tratamiento}
+                    />
+                  }
                   label="Se Realizó Otro Tratamiento"
                 />
               </Item>
