@@ -545,10 +545,15 @@ const Formulario = () => {
             <Grid item xs={12}>
               <Item>
                 <FormControlLabel
-                  id="historia_clinica"
-                  control={<Switch defaultChecked />}
+                  control={
+                    <Switch
+                      id="historia_clinica"
+                      {...formik.getFieldProps("historia_clinica")}
+                      checked={formik.values.historia_clinica}
+                    />
+                  }
                   label="Historia Clínica"
-                  {...formik.getFieldProps("historia_clinica")}
+
                   // error={
                   //   formik.touched.historia_clinica &&
                   //   Boolean(formik.errors.historia_clinica)
@@ -2124,9 +2129,13 @@ const Formulario = () => {
             <Grid item xs={6}>
               <Item>
                 <FormControlLabel
-                  id="inclusion_en_ec"
-                  control={<Switch defaultChecked />}
-                  {...formik.getFieldProps("inclusion_en_ec")}
+                  control={
+                    <Switch
+                      id="inclusion_en_ec"
+                      {...formik.getFieldProps("inclusion_en_ec")}
+                      checked={formik.values.inclusion_en_ec}
+                    />
+                  }
                   label="Inclusión en EC"
                 />
               </Item>
@@ -2162,11 +2171,11 @@ const Formulario = () => {
             <Grid item xs={6}>
               <Item>
                 <FormControlLabel
-                  id="tratamiento_quirurgico"
                   control={
                     <Switch
+                      id="tratamiento_quirurgico"
                       {...formik.getFieldProps("tratamiento_quirurgico")}
-                      defaultChecked
+                      checked={formik.values.tratamiento_quirurgico}
                     />
                   }
                   label="Se Realizó Tratamiento quirúrgico"
@@ -2218,9 +2227,13 @@ const Formulario = () => {
             <Grid item xs={6}>
               <Item>
                 <FormControlLabel
-                  id="tratamiento_radioterapia"
-                  control={<Switch defaultChecked />}
-                  {...formik.getFieldProps("tratamiento_radioterapia")}
+                  control={
+                    <Switch
+                      id="tratamiento_radioterapia"
+                      {...formik.getFieldProps("tratamiento_radioterapia")}
+                      checked={formik.values.tratamiento_radioterapia}
+                    />
+                  }
                   label="Se Realizó Tratamiento radioterapéutico"
                 />
               </Item>
@@ -2350,9 +2363,13 @@ const Formulario = () => {
             <Grid item xs={6}>
               <Item>
                 <FormControlLabel
-                  id="tratamiento_quimioterapia"
-                  control={<Switch defaultChecked />}
-                  {...formik.getFieldProps("tratamiento_quimioterapia")}
+                  control={
+                    <Switch
+                      id="tratamiento_quimioterapia"
+                      {...formik.getFieldProps("tratamiento_quimioterapia")}
+                      checked={formik.values.tratamiento_quimioterapia}
+                    />
+                  }
                   label="Se Realizó Tratamiento Quimioterapéutico"
                 />
               </Item>
@@ -2449,9 +2466,13 @@ const Formulario = () => {
             <Grid item xs={6}>
               <Item>
                 <FormControlLabel
-                  id="otro_tratamiento"
-                  control={<Switch defaultChecked />}
-                  {...formik.getFieldProps("otro_tratamiento")}
+                  control={
+                    <Switch
+                      id="otro_tratamiento"
+                      {...formik.getFieldProps("otro_tratamiento")}
+                      checked={formik.values.otro_tratamiento}
+                    />
+                  }
                   label="Se Realizó Otro Tratamiento"
                 />
               </Item>
@@ -2634,6 +2655,7 @@ const Formulario = () => {
           type="submit"
           onClick={() => {
             console.log("click");
+            console.log(formik.errors);
             if (!formik.isValid) {
               console.log("no es valido");
               setErrorFormik(true);
