@@ -164,7 +164,7 @@ export interface Formulario {
   en_la_institucion?: string;
   tratamiento_planificado?: string;
   otro_tratamiento_planificado?: string;
-  inclusion_en_ec?: true;
+  inclusion_en_ec?: boolean;
   en_caso_de_si?: string;
   tratamiento_quirurgico?: boolean;
   tipo_de_cirugia?: string;
@@ -199,7 +199,7 @@ export interface ContextPropsRes {
   error?: null | string;
   setError?: React.Dispatch<React.SetStateAction<string | null>> | null;
   createFormulario?: ((data: Formulario) => void) | null;
-  updateFormulario?: ((data: Formulario) => void) | null;
+  updateFormulario?: ((data: Formulario, id: number) => void) | null;
   deleteFormulario?: ((id: number) => void) | null;
   getFormularios?: (() => void) | null;
   getReport?: ((id: number) => void) | null;

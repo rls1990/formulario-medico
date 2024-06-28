@@ -56,3 +56,10 @@ export const reportRequest = async (id: number) =>
       Authorization: `Bearer ${getAccessToken()}`,
     },
   });
+
+export const getFormularioRequest = async (id: number) =>
+  axios.get(`formulario/${id}/`, {
+    headers: {
+      Authorization: `Bearer ${getAccessToken()}`,
+    },
+  });

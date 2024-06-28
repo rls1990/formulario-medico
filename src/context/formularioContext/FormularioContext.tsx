@@ -64,7 +64,9 @@ export const FormularioProvider: React.FC<FormularioContextProps> = ({
       });
     }
   };
-  const updateFormulario = () => {};
+  const updateFormulario = (data: Formulario, id: number) => {
+    console.log(data);
+  };
 
   const deleteFormulario = (id: number) => {
     const accesToken = getAccessToken();

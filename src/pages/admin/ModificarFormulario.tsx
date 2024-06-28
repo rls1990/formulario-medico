@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useParams } from "react-router-dom";
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -5,7 +6,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs, { Dayjs } from "dayjs";
 import "dayjs/locale/es";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { TextField } from "../../components/mui/text_fields/input/text/TextField";
 
@@ -32,8 +33,12 @@ import Box from "@mui/material/Box";
 
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
-import { Formulario as FormularioDataInterf } from "../../context/formularioContext/Types";
+import {
+  Formulario,
+  Formulario as FormularioDataInterf,
+} from "../../context/formularioContext/Types";
 import { FormularioContext } from "../../context/formularioContext/FormularioContext";
+import { getFormularioRequest } from "../../api/formulario";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -75,7 +80,30 @@ const ModificarFormulario = () => {
   const { id } = useParams();
 
   const [valueTab, setValueTab] = useState(0);
-  const { createFormulario } = useContext(FormularioContext);
+  const { updateFormulario } = useContext(FormularioContext);
+
+  const [initialDataEdit, setInitialDataEdit] =
+    useState<Formulario>(initialValues);
+
+  useEffect(() => {
+    const request = async () => {
+      await getFormularioRequest(parseInt(id + ""))
+        .then((res) => {
+          console.log(res);
+          // initialDataEdit = { ...res.data };
+          const dataEdit: Formulario = { ...res.data };
+          setInitialDataEdit({ ...dataEdit });
+        })
+        .catch((err) => console.log(err));
+    };
+    request();
+  }, []);
+
+  useEffect(() => {
+    if (formik) {
+      formik.setValues(initialDataEdit);
+    }
+  }, [initialDataEdit]);
 
   const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
     setValueTab(newValue);
@@ -247,7 +275,7 @@ const ModificarFormulario = () => {
 
     data.fecha_evaluacion = values.fecha_evaluacion;
 
-    createFormulario && createFormulario(data);
+    updateFormulario && updateFormulario(data, parseInt(id + ""));
 
     console.log(values);
   };
